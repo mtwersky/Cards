@@ -34,9 +34,15 @@ function Home() {
                 >
                     Name the Category
                 </div>
-                <div className="home-card" style={{ borderColor: colors[2] }}>Compare / Contrast</div>
-                <div className="home-card" style={{ borderColor: colors[3] }}>Vocabulary</div>
-                <div className="home-card" style={{ borderColor: colors[4] }}>Match Pairs</div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[2] }}
+                    onClick={() => navigate("/matching")}
+                >
+                    Matching Pairs
+                </div>
+                <div className="home-card" style={{ borderColor: colors[3] }}>Compare / Contrast</div>
+                <div className="home-card" style={{ borderColor: colors[4] }}>Vocabulary</div>
                 <div className="home-card" style={{ borderColor: colors[5] }}>Memory</div>
                 <div className="home-card" style={{ borderColor: colors[6] }}>Find the Odd One</div>
                 <div className="home-card" style={{ borderColor: colors[7] }}>Sorting Game</div>

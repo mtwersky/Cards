@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Home from "./Home";
 import WhatDoesntBelong from "./WhatDoesntBelong";
 import NameTheCategory from "./NameTheCategory";
+import Matching from "./Matching";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -13,12 +14,12 @@ function AnimatedRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/what-doesnt-belong" element={<WhatDoesntBelong />} />
         <Route path="/name-the-category" element={<NameTheCategory />} />
+        <Route path="/matching" element={<Matching />} />
       </Routes>
       <div className="corner-credit">©mtwersky</div>
     </div>
   );
 }
-
 
 function App() {
   return (

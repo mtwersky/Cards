@@ -1,0 +1,101 @@
+[
+    {
+        "pairId": 1,
+        "item1": {
+            "name": "Ice Cream",
+            "image": "/images/ice_cream.jpg"
+        },
+        "item2": {
+            "name": "Cone",
+            "image": "/images/cone.jpg"
+        }
+    },
+    {
+        "pairId": 2,
+        "item1": {
+            "name": "Toothbrush",
+            "image": "/images/toothbrush.jpg"
+        },
+        "item2": {
+            "name": "Toothpaste",
+            "image": "/images/toothpaste.jpg"
+        }
+    },
+    {
+        "pairId": 3,
+        "item1": {
+            "name": "Pencil",
+            "image": "/images/pencil.jpg"
+        },
+        "item2": {
+            "name": "Eraser",
+            "image": "/images/eraser.jpg"
+        }
+    },
+    {
+        "pairId": 4,
+        "item1": {
+            "name": "Fork",
+            "image": "/images/fork.jpg"
+        },
+        "item2": {
+            "name": "Knife",
+            "image": "/images/knife.jpg"
+        }
+    },
+    {
+        "pairId": 5,
+        "item1": {
+            "name": "Shoe",
+            "image": "/images/shoe.jpg"
+        },
+        "item2": {
+            "name": "Sock",
+            "image": "/images/sock.jpg"
+        }
+    },
+    {
+        "pairId": 6,
+        "item1": {
+            "name": "Lock",
+            "image": "/images/lock.jpg"
+        },
+        "item2": {
+            "name": "Key",
+            "image": "/images/key.jpg"
+        }
+    },
+    {
+        "pairId": 7,
+        "item1": {
+            "name": "Bat",
+            "image": "/images/bat.jpg"
+        },
+        "item2": {
+            "name": "Ball",
+            "image": "/images/ball.jpg"
+        }
+    },
+    {
+        "pairId": 8,
+        "item1": {
+            "name": "Cup",
+            "image": "/images/cup.jpg"
+        },
+        "item2": {
+            "name": "Saucer",
+            "image": "/images/saucer.jpg"
+        }
+    },
+    {
+        "pairId": 9,
+        "item1": {
+            "name": "Hat",
+            "image": "/images/hat.jpg"
+        },
+        "item2": {
+            "name": "Cap",
+            "image": "/images/cap.jpg"
+        }
+    }
+]
