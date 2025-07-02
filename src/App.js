@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Home";
-import WhatDoesntBelong from "./WhatDoesn'tBelong";
+import WhatDoesntBelong from "./WhatDoesntBelong";
 import NameTheCategory from "./NameTheCategory";
 import "./App.css";
 
@@ -14,9 +14,11 @@ function AnimatedRoutes() {
         <Route path="/what-doesnt-belong" element={<WhatDoesntBelong />} />
         <Route path="/name-the-category" element={<NameTheCategory />} />
       </Routes>
+      <div className="corner-credit">©mtwersky</div>
     </div>
   );
 }
+
 
 function App() {
   return (

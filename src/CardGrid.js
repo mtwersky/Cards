@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 const CardGrid = ({
@@ -8,23 +8,39 @@ const CardGrid = ({
     lastLockedIndex,
     onCardClick,
     highlightIndex,
-    isLocking
+    isLocking,
+    onNext,
+    onPrev,
+    categoryId
 }) => {
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight" && onNext) {
+                onNext();
+            } else if (e.key === "ArrowLeft" && onPrev) {
+                onPrev();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [onNext, onPrev]);
+
     return (
         <div className="card-grid">
             {items.map((item, idx) => {
-                const isDisabled = disabledItems[idx];
-                const isLastLocked = lastLockedIndex === idx;
                 const buttonClasses = `image-card 
-          ${isDisabled ? "disabled" : ""} 
+          ${disabledItems[idx] ? "disabled" : ""} 
           ${highlightIndex === idx ? "highlight" : ""}`;
 
                 return (
                     <button
                         key={idx}
                         className={buttonClasses}
-                        onClick={() => !isDisabled && !isLastLocked && !isLocking && onCardClick(item.isCorrect, idx)}
-                        disabled={isDisabled || isLastLocked || isLocking}
+                        onClick={() => !disabledItems[idx] && !lastLockedIndex && !isLocking && onCardClick(item.isCorrect, idx)}
+                        disabled={disabledItems[idx] || lastLockedIndex === idx || isLocking}
                     >
                         <img src={item.image} alt="" className="card-image" />
                         {overlays[idx] && (
