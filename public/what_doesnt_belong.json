@@ -1,598 +1,1170 @@
 [
   {
     "id": 1,
-    "name": "Fruits",
-    "examples": [
-      {
-        "name": "Apple",
-        "image": "/images/apple.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Banana",
-        "image": "/images/banana.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Grapes",
-        "image": "/images/grapes.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Carrot",
-        "image": "/images/carrot.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Vegetables",
-    "examples": [
-      {
-        "name": "Corn",
-        "image": "/images/corn.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Broccoli",
-        "image": "/images/broccoli.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Potato",
-        "image": "/images/potato.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Chicken",
-        "image": "/images/chicken.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Farm animals",
-    "examples": [
-      {
-        "name": "Horse",
-        "image": "/images/horse.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Pig",
-        "image": "/images/pig.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Cow",
-        "image": "/images/cow.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Tiger",
-        "image": "/images/tiger.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Kitchen utensils",
-    "examples": [
-      {
-        "name": "Whisk",
-        "image": "/images/whisk.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Ladle",
-        "image": "/images/ladle.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Ice cream scooper",
-        "image": "/images/ice_cream_scooper.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Scissors",
-        "image": "/images/scissors.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Drinks",
-    "examples": [
-      {
-        "name": "Lemonade",
-        "image": "/images/lemonade.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Orange juice",
-        "image": "/images/orange_juice.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Soda",
-        "image": "/images/soda.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Oil",
-        "image": "/images/oil.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Breakfast",
-    "examples": [
-      {
-        "name": "Eggs",
-        "image": "/images/eggs.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Cereal",
-        "image": "/images/cereal.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Waffle",
-        "image": "/images/waffle.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Spaghetti",
-        "image": "/images/spaghetti.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Clothing",
-    "examples": [
-      {
-        "name": "Shirt",
-        "image": "/images/shirt.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Pants",
-        "image": "/images/pants.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Socks",
-        "image": "/images/socks.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Towel",
-        "image": "/images/towel.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "School supplies",
-    "examples": [
-      {
-        "name": "Pencil",
-        "image": "/images/pencil.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Eraser",
-        "image": "/images/eraser.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Markers",
-        "image": "/images/markers.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Spoon",
-        "image": "/images/spoon.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Vehicles",
-    "examples": [
-      {
-        "name": "Minivan",
-        "image": "/images/minivan.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Car",
-        "image": "/images/car.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Airplane",
-        "image": "/images/airplane.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Refrigerator",
-        "image": "/images/refrigerator.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Musical instruments",
-    "examples": [
-      {
-        "name": "Drums",
-        "image": "/images/drums.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Trumpet",
-        "image": "/images/trumpet.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Violin",
-        "image": "/images/violin.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Microphone",
-        "image": "/images/microphone.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Sport balls",
-    "examples": [
-      {
-        "name": "Soccer",
-        "image": "/images/soccer.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Baseball",
-        "image": "/images/baseball.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Football",
-        "image": "/images/football.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Tennis racket",
-        "image": "/images/tennis_racket.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "name": "Furniture",
-    "examples": [
-      {
-        "name": "Table",
-        "image": "/images/table.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Bed",
-        "image": "/images/bed.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Couch",
-        "image": "/images/couch.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Pot",
-        "image": "/images/pot.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Birds",
-    "examples": [
-      {
-        "name": "Sparrow",
-        "image": "/images/sparrow.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Pigeon",
-        "image": "/images/pigeon.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Eagle",
-        "image": "/images/eagle.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Bee",
-        "image": "/images/bee.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Forest animals",
-    "examples": [
-      {
-        "name": "Raccoon",
-        "image": "/images/raccoon.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Skunk",
-        "image": "/images/skunk.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Deer",
-        "image": "/images/deer.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Goat",
-        "image": "/images/goat.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "name": "Water animals",
-    "examples": [
-      {
-        "name": "Dolphin",
-        "image": "/images/dolphin.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Turtle",
-        "image": "/images/turtle.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Whale",
-        "image": "/images/whale.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Monkey",
-        "image": "/images/monkey.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 16,
-    "name": "Toys",
-    "examples": [
-      {
-        "name": "Blocks",
-        "image": "/images/blocks.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Lego",
-        "image": "/images/lego.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Toy train",
-        "image": "/images/toy_train.jpg",
-        "isCorrect": true
-      },
-      {
-        "name": "Cup",
-        "image": "/images/cup.jpg",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "id": 17,
     "name": "Snacks",
     "examples": [
       {
-        "name": "Popcorn",
+        "name": "popcorn",
         "image": "/images/popcorn.jpg",
         "isCorrect": true
       },
       {
-        "name": "Potato chips",
+        "name": "potato chips",
         "image": "/images/potato_chips.jpg",
         "isCorrect": true
       },
       {
-        "name": "Pretzels",
+        "name": "pretzels",
         "image": "/images/pretzels.jpg",
         "isCorrect": true
       },
       {
-        "name": "Onion",
+        "name": "onion",
         "image": "/images/onion.jpg",
         "isCorrect": false
       }
     ]
   },
   {
-    "id": 18,
-    "name": "Insects",
+    "id": 2,
+    "name": "Cleaning supplies",
     "examples": [
       {
-        "name": "Ladybug",
-        "image": "/images/ladybug.jpg",
+        "name": "sponge",
+        "image": "/images/sponge.jpg",
         "isCorrect": true
       },
       {
-        "name": "Mosquito",
-        "image": "/images/mosquito.jpg",
+        "name": "spray",
+        "image": "/images/spray.jpg",
         "isCorrect": true
       },
       {
-        "name": "Ant",
-        "image": "/images/ant.jpg",
+        "name": "mop",
+        "image": "/images/mop.jpg",
         "isCorrect": true
       },
       {
-        "name": "Mouse",
-        "image": "/images/mouse.jpg",
+        "name": "book",
+        "image": "/images/book.jpg",
         "isCorrect": false
       }
     ]
   },
   {
-    "id": 19,
+    "id": 3,
+    "name": "Firefighter",
+    "examples": [
+      {
+        "name": "hose",
+        "image": "/images/hose.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "helmet",
+        "image": "/images/helmet.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "axe",
+        "image": "/images/axe.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "gun",
+        "image": "/images/gun.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Winter",
+    "examples": [
+      {
+        "name": "snowball",
+        "image": "/images/snowball.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "icicles",
+        "image": "/images/icicles.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "sled",
+        "image": "/images/sled.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "flower",
+        "image": "/images/flower.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Toys",
+    "examples": [
+      {
+        "name": "blocks",
+        "image": "/images/blocks.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "lego",
+        "image": "/images/lego.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "toy train",
+        "image": "/images/toy_train.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "cup",
+        "image": "/images/cup.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Jewelry",
+    "examples": [
+      {
+        "name": "necklace",
+        "image": "/images/necklace.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "earrings",
+        "image": "/images/earrings.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "bracelet",
+        "image": "/images/bracelet.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "lipstick",
+        "image": "/images/lipstick.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Fruits",
+    "examples": [
+      {
+        "name": "apple",
+        "image": "/images/apple.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "banana",
+        "image": "/images/banana.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "grapes",
+        "image": "/images/grapes.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "carrot",
+        "image": "/images/carrot.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Makeup",
+    "examples": [
+      {
+        "name": "mascara",
+        "image": "/images/mascara.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "blush",
+        "image": "/images/blush.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "lipstick",
+        "image": "/images/lipstick.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "colored pencils",
+        "image": "/images/colored_pencils.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Sport balls",
+    "examples": [
+      {
+        "name": "soccer",
+        "image": "/images/soccer.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "baseball",
+        "image": "/images/baseball.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "football",
+        "image": "/images/football.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "tennis racket",
+        "image": "/images/tennis_racket.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Playground",
+    "examples": [
+      {
+        "name": "slide",
+        "image": "/images/slide.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "swing",
+        "image": "/images/swing.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "monkeybars",
+        "image": "/images/monkeybars.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "mailbox",
+        "image": "/images/mailbox.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Orange",
+    "examples": [
+      {
+        "name": "traffic cone",
+        "image": "/images/traffic_cone.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "carrot",
+        "image": "/images/carrot.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "sweet potato",
+        "image": "/images/sweet_potato.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "egg",
+        "image": "/images/egg.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 12,
     "name": "Tools",
     "examples": [
       {
-        "name": "Wrench",
+        "name": "wrench",
         "image": "/images/wrench.jpg",
         "isCorrect": true
       },
       {
-        "name": "Screwdriver",
+        "name": "screwdriver",
         "image": "/images/screwdriver.jpg",
         "isCorrect": true
       },
       {
-        "name": "Pliers",
+        "name": "pliers",
         "image": "/images/pliers.jpg",
         "isCorrect": true
       },
       {
-        "name": "Pen",
+        "name": "pen",
         "image": "/images/pen.jpg",
         "isCorrect": false
       }
     ]
   },
   {
-    "id": 20,
-    "name": "Writing instruments",
+    "id": 13,
+    "name": "Yellow",
     "examples": [
       {
-        "name": "Crayons",
-        "image": "/images/crayons.jpg",
+        "name": "lemon",
+        "image": "/images/lemon.jpg",
         "isCorrect": true
       },
       {
-        "name": "Markers",
-        "image": "/images/markers.jpg",
+        "name": "pencil",
+        "image": "/images/pencil.jpg",
         "isCorrect": true
       },
       {
-        "name": "Chalk",
-        "image": "/images/chalk.jpg",
+        "name": "eggs",
+        "image": "/images/eggs.jpg",
         "isCorrect": true
       },
       {
-        "name": "Fork",
-        "image": "/images/fork.jpg",
+        "name": "spinach",
+        "image": "/images/spinach.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "White",
+    "examples": [
+      {
+        "name": "clouds",
+        "image": "/images/clouds.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "flour",
+        "image": "/images/flour.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "milk",
+        "image": "/images/milk.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "baby doll",
+        "image": "/images/baby_doll.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Hats",
+    "examples": [
+      {
+        "name": "warm hat",
+        "image": "/images/warm_hat.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "helmet",
+        "image": "/images/helmet.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "sun hat",
+        "image": "/images/sun_hat.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "gloves",
+        "image": "/images/gloves.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Furniture",
+    "examples": [
+      {
+        "name": "table",
+        "image": "/images/table.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "bed",
+        "image": "/images/bed.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "couch",
+        "image": "/images/couch.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "pot",
+        "image": "/images/pot.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Kitchen utensils",
+    "examples": [
+      {
+        "name": "whisk",
+        "image": "/images/whisk.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "ladle",
+        "image": "/images/ladle.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "ice cream scooper",
+        "image": "/images/ice_cream_scooper.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "scissors",
+        "image": "/images/scissors.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Baby items",
+    "examples": [
+      {
+        "name": "pacifier",
+        "image": "/images/pacifier.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "bottle",
+        "image": "/images/bottle.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "stroller",
+        "image": "/images/stroller.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "chair",
+        "image": "/images/chair.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Green",
+    "examples": [
+      {
+        "name": "tennis ball",
+        "image": "/images/tennis_ball.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "celery",
+        "image": "/images/celery.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "grass",
+        "image": "/images/grass.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "screws",
+        "image": "/images/screws.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Birds",
+    "examples": [
+      {
+        "name": "sparrow",
+        "image": "/images/sparrow.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "pigeon",
+        "image": "/images/pigeon.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "eagle",
+        "image": "/images/eagle.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "bee",
+        "image": "/images/bee.jpg",
         "isCorrect": false
       }
     ]
   },
   {
     "id": 21,
-    "name": "Jewelry",
+    "name": "Meats",
     "examples": [
       {
-        "name": "Necklace",
-        "image": "/images/necklace.jpg",
+        "name": "chicken cutlet",
+        "image": "/images/chicken_cutlet.jpg",
         "isCorrect": true
       },
       {
-        "name": "Earrings",
-        "image": "/images/earrings.jpg",
+        "name": "steak",
+        "image": "/images/steak.jpg",
         "isCorrect": true
       },
       {
-        "name": "Bracelet",
-        "image": "/images/bracelet.jpg",
+        "name": "hamburger",
+        "image": "/images/hamburger.jpg",
         "isCorrect": true
       },
       {
-        "name": "Lipstick",
-        "image": "/images/lipstick.jpg",
+        "name": "cheese",
+        "image": "/images/cheese.jpg",
         "isCorrect": false
       }
     ]
   },
   {
     "id": 22,
-    "name": "Dessert",
+    "name": "Beach",
     "examples": [
       {
-        "name": "Cake",
-        "image": "/images/cake.jpg",
+        "name": "sandcastle",
+        "image": "/images/sandcastle.jpg",
         "isCorrect": true
       },
       {
-        "name": "Ice cream",
-        "image": "/images/ice_cream.jpg",
+        "name": "seashells",
+        "image": "/images/seashells.jpg",
         "isCorrect": true
       },
       {
-        "name": "Cookies",
-        "image": "/images/cookies.jpg",
+        "name": "bucket",
+        "image": "/images/bucket.jpg",
         "isCorrect": true
       },
       {
-        "name": "Bagel",
-        "image": "/images/bagel.jpg",
+        "name": "flower",
+        "image": "/images/flower.jpg",
         "isCorrect": false
       }
     ]
   },
   {
     "id": 23,
-    "name": "Makeup",
+    "name": "Magician",
     "examples": [
       {
-        "name": "Mascara",
-        "image": "/images/mascara.jpg",
+        "name": "white gloves",
+        "image": "/images/white_gloves.jpg",
         "isCorrect": true
       },
       {
-        "name": "Blush",
-        "image": "/images/blush.jpg",
+        "name": "top hat",
+        "image": "/images/top_hat.jpg",
         "isCorrect": true
       },
       {
-        "name": "Lipstick",
-        "image": "/images/lipstick.jpg",
+        "name": "rabbit",
+        "image": "/images/rabbit.jpg",
         "isCorrect": true
       },
       {
-        "name": "Colored pencils",
-        "image": "/images/colored_pencils.jpg",
+        "name": "clown shoes",
+        "image": "/images/clown_shoes.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "School supplies",
+    "examples": [
+      {
+        "name": "pencil",
+        "image": "/images/pencil.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "eraser",
+        "image": "/images/eraser.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "markers",
+        "image": "/images/markers.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "spoon",
+        "image": "/images/spoon.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Farm animals",
+    "examples": [
+      {
+        "name": "horse",
+        "image": "/images/horse.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "pig",
+        "image": "/images/pig.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "cow",
+        "image": "/images/cow.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "tiger",
+        "image": "/images/tiger.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Breakfast",
+    "examples": [
+      {
+        "name": "eggs",
+        "image": "/images/eggs.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "cereal",
+        "image": "/images/cereal.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "waffle",
+        "image": "/images/waffle.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "spaghetti",
+        "image": "/images/spaghetti.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Doctor equipment",
+    "examples": [
+      {
+        "name": "shot",
+        "image": "/images/shot.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "stethoscope",
+        "image": "/images/stethoscope.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "tongue depressor",
+        "image": "/images/tongue_depressor.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "drill",
+        "image": "/images/drill.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Fall",
+    "examples": [
+      {
+        "name": "rake",
+        "image": "/images/rake.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "pumpkin",
+        "image": "/images/pumpkin.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "leaves",
+        "image": "/images/leaves.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "birds",
+        "image": "/images/birds.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Baking equipment",
+    "examples": [
+      {
+        "name": "rolling pin",
+        "image": "/images/rolling_pin.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "measuring spoons",
+        "image": "/images/measuring_spoons.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "oven mitts",
+        "image": "/images/oven_mitts.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "expo marker",
+        "image": "/images/expo_marker.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Bathroom",
+    "examples": [
+      {
+        "name": "toilet paper",
+        "image": "/images/toilet_paper.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "toothbrush",
+        "image": "/images/toothbrush.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "soap",
+        "image": "/images/soap.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "undershirt",
+        "image": "/images/undershirt.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Shoes",
+    "examples": [
+      {
+        "name": "boots",
+        "image": "/images/boots.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "slippers",
+        "image": "/images/slippers.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "sneakers",
+        "image": "/images/sneakers.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "baseball cap",
+        "image": "/images/baseball_cap.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Appliances",
+    "examples": [
+      {
+        "name": "microwave",
+        "image": "/images/microwave.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "dishwasher",
+        "image": "/images/dishwasher.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "mixer",
+        "image": "/images/mixer.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "recliner",
+        "image": "/images/recliner.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Vehicles",
+    "examples": [
+      {
+        "name": "minivan",
+        "image": "/images/minivan.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "car",
+        "image": "/images/car.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "airplane",
+        "image": "/images/airplane.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "refrigerator",
+        "image": "/images/refrigerator.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Winter clothing",
+    "examples": [
+      {
+        "name": "mittens",
+        "image": "/images/mittens.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "hat",
+        "image": "/images/hat.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "scarf",
+        "image": "/images/scarf.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "flip-flops",
+        "image": "/images/flip-flops.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Musical instruments",
+    "examples": [
+      {
+        "name": "drums",
+        "image": "/images/drums.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "trumpet",
+        "image": "/images/trumpet.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "violin",
+        "image": "/images/violin.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "microphone",
+        "image": "/images/microphone.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Red",
+    "examples": [
+      {
+        "name": "cherry",
+        "image": "/images/cherry.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "strawberry",
+        "image": "/images/strawberry.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "stop sign",
+        "image": "/images/stop_sign.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "basketball",
+        "image": "/images/basketball.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Summer",
+    "examples": [
+      {
+        "name": "sunglasses",
+        "image": "/images/sunglasses.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "swimsuit",
+        "image": "/images/swimsuit.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "visor",
+        "image": "/images/visor.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "sweater",
+        "image": "/images/sweater.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Vegetables",
+    "examples": [
+      {
+        "name": "corn",
+        "image": "/images/corn.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "broccoli",
+        "image": "/images/broccoli.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "potato",
+        "image": "/images/potato.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "chicken",
+        "image": "/images/chicken.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Forest animals",
+    "examples": [
+      {
+        "name": "racoon",
+        "image": "/images/racoon.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "skunk",
+        "image": "/images/skunk.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "deer",
+        "image": "/images/deer.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "goat",
+        "image": "/images/goat.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Dessert",
+    "examples": [
+      {
+        "name": "cake",
+        "image": "/images/cake.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "ice cream",
+        "image": "/images/ice_cream.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "cookies",
+        "image": "/images/cookies.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "bagel",
+        "image": "/images/bagel.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Insects",
+    "examples": [
+      {
+        "name": "ladybug",
+        "image": "/images/ladybug.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "mosquito",
+        "image": "/images/mosquito.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "ant",
+        "image": "/images/ant.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "mouse",
+        "image": "/images/mouse.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Writing instruments",
+    "examples": [
+      {
+        "name": "crayons",
+        "image": "/images/crayons.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "markers",
+        "image": "/images/markers.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "chalk",
+        "image": "/images/chalk.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "fork",
+        "image": "/images/fork.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Clothing",
+    "examples": [
+      {
+        "name": "shirt",
+        "image": "/images/shirt.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "pants",
+        "image": "/images/pants.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "socks",
+        "image": "/images/socks.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "towel",
+        "image": "/images/towel.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Drinks",
+    "examples": [
+      {
+        "name": "lemonade",
+        "image": "/images/lemonade.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "orange juice",
+        "image": "/images/orange_juice.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "soda",
+        "image": "/images/soda.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "oil",
+        "image": "/images/oil.jpg",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Water animals",
+    "examples": [
+      {
+        "name": "dolphin",
+        "image": "/images/dolphin.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "turtle",
+        "image": "/images/turtle.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "whale",
+        "image": "/images/whale.jpg",
+        "isCorrect": true
+      },
+      {
+        "name": "monkey",
+        "image": "/images/monkey.jpg",
         "isCorrect": false
       }
     ]

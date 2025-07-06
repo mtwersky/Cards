@@ -1,0 +1,22 @@
+.answer-button img {
+    height: 30px;
+}
+
+.answer-button.no-bg {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.answer-button.no-bg:focus {
+    outline: none;
+}
+
+.answer-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* closer together */
+}

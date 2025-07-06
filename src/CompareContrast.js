@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardGrid from "./CardGrid";
 import "./App.css";
-import "./ntc.css";
+import "./Compare.css";
 
 const colors = [
     "#f7d84b",
@@ -15,19 +15,17 @@ const colors = [
     "#66cccc"
 ];
 
-function NameTheCategory() {
+function CompareContrast() {
     const [categories, setCategories] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [shuffledItems, setShuffledItems] = useState([]);
     const [borderColor, setBorderColor] = useState(colors[0]);
-    const [showAnswer, setShowAnswer] = useState(false);
     const [fadeState, setFadeState] = useState("fade-in-active");
-    const [score, setScore] = useState(0); // score now resets on reload
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/categories.json")
+        fetch("/comparisons.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
@@ -52,7 +50,6 @@ function NameTheCategory() {
             setCurrentIndex(nextIndex);
             setShuffledItems(shuffleArray(categories[nextIndex].examples));
             setBorderColor(colors[nextIndex % colors.length]);
-            setShowAnswer(false);
             setFadeState("fade-in-active");
         }, 400);
     };
@@ -64,18 +61,8 @@ function NameTheCategory() {
             setCurrentIndex(prevIndex);
             setShuffledItems(shuffleArray(categories[prevIndex].examples));
             setBorderColor(colors[prevIndex % colors.length]);
-            setShowAnswer(false);
             setFadeState("fade-in-active");
         }, 400);
-    };
-
-    const handleMarkCorrect = () => {
-        setScore((prev) => prev + 1);
-        setShowAnswer(false);
-    };
-
-    const handleMarkIncorrect = () => {
-        setShowAnswer(false);
     };
 
     const currentCategory = categories[currentIndex];
@@ -83,10 +70,7 @@ function NameTheCategory() {
     return (
         <div className="app">
             <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">Name the Category</h1>
-            <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
-                Score: {score}
-            </div>
+            <h1 className="title">Compare & Contrast</h1>
             {categories.length > 0 ? (
                 <>
                     <button className="nav-arrow left" onClick={handlePrev}>❮</button>
@@ -102,35 +86,17 @@ function NameTheCategory() {
                             onNext={handleNext}
                             onPrev={handlePrev}
                             categoryId={currentCategory.id}
+                            variant="compare"
                         />
                         <div className="category-id">{currentCategory.id}</div>
-                    </div>
-                    <div className="answer-buttons-container">
-                        <button
-                            className="answer-button"
-                            style={{ backgroundColor: borderColor }}
-                            onClick={() => setShowAnswer(true)}
-                        >
-                            {showAnswer ? currentCategory.name : "Answer"}
-                        </button>
-                        {showAnswer && (
-                            <>
-                                <button className="answer-button no-bg" onClick={handleMarkCorrect}>
-                                    <img src="/images/green-check.png" alt="Correct" />
-                                </button>
-                                <button className="answer-button no-bg" onClick={handleMarkIncorrect}>
-                                    <img src="/images/red-x.png" alt="Incorrect" />
-                                </button>
-                            </>
-                        )}
                     </div>
                     <button className="nav-arrow right" onClick={handleNext}>❯</button>
                 </>
             ) : (
-                <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading categories...</p>
+                <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading comparisons...</p>
             )}
         </div>
     );
 }
 
-export default NameTheCategory;
+export default CompareContrast;

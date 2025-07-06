@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
+import "./Matching.css";
 
 const colors = [
     "#f7d84b", "#ff9999", "#99ccff", "#99ff99",
@@ -10,14 +10,13 @@ const colors = [
 function Matching() {
     const [grid1, setGrid1] = useState([]);
     const [grid2, setGrid2] = useState([]);
-    const [flippedIndexes, setFlippedIndexes] = useState([]);
+    const [revealedIndexes, setRevealedIndexes] = useState([]);
     const [matchedIndexes, setMatchedIndexes] = useState([]);
-    const [overlays, setOverlays] = useState({});
-    const [score, setScore] = useState(0);
-    const [isBusy, setIsBusy] = useState(false);
     const [matchedPairs, setMatchedPairs] = useState([]);
+    const [score, setScore] = useState(0);
     const [lockedGrid, setLockedGrid] = useState(null);
     const [selectedKey, setSelectedKey] = useState(null);
+    const [isBusy, setIsBusy] = useState(false);
 
     const navigate = useNavigate();
 
@@ -25,12 +24,11 @@ function Matching() {
         fetch("/matches.json")
             .then((res) => res.json())
             .then((data) => {
-                const firstHalf = data.map(pair => ({ ...pair.item1, pairId: pair.pairId }));
-                const secondHalf = data.map(pair => ({ ...pair.item2, pairId: pair.pairId }));
-                const shuffled1 = shuffleArray(firstHalf);
-                const shuffled2 = shuffleArray(secondHalf);
-                setGrid1(shuffled1);
-                setGrid2(shuffled2);
+                const selectedPairs = shuffleArray(data).slice(0, 9);
+                const firstHalf = selectedPairs.map(pair => ({ ...pair.item1, pairId: pair.pairId }));
+                const secondHalf = selectedPairs.map(pair => ({ ...pair.item2, pairId: pair.pairId }));
+                setGrid1(shuffleArray(firstHalf));
+                setGrid2(shuffleArray(secondHalf));
             });
     }, []);
 
@@ -45,28 +43,27 @@ function Matching() {
         const key = `${grid}-${index}`;
 
         if (
-            flippedIndexes.includes(key) ||
+            revealedIndexes.includes(key) ||
             matchedIndexes.includes(key) ||
-            flippedIndexes.length === 2 ||
+            revealedIndexes.length === 2 ||
             isBusy
         ) {
             return;
         }
 
-        if (flippedIndexes.length === 1 && lockedGrid === grid) return;
+        if (revealedIndexes.length === 1 && lockedGrid === grid) return;
 
-        const newFlipped = [...flippedIndexes, key];
-        setFlippedIndexes(newFlipped);
+        const newRevealed = [...revealedIndexes, key];
+        setRevealedIndexes(newRevealed);
 
-        if (newFlipped.length === 1) {
+        if (newRevealed.length === 1) {
             setLockedGrid(grid);
             setSelectedKey(key);
         }
 
-        if (newFlipped.length === 2) {
+        if (newRevealed.length === 2) {
             setIsBusy(true);
-            const [firstKey, secondKey] = newFlipped;
-
+            const [firstKey, secondKey] = newRevealed;
             const [firstGrid, firstIdx] = firstKey.split("-");
             const [secondGrid, secondIdx] = secondKey.split("-");
 
@@ -75,72 +72,44 @@ function Matching() {
 
             setTimeout(() => {
                 if (firstCard.pairId === secondCard.pairId) {
-                    setOverlays(prev => ({
-                        ...prev,
-                        [firstKey]: "check",
-                        [secondKey]: "check"
-                    }));
-
+                    setMatchedIndexes(prev => [...prev, firstKey, secondKey]);
+                    setScore(prev => prev + 1);
                     setTimeout(() => {
-                        setMatchedIndexes(prev => [...prev, firstKey, secondKey]);
-                        setTimeout(() => {
-                            setMatchedPairs(prev => [...prev, [firstCard, secondCard]]);
-                        }, 1000);
-                        setScore((prev) => prev + 1);
-                        setOverlays(prev => {
-                            const newOverlays = { ...prev };
-                            delete newOverlays[firstKey];
-                            delete newOverlays[secondKey];
-                            return newOverlays;
-                        });
-                        setFlippedIndexes([]);
-                        setLockedGrid(null);
-                        setSelectedKey(null);
-                        setIsBusy(false);
-                    }, 1000);
-                } else {
-                    setOverlays(prev => ({
-                        ...prev,
-                        [firstKey]: "cross",
-                        [secondKey]: "cross"
-                    }));
-
-                    setTimeout(() => {
-                        setOverlays(prev => {
-                            const newOverlays = { ...prev };
-                            delete newOverlays[firstKey];
-                            delete newOverlays[secondKey];
-                            return newOverlays;
-                        });
-                        setFlippedIndexes([]);
-                        setLockedGrid(null);
-                        setSelectedKey(null);
-                        setIsBusy(false);
+                        setMatchedPairs(prev => [
+                            ...prev,
+                            [
+                                { ...firstCard, borderColor: colors[firstIdx % colors.length] },
+                                { ...secondCard, borderColor: colors[secondIdx % colors.length] }
+                            ]
+                        ]);
                     }, 1000);
                 }
-            }, 800);
+                setRevealedIndexes([]);
+                setLockedGrid(null);
+                setSelectedKey(null);
+                setIsBusy(false);
+            }, 1000);
         }
     };
 
     return (
         <div className="app">
             <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">Matching Pairs</h1>
-            <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.3rem", marginBottom: "10px" }}>
+            <h1 className="title">Match the Pairs</h1>
+            <div style={{ color: "white", fontSize: "1.3rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
-            <div className="two-grids">
+            <div className="grid-wrapper-container">
                 {[grid1, grid2].map((grid, gIdx) => {
                     const gridName = `g${gIdx + 1}`;
 
                     return (
-                        <div key={gridName} className="big-matching-grid">
+                        <div key={gridName} className="grid-wrapper">
                             {grid.map((card, idx) => {
                                 const key = `${gridName}-${idx}`;
-                                const isFlipped = flippedIndexes.includes(key);
+                                const isRevealed = revealedIndexes.includes(key) || matchedIndexes.includes(key);
                                 const isMatched = matchedIndexes.includes(key);
 
-                                // Fade if: grid is locked, card is in that grid, and it's not the chosen card
                                 let faded = false;
                                 if (lockedGrid === gridName && selectedKey !== key) {
                                     faded = true;
@@ -149,30 +118,16 @@ function Matching() {
                                 return (
                                     <button
                                         key={key}
-                                        className={`image-card ${isFlipped ? "flipped" : ""} ${isMatched ? "matched-disappear" : ""} ${faded ? "faded-card" : ""}`}
                                         onClick={() => handleCardClick(idx, gridName)}
+                                        className={`simple-card ${isRevealed ? "flipped" : ""} ${isMatched ? "matched-disappear" : ""} ${faded ? "faded" : ""}`}
                                     >
                                         <div
-                                            className="card-inner"
-                                            style={{
-                                                borderColor: colors[idx % colors.length]
-                                            }}
+                                            className="simple-card-inner-with-border"
+                                            style={{ borderColor: colors[idx % colors.length] }}
                                         >
-                                            <div className="card-front">{idx + 1}</div>
-                                            <div className="card-back">
-                                                <img src={card.image} alt={card.name} className="matching-card-image" />
-                                                {overlays[key] && (
-                                                    <div className={`overlay ${overlays[key]}`}>
-                                                        <img
-                                                            src={
-                                                                overlays[key] === "check"
-                                                                    ? "/images/green-check.png"
-                                                                    : "/images/red-x.png"
-                                                            }
-                                                            alt={overlays[key]}
-                                                        />
-                                                    </div>
-                                                )}
+                                            <div className="simple-card-front">{idx + 1}</div>
+                                            <div className="simple-card-back">
+                                                <img src={card.image} alt={card.name} />
                                             </div>
                                         </div>
                                     </button>
@@ -182,11 +137,22 @@ function Matching() {
                     );
                 })}
             </div>
+
             <div className="matched-area">
                 {matchedPairs.map((pair, i) => (
                     <div key={i} className="matched-pair fade-in-pair">
-                        <img src={pair[0].image} alt={pair[0].name} className="matched-thumb" />
-                        <img src={pair[1].image} alt={pair[1].name} className="matched-thumb" />
+                        <img
+                            src={pair[0].image}
+                            alt={pair[0].name}
+                            className="matched-thumb"
+                            style={{ borderColor: pair[0].borderColor }}
+                        />
+                        <img
+                            src={pair[1].image}
+                            alt={pair[1].name}
+                            className="matched-thumb"
+                            style={{ borderColor: pair[1].borderColor }}
+                        />
                     </div>
                 ))}
             </div>

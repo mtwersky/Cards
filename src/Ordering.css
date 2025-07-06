@@ -1,0 +1,63 @@
+.drop-zone-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.drop-slot {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #ccc;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.drop-slot:hover {
+    background-color: #ffffff;
+}
+
+.slot-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dashed-box {
+    border: 3px dashed #aaa;
+    padding: 10px;
+    min-height: 120px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.draggable-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.persistent-row {
+    min-height: 120px;
+}
+
+.draggable-image {
+    cursor: grab;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+}

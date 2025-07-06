@@ -73,14 +73,14 @@
         },
         "item2": {
             "name": "Ball",
-            "image": "/images/ball.jpg"
+            "image": "/images/baseball.jpg"
         }
     },
     {
         "pairId": 8,
         "item1": {
             "name": "Cup",
-            "image": "/images/cup.jpg"
+            "image": "/images/tea_cup.jpg"
         },
         "item2": {
             "name": "Saucer",

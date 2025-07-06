@@ -1,0 +1,150 @@
+.simple-card {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: none;
+    border: none;
+    /* Remove outer border */
+    border-radius: 20px;
+    transition: opacity 0.5s ease;
+}
+
+.simple-card-inner-with-border {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s, border-color 0.3s;
+    border: 7px solid;
+    /* Move border here so it flips */
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.simple-card-front,
+.simple-card-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simple-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.simple-card-back {
+    transform: rotateY(180deg);
+}
+
+.simple-card.flipped .simple-card-inner-with-border {
+    transform: rotateY(180deg);
+}
+
+.simple-card.matched-disappear {
+    animation: shrinkFade 1.2s forwards;
+}
+
+.faded {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+
+.grid-wrapper-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 500px;
+}
+
+.matched-area {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.matched-pair {
+    display: flex;
+    gap: 5px;
+}
+
+.fade-in-pair {
+    animation: fadeIn 1s ease forwards;
+}
+
+.matched-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: white;
+    border: 4px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+@keyframes shrinkFade {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.flippable-inner-border {
+    width: 100%;
+    height: 100%;
+    border: 8px solid #555;
+    /* Change to your dynamic border color if needed */
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-card:hover .flippable-inner-border {
+    transform: rotateY(180deg);
+}

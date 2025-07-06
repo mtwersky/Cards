@@ -39,13 +39,24 @@ function Home() {
                     style={{ borderColor: colors[2] }}
                     onClick={() => navigate("/matching")}
                 >
-                    Matching Pairs
+                    Match the Pairs
                 </div>
-                <div className="home-card" style={{ borderColor: colors[3] }}>Compare / Contrast</div>
-                <div className="home-card" style={{ borderColor: colors[4] }}>Vocabulary</div>
-                <div className="home-card" style={{ borderColor: colors[5] }}>Memory</div>
-                <div className="home-card" style={{ borderColor: colors[6] }}>Find the Odd One</div>
-                <div className="home-card" style={{ borderColor: colors[7] }}>Sorting Game</div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[3] }}
+                    onClick={() => navigate("/compare-contrast")}
+                >
+                    Compare / Contrast
+                </div>
+                <div className="home-card" style={{ borderColor: colors[4] }} onClick={() => navigate("/ordering")}>
+                    Order the Items
+                </div>
+                <div className="home-card" style={{ borderColor: colors[5] }} onClick={() => navigate("/guess-the-missing")}>
+                    Guess the Missing Item
+                </div>
+                <div className="home-card" style={{ borderColor: colors[5] }}>x</div>
+                <div className="home-card" style={{ borderColor: colors[6] }}>x</div>
+
             </div>
         </div>
     );
