@@ -71,8 +71,8 @@
         "isCorrect": true
       },
       {
-        "name": "gun",
-        "image": "/images/gun.jpg",
+        "name": "handcuffs",
+        "image": "/images/handcuffs.jpg",
         "isCorrect": false
       }
     ]
