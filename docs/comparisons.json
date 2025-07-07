@@ -5,11 +5,11 @@
         "examples": [
             {
                 "name": "Mascara",
-                "image": "/images/mascara.jpg"
+                "image": "./images/mascara.jpg"
             },
             {
                 "name": "Blush",
-                "image": "/images/blush.jpg"
+                "image": "./images/blush.jpg"
             }
         ]
     },
@@ -19,11 +19,11 @@
         "examples": [
             {
                 "name": "Blocks",
-                "image": "/images/blocks.jpg"
+                "image": "./images/blocks.jpg"
             },
             {
                 "name": "Lego",
-                "image": "/images/lego.jpg"
+                "image": "./images/lego.jpg"
             }
         ]
     },
@@ -33,11 +33,11 @@
         "examples": [
             {
                 "name": "Raccoon",
-                "image": "/images/raccoon.jpg"
+                "image": "./images/raccoon.jpg"
             },
             {
                 "name": "Skunk",
-                "image": "/images/skunk.jpg"
+                "image": "./images/skunk.jpg"
             }
         ]
     },
@@ -47,11 +47,11 @@
         "examples": [
             {
                 "name": "Necklace",
-                "image": "/images/necklace.jpg"
+                "image": "./images/necklace.jpg"
             },
             {
                 "name": "Earrings",
-                "image": "/images/earrings.jpg"
+                "image": "./images/earrings.jpg"
             }
         ]
     },
@@ -61,11 +61,11 @@
         "examples": [
             {
                 "name": "Soccer",
-                "image": "/images/soccer.jpg"
+                "image": "./images/soccer.jpg"
             },
             {
                 "name": "Baseball",
-                "image": "/images/baseball.jpg"
+                "image": "./images/baseball.jpg"
             }
         ]
     },
@@ -75,11 +75,11 @@
         "examples": [
             {
                 "name": "Dolphin",
-                "image": "/images/dolphin.jpg"
+                "image": "./images/dolphin.jpg"
             },
             {
                 "name": "Turtle",
-                "image": "/images/turtle.jpg"
+                "image": "./images/turtle.jpg"
             }
         ]
     },
@@ -89,11 +89,11 @@
         "examples": [
             {
                 "name": "Lemonade",
-                "image": "/images/lemonade.jpg"
+                "image": "./images/lemonade.jpg"
             },
             {
                 "name": "Orange juice",
-                "image": "/images/orange_juice.jpg"
+                "image": "./images/orange_juice.jpg"
             }
         ]
     },
@@ -103,11 +103,11 @@
         "examples": [
             {
                 "name": "Table",
-                "image": "/images/table.jpg"
+                "image": "./images/table.jpg"
             },
             {
                 "name": "Bed",
-                "image": "/images/bed.jpg"
+                "image": "./images/bed.jpg"
             }
         ]
     }

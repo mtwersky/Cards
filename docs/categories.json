@@ -5,19 +5,19 @@
         "examples": [
             {
                 "name": "Mascara",
-                "image": "/images/mascara.jpg"
+                "image": "./images/mascara.jpg"
             },
             {
                 "name": "Blush",
-                "image": "/images/blush.jpg"
+                "image": "./images/blush.jpg"
             },
             {
                 "name": "Lipstick",
-                "image": "/images/lipstick.jpg"
+                "image": "./images/lipstick.jpg"
             },
             {
                 "name": "Bronzer",
-                "image": "/images/bronzer.jpg"
+                "image": "./images/bronzer.jpg"
             }
         ]
     },
@@ -27,19 +27,19 @@
         "examples": [
             {
                 "name": "Blocks",
-                "image": "/images/blocks.jpg"
+                "image": "./images/blocks.jpg"
             },
             {
                 "name": "Lego",
-                "image": "/images/lego.jpg"
+                "image": "./images/lego.jpg"
             },
             {
                 "name": "Toy train",
-                "image": "/images/toy_train.jpg"
+                "image": "./images/toy_train.jpg"
             },
             {
                 "name": "Doll",
-                "image": "/images/doll.jpg"
+                "image": "./images/doll.jpg"
             }
         ]
     },
@@ -49,19 +49,19 @@
         "examples": [
             {
                 "name": "Raccoon",
-                "image": "/images/raccoon.jpg"
+                "image": "./images/raccoon.jpg"
             },
             {
                 "name": "Skunk",
-                "image": "/images/skunk.jpg"
+                "image": "./images/skunk.jpg"
             },
             {
                 "name": "Deer",
-                "image": "/images/deer.jpg"
+                "image": "./images/deer.jpg"
             },
             {
                 "name": "Bear",
-                "image": "/images/bear.jpg"
+                "image": "./images/bear.jpg"
             }
         ]
     },
@@ -71,19 +71,19 @@
         "examples": [
             {
                 "name": "Necklace",
-                "image": "/images/necklace.jpg"
+                "image": "./images/necklace.jpg"
             },
             {
                 "name": "Earrings",
-                "image": "/images/earrings.jpg"
+                "image": "./images/earrings.jpg"
             },
             {
                 "name": "Bracelet",
-                "image": "/images/bracelet.jpg"
+                "image": "./images/bracelet.jpg"
             },
             {
                 "name": "Ring",
-                "image": "/images/ring.jpg"
+                "image": "./images/ring.jpg"
             }
         ]
     },
@@ -93,19 +93,19 @@
         "examples": [
             {
                 "name": "Soccer",
-                "image": "/images/soccer.jpg"
+                "image": "./images/soccer.jpg"
             },
             {
                 "name": "Baseball",
-                "image": "/images/baseball.jpg"
+                "image": "./images/baseball.jpg"
             },
             {
                 "name": "Basketball",
-                "image": "/images/basketball.jpg"
+                "image": "./images/basketball.jpg"
             },
             {
                 "name": "Football",
-                "image": "/images/football.jpg"
+                "image": "./images/football.jpg"
             }
         ]
     },
@@ -115,19 +115,19 @@
         "examples": [
             {
                 "name": "Dolphin",
-                "image": "/images/dolphin.jpg"
+                "image": "./images/dolphin.jpg"
             },
             {
                 "name": "Turtle",
-                "image": "/images/turtle.jpg"
+                "image": "./images/turtle.jpg"
             },
             {
                 "name": "Whale",
-                "image": "/images/whale.jpg"
+                "image": "./images/whale.jpg"
             },
             {
                 "name": "Shark",
-                "image": "/images/shark.jpg"
+                "image": "./images/shark.jpg"
             }
         ]
     },
@@ -137,19 +137,19 @@
         "examples": [
             {
                 "name": "Lemonade",
-                "image": "/images/lemonade.jpg"
+                "image": "./images/lemonade.jpg"
             },
             {
                 "name": "Orange juice",
-                "image": "/images/orange_juice.jpg"
+                "image": "./images/orange_juice.jpg"
             },
             {
                 "name": "Soda",
-                "image": "/images/soda.jpg"
+                "image": "./images/soda.jpg"
             },
             {
                 "name": "Water",
-                "image": "/images/water.jpg"
+                "image": "./images/water.jpg"
             }
         ]
     },
@@ -159,19 +159,19 @@
         "examples": [
             {
                 "name": "Table",
-                "image": "/images/table.jpg"
+                "image": "./images/table.jpg"
             },
             {
                 "name": "Bed",
-                "image": "/images/bed.jpg"
+                "image": "./images/bed.jpg"
             },
             {
                 "name": "Couch",
-                "image": "/images/couch.jpg"
+                "image": "./images/couch.jpg"
             },
             {
                 "name": "Chair",
-                "image": "/images/chair.jpg"
+                "image": "./images/chair.jpg"
             }
         ]
     },
@@ -181,19 +181,19 @@
         "examples": [
             {
                 "name": "Sparrow",
-                "image": "/images/sparrow.jpg"
+                "image": "./images/sparrow.jpg"
             },
             {
                 "name": "Pigeon",
-                "image": "/images/pigeon.jpg"
+                "image": "./images/pigeon.jpg"
             },
             {
                 "name": "Eagle",
-                "image": "/images/eagle.jpg"
+                "image": "./images/eagle.jpg"
             },
             {
                 "name": "Parrot",
-                "image": "/images/parrot.jpg"
+                "image": "./images/parrot.jpg"
             }
         ]
     },
@@ -203,19 +203,19 @@
         "examples": [
             {
                 "name": "Ladybug",
-                "image": "/images/ladybug.jpg"
+                "image": "./images/ladybug.jpg"
             },
             {
                 "name": "Mosquito",
-                "image": "/images/mosquito.jpg"
+                "image": "./images/mosquito.jpg"
             },
             {
                 "name": "Ant",
-                "image": "/images/ant.jpg"
+                "image": "./images/ant.jpg"
             },
             {
                 "name": "Bee",
-                "image": "/images/bee.jpg"
+                "image": "./images/bee.jpg"
             }
         ]
     },
@@ -225,19 +225,19 @@
         "examples": [
             {
                 "name": "Shirt",
-                "image": "/images/shirt.jpg"
+                "image": "./images/shirt.jpg"
             },
             {
                 "name": "Pants",
-                "image": "/images/pants.jpg"
+                "image": "./images/pants.jpg"
             },
             {
                 "name": "Socks",
-                "image": "/images/socks.jpg"
+                "image": "./images/socks.jpg"
             },
             {
                 "name": "Sweater",
-                "image": "/images/sweater.jpg"
+                "image": "./images/sweater.jpg"
             }
         ]
     },
@@ -247,19 +247,19 @@
         "examples": [
             {
                 "name": "Wrench",
-                "image": "/images/wrench.jpg"
+                "image": "./images/wrench.jpg"
             },
             {
                 "name": "Screwdriver",
-                "image": "/images/screwdriver.jpg"
+                "image": "./images/screwdriver.jpg"
             },
             {
                 "name": "Pliers",
-                "image": "/images/pliers.jpg"
+                "image": "./images/pliers.jpg"
             },
             {
                 "name": "Hammer",
-                "image": "/images/hammer.jpg"
+                "image": "./images/hammer.jpg"
             }
         ]
     },
@@ -269,19 +269,19 @@
         "examples": [
             {
                 "name": "Drums",
-                "image": "/images/drums.jpg"
+                "image": "./images/drums.jpg"
             },
             {
                 "name": "Trumpet",
-                "image": "/images/trumpet.jpg"
+                "image": "./images/trumpet.jpg"
             },
             {
                 "name": "Violin",
-                "image": "/images/violin.jpg"
+                "image": "./images/violin.jpg"
             },
             {
                 "name": "Piano",
-                "image": "/images/piano.jpg"
+                "image": "./images/piano.jpg"
             }
         ]
     }

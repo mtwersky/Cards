@@ -5,22 +5,22 @@
     "examples": [
       {
         "name": "popcorn",
-        "image": "/images/popcorn.jpg",
+        "image": "./images/popcorn.jpg",
         "isCorrect": true
       },
       {
         "name": "potato chips",
-        "image": "/images/potato_chips.jpg",
+        "image": "./images/potato_chips.jpg",
         "isCorrect": true
       },
       {
         "name": "pretzels",
-        "image": "/images/pretzels.jpg",
+        "image": "./images/pretzels.jpg",
         "isCorrect": true
       },
       {
         "name": "onion",
-        "image": "/images/onion.jpg",
+        "image": "./images/onion.jpg",
         "isCorrect": false
       }
     ]
@@ -31,22 +31,22 @@
     "examples": [
       {
         "name": "sponge",
-        "image": "/images/sponge.jpg",
+        "image": "./images/sponge.jpg",
         "isCorrect": true
       },
       {
         "name": "spray",
-        "image": "/images/spray.jpg",
+        "image": "./images/spray.jpg",
         "isCorrect": true
       },
       {
         "name": "mop",
-        "image": "/images/mop.jpg",
+        "image": "./images/mop.jpg",
         "isCorrect": true
       },
       {
         "name": "book",
-        "image": "/images/book.jpg",
+        "image": "./images/book.jpg",
         "isCorrect": false
       }
     ]
@@ -57,22 +57,22 @@
     "examples": [
       {
         "name": "hose",
-        "image": "/images/hose.jpg",
+        "image": "./images/hose.jpg",
         "isCorrect": true
       },
       {
         "name": "helmet",
-        "image": "/images/helmet.jpg",
+        "image": "./images/helmet.jpg",
         "isCorrect": true
       },
       {
         "name": "axe",
-        "image": "/images/axe.jpg",
+        "image": "./images/axe.jpg",
         "isCorrect": true
       },
       {
         "name": "gun",
-        "image": "/images/gun.jpg",
+        "image": "./images/gun.jpg",
         "isCorrect": false
       }
     ]
@@ -83,22 +83,22 @@
     "examples": [
       {
         "name": "snowball",
-        "image": "/images/snowball.jpg",
+        "image": "./images/snowball.jpg",
         "isCorrect": true
       },
       {
         "name": "icicles",
-        "image": "/images/icicles.jpg",
+        "image": "./images/icicles.jpg",
         "isCorrect": true
       },
       {
         "name": "sled",
-        "image": "/images/sled.jpg",
+        "image": "./images/sled.jpg",
         "isCorrect": true
       },
       {
         "name": "flower",
-        "image": "/images/flower.jpg",
+        "image": "./images/flower.jpg",
         "isCorrect": false
       }
     ]
@@ -109,22 +109,22 @@
     "examples": [
       {
         "name": "blocks",
-        "image": "/images/blocks.jpg",
+        "image": "./images/blocks.jpg",
         "isCorrect": true
       },
       {
         "name": "lego",
-        "image": "/images/lego.jpg",
+        "image": "./images/lego.jpg",
         "isCorrect": true
       },
       {
         "name": "toy train",
-        "image": "/images/toy_train.jpg",
+        "image": "./images/toy_train.jpg",
         "isCorrect": true
       },
       {
         "name": "cup",
-        "image": "/images/cup.jpg",
+        "image": "./images/cup.jpg",
         "isCorrect": false
       }
     ]
@@ -135,22 +135,22 @@
     "examples": [
       {
         "name": "necklace",
-        "image": "/images/necklace.jpg",
+        "image": "./images/necklace.jpg",
         "isCorrect": true
       },
       {
         "name": "earrings",
-        "image": "/images/earrings.jpg",
+        "image": "./images/earrings.jpg",
         "isCorrect": true
       },
       {
         "name": "bracelet",
-        "image": "/images/bracelet.jpg",
+        "image": "./images/bracelet.jpg",
         "isCorrect": true
       },
       {
         "name": "lipstick",
-        "image": "/images/lipstick.jpg",
+        "image": "./images/lipstick.jpg",
         "isCorrect": false
       }
     ]
@@ -161,22 +161,22 @@
     "examples": [
       {
         "name": "apple",
-        "image": "/images/apple.jpg",
+        "image": "./images/apple.jpg",
         "isCorrect": true
       },
       {
         "name": "banana",
-        "image": "/images/banana.jpg",
+        "image": "./images/banana.jpg",
         "isCorrect": true
       },
       {
         "name": "grapes",
-        "image": "/images/grapes.jpg",
+        "image": "./images/grapes.jpg",
         "isCorrect": true
       },
       {
         "name": "carrot",
-        "image": "/images/carrot.jpg",
+        "image": "./images/carrot.jpg",
         "isCorrect": false
       }
     ]
@@ -187,22 +187,22 @@
     "examples": [
       {
         "name": "mascara",
-        "image": "/images/mascara.jpg",
+        "image": "./images/mascara.jpg",
         "isCorrect": true
       },
       {
         "name": "blush",
-        "image": "/images/blush.jpg",
+        "image": "./images/blush.jpg",
         "isCorrect": true
       },
       {
         "name": "lipstick",
-        "image": "/images/lipstick.jpg",
+        "image": "./images/lipstick.jpg",
         "isCorrect": true
       },
       {
         "name": "colored pencils",
-        "image": "/images/colored_pencils.jpg",
+        "image": "./images/colored_pencils.jpg",
         "isCorrect": false
       }
     ]
@@ -213,22 +213,22 @@
     "examples": [
       {
         "name": "soccer",
-        "image": "/images/soccer.jpg",
+        "image": "./images/soccer.jpg",
         "isCorrect": true
       },
       {
         "name": "baseball",
-        "image": "/images/baseball.jpg",
+        "image": "./images/baseball.jpg",
         "isCorrect": true
       },
       {
         "name": "football",
-        "image": "/images/football.jpg",
+        "image": "./images/football.jpg",
         "isCorrect": true
       },
       {
         "name": "tennis racket",
-        "image": "/images/tennis_racket.jpg",
+        "image": "./images/tennis_racket.jpg",
         "isCorrect": false
       }
     ]
@@ -239,22 +239,22 @@
     "examples": [
       {
         "name": "slide",
-        "image": "/images/slide.jpg",
+        "image": "./images/slide.jpg",
         "isCorrect": true
       },
       {
         "name": "swing",
-        "image": "/images/swing.jpg",
+        "image": "./images/swing.jpg",
         "isCorrect": true
       },
       {
         "name": "monkeybars",
-        "image": "/images/monkeybars.jpg",
+        "image": "./images/monkeybars.jpg",
         "isCorrect": true
       },
       {
         "name": "mailbox",
-        "image": "/images/mailbox.jpg",
+        "image": "./images/mailbox.jpg",
         "isCorrect": false
       }
     ]
@@ -265,22 +265,22 @@
     "examples": [
       {
         "name": "traffic cone",
-        "image": "/images/traffic_cone.jpg",
+        "image": "./images/traffic_cone.jpg",
         "isCorrect": true
       },
       {
         "name": "carrot",
-        "image": "/images/carrot.jpg",
+        "image": "./images/carrot.jpg",
         "isCorrect": true
       },
       {
         "name": "sweet potato",
-        "image": "/images/sweet_potato.jpg",
+        "image": "./images/sweet_potato.jpg",
         "isCorrect": true
       },
       {
         "name": "egg",
-        "image": "/images/egg.jpg",
+        "image": "./images/egg.jpg",
         "isCorrect": false
       }
     ]
@@ -291,22 +291,22 @@
     "examples": [
       {
         "name": "wrench",
-        "image": "/images/wrench.jpg",
+        "image": "./images/wrench.jpg",
         "isCorrect": true
       },
       {
         "name": "screwdriver",
-        "image": "/images/screwdriver.jpg",
+        "image": "./images/screwdriver.jpg",
         "isCorrect": true
       },
       {
         "name": "pliers",
-        "image": "/images/pliers.jpg",
+        "image": "./images/pliers.jpg",
         "isCorrect": true
       },
       {
         "name": "pen",
-        "image": "/images/pen.jpg",
+        "image": "./images/pen.jpg",
         "isCorrect": false
       }
     ]
@@ -317,22 +317,22 @@
     "examples": [
       {
         "name": "lemon",
-        "image": "/images/lemon.jpg",
+        "image": "./images/lemon.jpg",
         "isCorrect": true
       },
       {
         "name": "pencil",
-        "image": "/images/pencil.jpg",
+        "image": "./images/pencil.jpg",
         "isCorrect": true
       },
       {
         "name": "eggs",
-        "image": "/images/eggs.jpg",
+        "image": "./images/eggs.jpg",
         "isCorrect": true
       },
       {
         "name": "spinach",
-        "image": "/images/spinach.jpg",
+        "image": "./images/spinach.jpg",
         "isCorrect": false
       }
     ]
@@ -343,22 +343,22 @@
     "examples": [
       {
         "name": "clouds",
-        "image": "/images/clouds.jpg",
+        "image": "./images/clouds.jpg",
         "isCorrect": true
       },
       {
         "name": "flour",
-        "image": "/images/flour.jpg",
+        "image": "./images/flour.jpg",
         "isCorrect": true
       },
       {
         "name": "milk",
-        "image": "/images/milk.jpg",
+        "image": "./images/milk.jpg",
         "isCorrect": true
       },
       {
         "name": "baby doll",
-        "image": "/images/baby_doll.jpg",
+        "image": "./images/baby_doll.jpg",
         "isCorrect": false
       }
     ]
@@ -369,22 +369,22 @@
     "examples": [
       {
         "name": "warm hat",
-        "image": "/images/warm_hat.jpg",
+        "image": "./images/warm_hat.jpg",
         "isCorrect": true
       },
       {
         "name": "helmet",
-        "image": "/images/helmet.jpg",
+        "image": "./images/helmet.jpg",
         "isCorrect": true
       },
       {
         "name": "sun hat",
-        "image": "/images/sun_hat.jpg",
+        "image": "./images/sun_hat.jpg",
         "isCorrect": true
       },
       {
         "name": "gloves",
-        "image": "/images/gloves.jpg",
+        "image": "./images/gloves.jpg",
         "isCorrect": false
       }
     ]
@@ -395,22 +395,22 @@
     "examples": [
       {
         "name": "table",
-        "image": "/images/table.jpg",
+        "image": "./images/table.jpg",
         "isCorrect": true
       },
       {
         "name": "bed",
-        "image": "/images/bed.jpg",
+        "image": "./images/bed.jpg",
         "isCorrect": true
       },
       {
         "name": "couch",
-        "image": "/images/couch.jpg",
+        "image": "./images/couch.jpg",
         "isCorrect": true
       },
       {
         "name": "pot",
-        "image": "/images/pot.jpg",
+        "image": "./images/pot.jpg",
         "isCorrect": false
       }
     ]
@@ -421,22 +421,22 @@
     "examples": [
       {
         "name": "whisk",
-        "image": "/images/whisk.jpg",
+        "image": "./images/whisk.jpg",
         "isCorrect": true
       },
       {
         "name": "ladle",
-        "image": "/images/ladle.jpg",
+        "image": "./images/ladle.jpg",
         "isCorrect": true
       },
       {
         "name": "ice cream scooper",
-        "image": "/images/ice_cream_scooper.jpg",
+        "image": "./images/ice_cream_scooper.jpg",
         "isCorrect": true
       },
       {
         "name": "scissors",
-        "image": "/images/scissors.jpg",
+        "image": "./images/scissors.jpg",
         "isCorrect": false
       }
     ]
@@ -447,22 +447,22 @@
     "examples": [
       {
         "name": "pacifier",
-        "image": "/images/pacifier.jpg",
+        "image": "./images/pacifier.jpg",
         "isCorrect": true
       },
       {
         "name": "bottle",
-        "image": "/images/bottle.jpg",
+        "image": "./images/bottle.jpg",
         "isCorrect": true
       },
       {
         "name": "stroller",
-        "image": "/images/stroller.jpg",
+        "image": "./images/stroller.jpg",
         "isCorrect": true
       },
       {
         "name": "chair",
-        "image": "/images/chair.jpg",
+        "image": "./images/chair.jpg",
         "isCorrect": false
       }
     ]
@@ -473,22 +473,22 @@
     "examples": [
       {
         "name": "tennis ball",
-        "image": "/images/tennis_ball.jpg",
+        "image": "./images/tennis_ball.jpg",
         "isCorrect": true
       },
       {
         "name": "celery",
-        "image": "/images/celery.jpg",
+        "image": "./images/celery.jpg",
         "isCorrect": true
       },
       {
         "name": "grass",
-        "image": "/images/grass.jpg",
+        "image": "./images/grass.jpg",
         "isCorrect": true
       },
       {
         "name": "screws",
-        "image": "/images/screws.jpg",
+        "image": "./images/screws.jpg",
         "isCorrect": false
       }
     ]
@@ -499,22 +499,22 @@
     "examples": [
       {
         "name": "sparrow",
-        "image": "/images/sparrow.jpg",
+        "image": "./images/sparrow.jpg",
         "isCorrect": true
       },
       {
         "name": "pigeon",
-        "image": "/images/pigeon.jpg",
+        "image": "./images/pigeon.jpg",
         "isCorrect": true
       },
       {
         "name": "eagle",
-        "image": "/images/eagle.jpg",
+        "image": "./images/eagle.jpg",
         "isCorrect": true
       },
       {
         "name": "bee",
-        "image": "/images/bee.jpg",
+        "image": "./images/bee.jpg",
         "isCorrect": false
       }
     ]
@@ -525,22 +525,22 @@
     "examples": [
       {
         "name": "chicken cutlet",
-        "image": "/images/chicken_cutlet.jpg",
+        "image": "./images/chicken_cutlet.jpg",
         "isCorrect": true
       },
       {
         "name": "steak",
-        "image": "/images/steak.jpg",
+        "image": "./images/steak.jpg",
         "isCorrect": true
       },
       {
         "name": "hamburger",
-        "image": "/images/hamburger.jpg",
+        "image": "./images/hamburger.jpg",
         "isCorrect": true
       },
       {
         "name": "cheese",
-        "image": "/images/cheese.jpg",
+        "image": "./images/cheese.jpg",
         "isCorrect": false
       }
     ]
@@ -551,22 +551,22 @@
     "examples": [
       {
         "name": "sandcastle",
-        "image": "/images/sandcastle.jpg",
+        "image": "./images/sandcastle.jpg",
         "isCorrect": true
       },
       {
         "name": "seashells",
-        "image": "/images/seashells.jpg",
+        "image": "./images/seashells.jpg",
         "isCorrect": true
       },
       {
         "name": "bucket",
-        "image": "/images/bucket.jpg",
+        "image": "./images/bucket.jpg",
         "isCorrect": true
       },
       {
         "name": "flower",
-        "image": "/images/flower.jpg",
+        "image": "./images/flower.jpg",
         "isCorrect": false
       }
     ]
@@ -577,22 +577,22 @@
     "examples": [
       {
         "name": "white gloves",
-        "image": "/images/white_gloves.jpg",
+        "image": "./images/white_gloves.jpg",
         "isCorrect": true
       },
       {
         "name": "top hat",
-        "image": "/images/top_hat.jpg",
+        "image": "./images/top_hat.jpg",
         "isCorrect": true
       },
       {
         "name": "rabbit",
-        "image": "/images/rabbit.jpg",
+        "image": "./images/rabbit.jpg",
         "isCorrect": true
       },
       {
         "name": "clown shoes",
-        "image": "/images/clown_shoes.jpg",
+        "image": "./images/clown_shoes.jpg",
         "isCorrect": false
       }
     ]
@@ -603,22 +603,22 @@
     "examples": [
       {
         "name": "pencil",
-        "image": "/images/pencil.jpg",
+        "image": "./images/pencil.jpg",
         "isCorrect": true
       },
       {
         "name": "eraser",
-        "image": "/images/eraser.jpg",
+        "image": "./images/eraser.jpg",
         "isCorrect": true
       },
       {
         "name": "markers",
-        "image": "/images/markers.jpg",
+        "image": "./images/markers.jpg",
         "isCorrect": true
       },
       {
         "name": "spoon",
-        "image": "/images/spoon.jpg",
+        "image": "./images/spoon.jpg",
         "isCorrect": false
       }
     ]
@@ -629,22 +629,22 @@
     "examples": [
       {
         "name": "horse",
-        "image": "/images/horse.jpg",
+        "image": "./images/horse.jpg",
         "isCorrect": true
       },
       {
         "name": "pig",
-        "image": "/images/pig.jpg",
+        "image": "./images/pig.jpg",
         "isCorrect": true
       },
       {
         "name": "cow",
-        "image": "/images/cow.jpg",
+        "image": "./images/cow.jpg",
         "isCorrect": true
       },
       {
         "name": "tiger",
-        "image": "/images/tiger.jpg",
+        "image": "./images/tiger.jpg",
         "isCorrect": false
       }
     ]
@@ -655,22 +655,22 @@
     "examples": [
       {
         "name": "eggs",
-        "image": "/images/eggs.jpg",
+        "image": "./images/eggs.jpg",
         "isCorrect": true
       },
       {
         "name": "cereal",
-        "image": "/images/cereal.jpg",
+        "image": "./images/cereal.jpg",
         "isCorrect": true
       },
       {
         "name": "waffle",
-        "image": "/images/waffle.jpg",
+        "image": "./images/waffle.jpg",
         "isCorrect": true
       },
       {
         "name": "spaghetti",
-        "image": "/images/spaghetti.jpg",
+        "image": "./images/spaghetti.jpg",
         "isCorrect": false
       }
     ]
@@ -681,22 +681,22 @@
     "examples": [
       {
         "name": "shot",
-        "image": "/images/shot.jpg",
+        "image": "./images/shot.jpg",
         "isCorrect": true
       },
       {
         "name": "stethoscope",
-        "image": "/images/stethoscope.jpg",
+        "image": "./images/stethoscope.jpg",
         "isCorrect": true
       },
       {
         "name": "tongue depressor",
-        "image": "/images/tongue_depressor.jpg",
+        "image": "./images/tongue_depressor.jpg",
         "isCorrect": true
       },
       {
         "name": "drill",
-        "image": "/images/drill.jpg",
+        "image": "./images/drill.jpg",
         "isCorrect": false
       }
     ]
@@ -707,22 +707,22 @@
     "examples": [
       {
         "name": "rake",
-        "image": "/images/rake.jpg",
+        "image": "./images/rake.jpg",
         "isCorrect": true
       },
       {
         "name": "pumpkin",
-        "image": "/images/pumpkin.jpg",
+        "image": "./images/pumpkin.jpg",
         "isCorrect": true
       },
       {
         "name": "leaves",
-        "image": "/images/leaves.jpg",
+        "image": "./images/leaves.jpg",
         "isCorrect": true
       },
       {
         "name": "birds",
-        "image": "/images/birds.jpg",
+        "image": "./images/birds.jpg",
         "isCorrect": false
       }
     ]
@@ -733,22 +733,22 @@
     "examples": [
       {
         "name": "rolling pin",
-        "image": "/images/rolling_pin.jpg",
+        "image": "./images/rolling_pin.jpg",
         "isCorrect": true
       },
       {
         "name": "measuring spoons",
-        "image": "/images/measuring_spoons.jpg",
+        "image": "./images/measuring_spoons.jpg",
         "isCorrect": true
       },
       {
         "name": "oven mitts",
-        "image": "/images/oven_mitts.jpg",
+        "image": "./images/oven_mitts.jpg",
         "isCorrect": true
       },
       {
         "name": "expo marker",
-        "image": "/images/expo_marker.jpg",
+        "image": "./images/expo_marker.jpg",
         "isCorrect": false
       }
     ]
@@ -759,22 +759,22 @@
     "examples": [
       {
         "name": "toilet paper",
-        "image": "/images/toilet_paper.jpg",
+        "image": "./images/toilet_paper.jpg",
         "isCorrect": true
       },
       {
         "name": "toothbrush",
-        "image": "/images/toothbrush.jpg",
+        "image": "./images/toothbrush.jpg",
         "isCorrect": true
       },
       {
         "name": "soap",
-        "image": "/images/soap.jpg",
+        "image": "./images/soap.jpg",
         "isCorrect": true
       },
       {
         "name": "undershirt",
-        "image": "/images/undershirt.jpg",
+        "image": "./images/undershirt.jpg",
         "isCorrect": false
       }
     ]
@@ -785,22 +785,22 @@
     "examples": [
       {
         "name": "boots",
-        "image": "/images/boots.jpg",
+        "image": "./images/boots.jpg",
         "isCorrect": true
       },
       {
         "name": "slippers",
-        "image": "/images/slippers.jpg",
+        "image": "./images/slippers.jpg",
         "isCorrect": true
       },
       {
         "name": "sneakers",
-        "image": "/images/sneakers.jpg",
+        "image": "./images/sneakers.jpg",
         "isCorrect": true
       },
       {
         "name": "baseball cap",
-        "image": "/images/baseball_cap.jpg",
+        "image": "./images/baseball_cap.jpg",
         "isCorrect": false
       }
     ]
@@ -811,22 +811,22 @@
     "examples": [
       {
         "name": "microwave",
-        "image": "/images/microwave.jpg",
+        "image": "./images/microwave.jpg",
         "isCorrect": true
       },
       {
         "name": "dishwasher",
-        "image": "/images/dishwasher.jpg",
+        "image": "./images/dishwasher.jpg",
         "isCorrect": true
       },
       {
         "name": "mixer",
-        "image": "/images/mixer.jpg",
+        "image": "./images/mixer.jpg",
         "isCorrect": true
       },
       {
         "name": "recliner",
-        "image": "/images/recliner.jpg",
+        "image": "./images/recliner.jpg",
         "isCorrect": false
       }
     ]
@@ -837,22 +837,22 @@
     "examples": [
       {
         "name": "minivan",
-        "image": "/images/minivan.jpg",
+        "image": "./images/minivan.jpg",
         "isCorrect": true
       },
       {
         "name": "car",
-        "image": "/images/car.jpg",
+        "image": "./images/car.jpg",
         "isCorrect": true
       },
       {
         "name": "airplane",
-        "image": "/images/airplane.jpg",
+        "image": "./images/airplane.jpg",
         "isCorrect": true
       },
       {
         "name": "refrigerator",
-        "image": "/images/refrigerator.jpg",
+        "image": "./images/refrigerator.jpg",
         "isCorrect": false
       }
     ]
@@ -863,22 +863,22 @@
     "examples": [
       {
         "name": "mittens",
-        "image": "/images/mittens.jpg",
+        "image": "./images/mittens.jpg",
         "isCorrect": true
       },
       {
         "name": "hat",
-        "image": "/images/hat.jpg",
+        "image": "./images/hat.jpg",
         "isCorrect": true
       },
       {
         "name": "scarf",
-        "image": "/images/scarf.jpg",
+        "image": "./images/scarf.jpg",
         "isCorrect": true
       },
       {
         "name": "flip-flops",
-        "image": "/images/flip-flops.jpg",
+        "image": "./images/flip-flops.jpg",
         "isCorrect": false
       }
     ]
@@ -889,22 +889,22 @@
     "examples": [
       {
         "name": "drums",
-        "image": "/images/drums.jpg",
+        "image": "./images/drums.jpg",
         "isCorrect": true
       },
       {
         "name": "trumpet",
-        "image": "/images/trumpet.jpg",
+        "image": "./images/trumpet.jpg",
         "isCorrect": true
       },
       {
         "name": "violin",
-        "image": "/images/violin.jpg",
+        "image": "./images/violin.jpg",
         "isCorrect": true
       },
       {
         "name": "microphone",
-        "image": "/images/microphone.jpg",
+        "image": "./images/microphone.jpg",
         "isCorrect": false
       }
     ]
@@ -915,22 +915,22 @@
     "examples": [
       {
         "name": "cherry",
-        "image": "/images/cherry.jpg",
+        "image": "./images/cherry.jpg",
         "isCorrect": true
       },
       {
         "name": "strawberry",
-        "image": "/images/strawberry.jpg",
+        "image": "./images/strawberry.jpg",
         "isCorrect": true
       },
       {
         "name": "stop sign",
-        "image": "/images/stop_sign.jpg",
+        "image": "./images/stop_sign.jpg",
         "isCorrect": true
       },
       {
         "name": "basketball",
-        "image": "/images/basketball.jpg",
+        "image": "./images/basketball.jpg",
         "isCorrect": false
       }
     ]
@@ -941,22 +941,22 @@
     "examples": [
       {
         "name": "sunglasses",
-        "image": "/images/sunglasses.jpg",
+        "image": "./images/sunglasses.jpg",
         "isCorrect": true
       },
       {
         "name": "swimsuit",
-        "image": "/images/swimsuit.jpg",
+        "image": "./images/swimsuit.jpg",
         "isCorrect": true
       },
       {
         "name": "visor",
-        "image": "/images/visor.jpg",
+        "image": "./images/visor.jpg",
         "isCorrect": true
       },
       {
         "name": "sweater",
-        "image": "/images/sweater.jpg",
+        "image": "./images/sweater.jpg",
         "isCorrect": false
       }
     ]
@@ -967,22 +967,22 @@
     "examples": [
       {
         "name": "corn",
-        "image": "/images/corn.jpg",
+        "image": "./images/corn.jpg",
         "isCorrect": true
       },
       {
         "name": "broccoli",
-        "image": "/images/broccoli.jpg",
+        "image": "./images/broccoli.jpg",
         "isCorrect": true
       },
       {
         "name": "potato",
-        "image": "/images/potato.jpg",
+        "image": "./images/potato.jpg",
         "isCorrect": true
       },
       {
         "name": "chicken",
-        "image": "/images/chicken.jpg",
+        "image": "./images/chicken.jpg",
         "isCorrect": false
       }
     ]
@@ -993,22 +993,22 @@
     "examples": [
       {
         "name": "racoon",
-        "image": "/images/racoon.jpg",
+        "image": "./images/racoon.jpg",
         "isCorrect": true
       },
       {
         "name": "skunk",
-        "image": "/images/skunk.jpg",
+        "image": "./images/skunk.jpg",
         "isCorrect": true
       },
       {
         "name": "deer",
-        "image": "/images/deer.jpg",
+        "image": "./images/deer.jpg",
         "isCorrect": true
       },
       {
         "name": "goat",
-        "image": "/images/goat.jpg",
+        "image": "./images/goat.jpg",
         "isCorrect": false
       }
     ]
@@ -1019,22 +1019,22 @@
     "examples": [
       {
         "name": "cake",
-        "image": "/images/cake.jpg",
+        "image": "./images/cake.jpg",
         "isCorrect": true
       },
       {
         "name": "ice cream",
-        "image": "/images/ice_cream.jpg",
+        "image": "./images/ice_cream.jpg",
         "isCorrect": true
       },
       {
         "name": "cookies",
-        "image": "/images/cookies.jpg",
+        "image": "./images/cookies.jpg",
         "isCorrect": true
       },
       {
         "name": "bagel",
-        "image": "/images/bagel.jpg",
+        "image": "./images/bagel.jpg",
         "isCorrect": false
       }
     ]
@@ -1045,22 +1045,22 @@
     "examples": [
       {
         "name": "ladybug",
-        "image": "/images/ladybug.jpg",
+        "image": "./images/ladybug.jpg",
         "isCorrect": true
       },
       {
         "name": "mosquito",
-        "image": "/images/mosquito.jpg",
+        "image": "./images/mosquito.jpg",
         "isCorrect": true
       },
       {
         "name": "ant",
-        "image": "/images/ant.jpg",
+        "image": "./images/ant.jpg",
         "isCorrect": true
       },
       {
         "name": "mouse",
-        "image": "/images/mouse.jpg",
+        "image": "./images/mouse.jpg",
         "isCorrect": false
       }
     ]
@@ -1071,22 +1071,22 @@
     "examples": [
       {
         "name": "crayons",
-        "image": "/images/crayons.jpg",
+        "image": "./images/crayons.jpg",
         "isCorrect": true
       },
       {
         "name": "markers",
-        "image": "/images/markers.jpg",
+        "image": "./images/markers.jpg",
         "isCorrect": true
       },
       {
         "name": "chalk",
-        "image": "/images/chalk.jpg",
+        "image": "./images/chalk.jpg",
         "isCorrect": true
       },
       {
         "name": "fork",
-        "image": "/images/fork.jpg",
+        "image": "./images/fork.jpg",
         "isCorrect": false
       }
     ]
@@ -1097,22 +1097,22 @@
     "examples": [
       {
         "name": "shirt",
-        "image": "/images/shirt.jpg",
+        "image": "./images/shirt.jpg",
         "isCorrect": true
       },
       {
         "name": "pants",
-        "image": "/images/pants.jpg",
+        "image": "./images/pants.jpg",
         "isCorrect": true
       },
       {
         "name": "socks",
-        "image": "/images/socks.jpg",
+        "image": "./images/socks.jpg",
         "isCorrect": true
       },
       {
         "name": "towel",
-        "image": "/images/towel.jpg",
+        "image": "./images/towel.jpg",
         "isCorrect": false
       }
     ]
@@ -1123,22 +1123,22 @@
     "examples": [
       {
         "name": "lemonade",
-        "image": "/images/lemonade.jpg",
+        "image": "./images/lemonade.jpg",
         "isCorrect": true
       },
       {
         "name": "orange juice",
-        "image": "/images/orange_juice.jpg",
+        "image": "./images/orange_juice.jpg",
         "isCorrect": true
       },
       {
         "name": "soda",
-        "image": "/images/soda.jpg",
+        "image": "./images/soda.jpg",
         "isCorrect": true
       },
       {
         "name": "oil",
-        "image": "/images/oil.jpg",
+        "image": "./images/oil.jpg",
         "isCorrect": false
       }
     ]
@@ -1149,22 +1149,22 @@
     "examples": [
       {
         "name": "dolphin",
-        "image": "/images/dolphin.jpg",
+        "image": "./images/dolphin.jpg",
         "isCorrect": true
       },
       {
         "name": "turtle",
-        "image": "/images/turtle.jpg",
+        "image": "./images/turtle.jpg",
         "isCorrect": true
       },
       {
         "name": "whale",
-        "image": "/images/whale.jpg",
+        "image": "./images/whale.jpg",
         "isCorrect": true
       },
       {
         "name": "monkey",
-        "image": "/images/monkey.jpg",
+        "image": "./images/monkey.jpg",
         "isCorrect": false
       }
     ]

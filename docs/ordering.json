@@ -5,22 +5,22 @@
         "examples": [
             {
                 "name": "Mouse",
-                "image": "/images/mouse.jpg",
+                "image": "./images/mouse.jpg",
                 "order": 1
             },
             {
                 "name": "Dog",
-                "image": "/images/dog.jpg",
+                "image": "./images/dog.jpg",
                 "order": 2
             },
             {
                 "name": "Horse",
-                "image": "/images/horse.jpg",
+                "image": "./images/horse.jpg",
                 "order": 3
             },
             {
                 "name": "Elephant",
-                "image": "/images/elephant.jpg",
+                "image": "./images/elephant.jpg",
                 "order": 4
             }
         ]
@@ -31,22 +31,22 @@
         "examples": [
             {
                 "name": "Cup",
-                "image": "/images/cup.jpg",
+                "image": "./images/cup.jpg",
                 "order": 1
             },
             {
                 "name": "Bottle",
-                "image": "/images/bottle.jpg",
+                "image": "./images/bottle.jpg",
                 "order": 2
             },
             {
                 "name": "Chair",
-                "image": "/images/chair.jpg",
+                "image": "./images/chair.jpg",
                 "order": 3
             },
             {
                 "name": "Ladder",
-                "image": "/images/ladder.jpg",
+                "image": "./images/ladder.jpg",
                 "order": 4
             }
         ]
