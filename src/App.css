@@ -11,7 +11,7 @@
 .title {
   font-size: 2.5rem;
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
@@ -31,7 +31,7 @@
 }
 
 .back-button {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   background: none;

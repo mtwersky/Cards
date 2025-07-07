@@ -11,29 +11,32 @@
     position: relative;
 }
 
-.gtm-card-grid::before,
-.gtm-card-grid::after {
+
+
+.gtm-grid::after,
+.gtm-grid::before {
     content: "";
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.15);
-    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.06);
+    z-index: 0;
 }
 
-.gtm-card-grid::before {
+.gtm-grid::before {
     top: 50%;
-    left: 0;
-    width: 100%;
+    left: 10%;
+    width: 80%;
     height: 2px;
     transform: translateY(-50%);
 }
 
-.gtm-card-grid::after {
+.gtm-grid::after {
     left: 50%;
-    top: 0;
+    top: 10%;
+    height: 80%;
     width: 2px;
-    height: 100%;
     transform: translateX(-50%);
 }
+
 
 /* ---------- Card button style ---------- */
 .gtm-card-button {

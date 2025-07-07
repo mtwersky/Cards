@@ -143,7 +143,7 @@ function GuessTheMissing() {
                                 setChoices([]);
                             }, 700);
                         }, 800);
-                    }, 1000);
+                    }, 1000); // wait 1 second before starting highlight
                 }
             }, 700);
         }
