@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./gtm.css";
 
@@ -24,31 +24,28 @@ function GuessTheMissing() {
 
     const navigate = useNavigate();
 
-    const setupCategory = useCallback(
-        (index, data = categories) => {
-            const category = data[index];
-            const examples = [...category.examples];
-            const missingIdx = Math.floor(Math.random() * examples.length);
-            const missingItem = examples[missingIdx];
-            examples[missingIdx] = { name: "?", image: "" };
+    const setupCategory = (index, data = categories) => {
+        const category = data[index];
+        const examples = [...category.examples];
+        const missingIdx = Math.floor(Math.random() * examples.length);
+        const missingItem = examples[missingIdx];
+        examples[missingIdx] = { name: "?", image: "" };
 
-            const otherItems = data.filter(c => c.name !== category.name).flatMap(c => c.examples);
-            const randomChoices = shuffleArray(otherItems).slice(0, 3);
-            const allChoices = shuffleArray([missingItem, ...randomChoices]);
+        const otherItems = data.filter(c => c.name !== category.name).flatMap(c => c.examples);
+        const randomChoices = shuffleArray(otherItems).slice(0, 3);
+        const allChoices = shuffleArray([missingItem, ...randomChoices]);
 
-            setDisplayItems(examples);
-            setChoices(allChoices);
-            setBorderColor(colors[index % colors.length]);
-            setCorrectIdx(allChoices.findIndex(item => item.name === missingItem.name));
-            setSelectedIdx(null);
-            setOverlays({});
-            setDisabledChoices({});
-            setFadeState("fade-in-active");
-            setSlotFadeInIdx(null);
-            setHasTriedWrong(false);
-        },
-        [categories]
-    );
+        setDisplayItems(examples);
+        setChoices(allChoices);
+        setBorderColor(colors[index % colors.length]);
+        setCorrectIdx(allChoices.findIndex(item => item.name === missingItem.name));
+        setSelectedIdx(null);
+        setOverlays({});
+        setDisabledChoices({});
+        setFadeState("fade-in-active");
+        setSlotFadeInIdx(null);
+        setHasTriedWrong(false);
+    };
 
     useEffect(() => {
         fetch("/categories.json")
@@ -60,7 +57,7 @@ function GuessTheMissing() {
             .catch((err) => {
                 console.error("Failed to load categories.json", err);
             });
-    }, [setupCategory]);
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
