@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
+import "./Home.css";
 
 const colors = [
     "#f7d84b", // yellow
@@ -17,8 +17,8 @@ function Home() {
     const navigate = useNavigate();
 
     return (
-        <div className="app">
-            <h1 className="title">Category Games</h1>
+        <div className="home-app">
+            <h1 className="home-title">Category Games</h1>
             <div className="home-grid">
                 <div
                     className="home-card"
@@ -48,19 +48,83 @@ function Home() {
                 >
                     Compare / Contrast
                 </div>
-                <div className="home-card" style={{ borderColor: colors[4] }} onClick={() => navigate("/ordering")}>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[4] }}
+                    onClick={() => navigate("/ordering")}
+                >
                     Order the Items
                 </div>
-                <div className="home-card" style={{ borderColor: colors[5] }} onClick={() => navigate("/guess-the-missing")}>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[5] }}
+                    onClick={() => navigate("/guess-the-missing")}
+                >
                     Guess the Missing Item
                 </div>
-                <div className="home-card" style={{ borderColor: colors[6] }} onClick={() => navigate("/sort-into-categories")}>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[6] }}
+                    onClick={() => navigate("/sort-into-categories")}
+                >
                     Sort into Categories
                 </div>
-                <div className="home-card" style={{ borderColor: colors[7] }} onClick={() => navigate("/sort-into-categories")}>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[7] }}
+                    onClick={() => navigate("")}
+                >
                     x
                 </div>
-
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[0] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[1] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[2] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[3] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[4] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[5] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
+                <div
+                    className="home-card"
+                    style={{ borderColor: colors[6] }}
+                    onClick={() => navigate("")}
+                >
+                    x
+                </div>
             </div>
         </div>
     );

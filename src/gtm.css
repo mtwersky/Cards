@@ -1,5 +1,5 @@
 /* ---------- Main card container grid (2x2) ---------- */
-.gtm-card-grid {
+.card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -11,17 +11,15 @@
     position: relative;
 }
 
-
-
-.gtm-grid::after,
-.gtm-grid::before {
+.card-grid::before,
+.card-grid::after {
     content: "";
     position: absolute;
     background-color: rgba(0, 0, 0, 0.06);
     z-index: 0;
 }
 
-.gtm-grid::before {
+.card-grid::before {
     top: 50%;
     left: 10%;
     width: 80%;
@@ -29,14 +27,13 @@
     transform: translateY(-50%);
 }
 
-.gtm-grid::after {
+.card-grid::after {
     left: 50%;
     top: 10%;
     height: 80%;
     width: 2px;
     transform: translateX(-50%);
 }
-
 
 /* ---------- Card button style ---------- */
 .gtm-card-button {

@@ -290,6 +290,7 @@
   }
 }
 
+/*
 .home-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -322,4 +323,4 @@
   transform: scale(1.07);
   background-color: #f0f8ff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
+}*/

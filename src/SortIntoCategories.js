@@ -79,7 +79,7 @@ function SortIntoCategories() {
         setTimeout(() => {
             setBins(prev => {
                 const newBins = { ...prev };
-                const wrongItems = [];
+                let wrongItems = [];
 
                 for (const key in newBins) {
                     const correctItems = [];
@@ -93,7 +93,12 @@ function SortIntoCategories() {
                     newBins[key] = correctItems;
                 }
 
-                setItems(prev => [...prev, ...wrongItems]);
+                setItems(prev => {
+                    const existingNames = new Set(prev.map(i => i.name));
+                    const uniqueWrongItems = wrongItems.filter(item => !existingNames.has(item.name));
+                    return [...prev, ...uniqueWrongItems];
+                });
+
                 setShowResults(false);
                 return newBins;
             });

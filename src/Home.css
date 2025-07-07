@@ -1,0 +1,53 @@
+/* Home container */
+.home-app {
+    background-color: #000000;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Home grid with 5 columns */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 1250px;
+}
+
+/* Home card style, smaller */
+.home-card {
+    background-color: #ffffff;
+    border: 6px solid;
+    border-radius: 18px;
+    padding: 20px;
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.home-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
