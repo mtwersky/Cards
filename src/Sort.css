@@ -1,0 +1,90 @@
+.sort-shrink-fade {
+    animation: sortShrinkFade 1.2s forwards;
+}
+
+@keyframes sortShrinkFade {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.sort-bins-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.sort-bin {
+    border: 8px solid;
+    border-radius: 20px;
+    width: 200px;
+    min-height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.sort-bin:hover {
+    transform: scale(1.05);
+    background-color: #f0f8ff;
+}
+
+.sort-bin-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.sort-bin-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.sort-items-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.sort-image-card {
+    background: none;
+    border: 6px solid;
+    border-radius: 12px;
+    cursor: grab;
+    transition: transform 0.2s ease;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sort-image-card:hover {
+    transform: scale(1.05);
+}
+
+.sort-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}

@@ -21,7 +21,7 @@ function Matching() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/matches.json")
+        fetch(process.env.PUBLIC_URL + "/matches.json")
             .then((res) => res.json())
             .then((data) => {
                 const selectedPairs = shuffleArray(data).slice(0, 9);

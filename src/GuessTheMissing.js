@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./gtm.css";
-import "./App.css";
 
 const colors = [
     "#f7d84b", "#ff9999", "#99ccff", "#99ff99",
@@ -31,6 +30,9 @@ function GuessTheMissing() {
             .then((data) => {
                 setCategories(data);
                 if (data.length > 0) setupCategory(0, data);
+            })
+            .catch((err) => {
+                console.error("Failed to load categories.json", err);
             });
     }, []);
 
@@ -223,8 +225,8 @@ function GuessTheMissing() {
                                             <div className="overlay">
                                                 <img
                                                     src={overlays[idx] === "check"
-                                                        ? "/images/green-check.png"
-                                                        : "/images/red-x.png"}
+                                                        ? "./images/green-check.png"
+                                                        : "./images/red-x.png"}
                                                     alt={overlays[idx]}
                                                 />
                                             </div>

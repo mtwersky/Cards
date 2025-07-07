@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CardGrid from "./CardGrid";
-import "./App.css";
 import "./ntc.css";
 
 const colors = [
@@ -20,14 +18,15 @@ function NameTheCategory() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [shuffledItems, setShuffledItems] = useState([]);
     const [borderColor, setBorderColor] = useState(colors[0]);
+    const [fadeState, setFadeState] = useState("ntc-fade-in-active");
     const [showAnswer, setShowAnswer] = useState(false);
-    const [fadeState, setFadeState] = useState("fade-in-active");
-    const [score, setScore] = useState(0); // score now resets on reload
+    const [confirmAnswer, setConfirmAnswer] = useState(false);
+    const [score, setScore] = useState(0);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/categories.json")
+        fetch(process.env.PUBLIC_URL + "/categories.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
@@ -38,6 +37,18 @@ function NameTheCategory() {
             });
     }, []);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight") {
+                handleNext();
+            } else if (e.key === "ArrowLeft") {
+                handlePrev();
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    });
+
     const shuffleArray = (array) => {
         return array
             .map((item) => ({ item, sort: Math.random() }))
@@ -45,86 +56,115 @@ function NameTheCategory() {
             .map(({ item }) => item);
     };
 
+    const changeCategory = (index) => {
+        setCurrentIndex(index);
+        setShuffledItems(shuffleArray(categories[index].examples));
+        setBorderColor(colors[index % colors.length]);
+        setShowAnswer(false);
+        setConfirmAnswer(false);
+    };
+
     const handleNext = () => {
-        setFadeState("fade-out");
+        const nextIndex = (currentIndex + 1) % categories.length;
+        setFadeState("ntc-fade-out");
         setTimeout(() => {
-            const nextIndex = (currentIndex + 1) % categories.length;
-            setCurrentIndex(nextIndex);
-            setShuffledItems(shuffleArray(categories[nextIndex].examples));
-            setBorderColor(colors[nextIndex % colors.length]);
-            setShowAnswer(false);
-            setFadeState("fade-in-active");
+            changeCategory(nextIndex);
+            setFadeState("ntc-fade-in-active");
         }, 400);
     };
 
     const handlePrev = () => {
-        setFadeState("fade-out");
+        const prevIndex = (currentIndex - 1 + categories.length) % categories.length;
+        setFadeState("ntc-fade-out");
         setTimeout(() => {
-            const prevIndex = (currentIndex - 1 + categories.length) % categories.length;
-            setCurrentIndex(prevIndex);
-            setShuffledItems(shuffleArray(categories[prevIndex].examples));
-            setBorderColor(colors[prevIndex % colors.length]);
-            setShowAnswer(false);
-            setFadeState("fade-in-active");
+            changeCategory(prevIndex);
+            setFadeState("ntc-fade-in-active");
         }, 400);
     };
 
-    const handleMarkCorrect = () => {
+    const handleShowAnswer = () => {
+        setShowAnswer(true);
+        setConfirmAnswer(true);
+    };
+
+    const handleCorrect = () => {
         setScore((prev) => prev + 1);
-        setShowAnswer(false);
+        setConfirmAnswer(false);
     };
 
-    const handleMarkIncorrect = () => {
-        setShowAnswer(false);
+    const handleUndo = () => {
+        setConfirmAnswer(false);
     };
 
-    const currentCategory = categories[currentIndex];
+    const current = categories[currentIndex];
 
     return (
-        <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">Name the Category</h1>
+        <div className="ntc-app">
+            <button className="ntc-back-button" onClick={() => navigate("/")}>Home</button>
+            <h1 className="ntc-title">Name the Category</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
-            {categories.length > 0 ? (
+            {current ? (
                 <>
-                    <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`card-container ${fadeState}`} style={{ borderColor }}>
-                        <CardGrid
-                            items={shuffledItems}
-                            overlays={{}}
-                            disabledItems={{}}
-                            lastLockedIndex={null}
-                            onCardClick={() => { }}
-                            highlightIndex={null}
-                            isLocking={true}
-                            onNext={handleNext}
-                            onPrev={handlePrev}
-                            categoryId={currentCategory.id}
-                        />
-                        <div className="category-id">{currentCategory.id}</div>
-                    </div>
-                    <div className="answer-buttons-container">
-                        <button
-                            className="answer-button"
-                            style={{ backgroundColor: borderColor }}
-                            onClick={() => setShowAnswer(true)}
-                        >
-                            {showAnswer ? currentCategory.name : "Answer"}
-                        </button>
+                    <button className="ntc-nav-arrow left" onClick={handlePrev}>❮</button>
+                    <div className={`ntc-card-container ${fadeState}`} style={{ borderColor }}>
+                        <div className="ntc-grid">
+                            {shuffledItems.map((item, idx) => (
+                                <button
+                                    key={idx}
+                                    className="ntc-image-card"
+                                    disabled
+                                >
+                                    <img
+                                        src={process.env.PUBLIC_URL + item.image}
+                                        alt={item.name}
+                                        className="ntc-card-image"
+                                    />
+                                </button>
+                            ))}
+                        </div>
                         {showAnswer && (
-                            <>
-                                <button className="answer-button no-bg" onClick={handleMarkCorrect}>
-                                    <img src="/images/green-check.png" alt="Correct" />
-                                </button>
-                                <button className="answer-button no-bg" onClick={handleMarkIncorrect}>
-                                    <img src="/images/red-x.png" alt="Incorrect" />
-                                </button>
-                            </>
+                            <div className="ntc-category-id">{current.name}</div>
                         )}
                     </div>
-                    <button className="nav-arrow right" onClick={handleNext}>❯</button>
+                    <button className="ntc-nav-arrow right" onClick={handleNext}>❯</button>
+
+                    {!showAnswer && !confirmAnswer && (
+                        <button
+                            className="ntc-answer-button"
+                            onClick={handleShowAnswer}
+                            style={{
+                                backgroundColor: borderColor,
+                                color: "black"
+                            }}
+                        >
+                            Show Answer
+                        </button>
+                    )}
+
+                    {showAnswer && confirmAnswer && (
+                        <div className="ntc-confirm-buttons">
+                            <button
+                                className="ntc-icon-button"
+                                onClick={handleCorrect}
+                            >
+                                <img
+                                    src={process.env.PUBLIC_URL + "/images/green-check.png"}
+                                    alt="Correct"
+                                />
+                            </button>
+                            <button
+                                className="ntc-icon-button"
+                                onClick={handleUndo}
+                            >
+                                <img
+                                    src={process.env.PUBLIC_URL + "/images/red-x.png"}
+                                    alt="Undo"
+                                />
+                            </button>
+                        </div>
+                    )}
                 </>
             ) : (
                 <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading categories...</p>

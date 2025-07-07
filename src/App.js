@@ -7,6 +7,7 @@ import Matching from "./Matching";
 import CompareContrast from "./CompareContrast";
 import Ordering from "./Ordering";
 import GuessTheMissing from "./GuessTheMissing";
+import SortIntoCategories from "./SortIntoCategories";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -21,6 +22,7 @@ function AnimatedRoutes() {
         <Route path="/compare-contrast" element={<CompareContrast />} />
         <Route path="/ordering" element={<Ordering />} />
         <Route path="/guess-the-missing" element={<GuessTheMissing />} />
+        <Route path="/sort-into-categories" element={<SortIntoCategories />} />
       </Routes>
       <div className="corner-credit">©mtwersky</div>
     </div>

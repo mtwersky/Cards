@@ -269,8 +269,8 @@
         "isCorrect": true
       },
       {
-        "name": "carrot",
-        "image": "/images/carrot.jpg",
+        "name": "goldfish",
+        "image": "/images/goldfish.jpg",
         "isCorrect": true
       },
       {
@@ -992,8 +992,8 @@
     "name": "Forest animals",
     "examples": [
       {
-        "name": "racoon",
-        "image": "/images/racoon.jpg",
+        "name": "raccoon",
+        "image": "/images/raccoon.jpg",
         "isCorrect": true
       },
       {

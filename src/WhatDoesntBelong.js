@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CardGrid from "./CardGrid";
-import "./App.css";
+import "./WhatDoesntBelong.css";
 
 const colors = [
     "#f7d84b",
@@ -22,17 +21,15 @@ function WhatDoesntBelong() {
     const [overlays, setOverlays] = useState({});
     const [disabledItems, setDisabledItems] = useState({});
     const [highlightIndex, setHighlightIndex] = useState(null);
-    const [lastLockedIndex, setLastLockedIndex] = useState(null);
     const [isLocking, setIsLocking] = useState(false);
     const [hasTriedWrong, setHasTriedWrong] = useState(false);
     const [score, setScore] = useState(0);
-    const [showCongrats, setShowCongrats] = useState(false);
-    const [fadeState, setFadeState] = useState("fade-in-active");
+    const [fadeState, setFadeState] = useState("wdb-fade-in-active");
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/what_doesnt_belong.json")
+        fetch(process.env.PUBLIC_URL + "/what_doesnt_belong.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
@@ -43,6 +40,18 @@ function WhatDoesntBelong() {
             });
     }, []);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight") {
+                handleNext();
+            } else if (e.key === "ArrowLeft") {
+                handlePrev();
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    });
+
     const shuffleArray = (array) => {
         return array
             .map((item) => ({ item, sort: Math.random() }))
@@ -51,37 +60,31 @@ function WhatDoesntBelong() {
     };
 
     const changeCategory = (index) => {
-        if (!categories[index]) return;
         setCurrentIndex(index);
         setShuffledItems(shuffleArray(categories[index].examples));
         setBorderColor(colors[index % colors.length]);
         setOverlays({});
         setDisabledItems({});
         setHighlightIndex(null);
-        setLastLockedIndex(null);
         setIsLocking(false);
         setHasTriedWrong(false);
     };
 
     const handleNext = () => {
-        if (currentIndex === categories.length - 1) {
-            setShowCongrats(true);
-        } else {
-            const nextIndex = currentIndex + 1;
-            setFadeState("fade-out");
-            setTimeout(() => {
-                changeCategory(nextIndex);
-                setFadeState("fade-in-active");
-            }, 400);
-        }
+        const nextIndex = (currentIndex + 1) % categories.length;
+        setFadeState("wdb-fade-out");
+        setTimeout(() => {
+            changeCategory(nextIndex);
+            setFadeState("wdb-fade-in-active");
+        }, 400);
     };
 
     const handlePrev = () => {
         const prevIndex = (currentIndex - 1 + categories.length) % categories.length;
-        setFadeState("fade-out");
+        setFadeState("wdb-fade-out");
         setTimeout(() => {
             changeCategory(prevIndex);
-            setFadeState("fade-in-active");
+            setFadeState("wdb-fade-in-active");
         }, 400);
     };
 
@@ -90,8 +93,8 @@ function WhatDoesntBelong() {
         setIsLocking(true);
 
         if (isCorrect) {
-            setHasTriedWrong(true);
             setOverlays((prev) => ({ ...prev, [idx]: "cross" }));
+            setHasTriedWrong(true);
             setTimeout(() => {
                 setOverlays((prev) => {
                     const newOverlays = { ...prev };
@@ -100,20 +103,23 @@ function WhatDoesntBelong() {
                 });
                 setDisabledItems((prev) => {
                     const updated = { ...prev, [idx]: true };
-                    const stillEnabled = shuffledItems
-                        .map((_, i) => i)
-                        .filter((i) => !updated[i]);
-                    if (stillEnabled.length === 1) {
-                        const lastIndex = stillEnabled[0];
-                        setHighlightIndex(lastIndex);
+                    // Check how many enabled items remain
+                    const remaining = shuffledItems
+                        .map((item, i) => i)
+                        .filter(i => !updated[i]);
+
+                    if (remaining.length === 1) {
+                        const lastIdx = remaining[0];
+                        setHighlightIndex(lastIdx);
                         setTimeout(() => {
-                            setLastLockedIndex(lastIndex);
                             setHighlightIndex(null);
+                            // Just lock interactions, do not disable or fade it
                             setIsLocking(true);
-                        }, 800);
+                        }, 1000);
                     } else {
                         setIsLocking(false);
                     }
+
                     return updated;
                 });
             }, 700);
@@ -121,14 +127,9 @@ function WhatDoesntBelong() {
             if (!hasTriedWrong) {
                 setScore((prev) => prev + 1);
             }
-            setHasTriedWrong(false);
             setOverlays((prev) => ({ ...prev, [idx]: "check" }));
             setTimeout(() => {
-                setOverlays((prev) => {
-                    const newOverlays = { ...prev };
-                    delete newOverlays[idx];
-                    return newOverlays;
-                });
+                setOverlays({});
                 const newDisabled = {};
                 shuffledItems.forEach((_, i) => {
                     if (i !== idx) {
@@ -143,49 +144,44 @@ function WhatDoesntBelong() {
 
     const current = categories[currentIndex];
 
-    if (showCongrats) {
-        return (
-            <div className="app" style={{ textAlign: "center", color: "white" }}>
-                <h1 className="title">Congratulations!</h1>
-                <h2 style={{ fontFamily: "Poppins" }}>Your Final Score: {score}</h2>
-                <button
-                    className="answer-button"
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                >
-                    Back to Home
-                </button>
-            </div>
-        );
-    }
-
     return (
-        <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">What Doesn't Belong?</h1>
+        <div className="wdb-app">
+            <button className="wdb-back-button" onClick={() => navigate("/")}>Home</button>
+            <h1 className="wdb-title">What Doesn't Belong?</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
             {current ? (
                 <>
-                    <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`card-container ${fadeState}`} style={{ borderColor }}>
-                        <CardGrid
-                            items={shuffledItems}
-                            overlays={overlays}
-                            disabledItems={disabledItems}
-                            lastLockedIndex={lastLockedIndex}
-                            onCardClick={handleCardClick}
-                            highlightIndex={highlightIndex}
-                            isLocking={isLocking}
-                            onNext={handleNext}
-                            onPrev={handlePrev}
-                            categoryId={current.id}
-                        />
-                        <div className="category-id">{current.id}</div>
+                    <button className="wdb-nav-arrow left" onClick={handlePrev}>❮</button>
+                    <div className={`wdb-card-container ${fadeState}`} style={{ borderColor }}>
+                        <div className="wdb-grid">
+                            {shuffledItems.map((item, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`wdb-image-card ${disabledItems[idx] ? "wdb-disabled" : ""} ${highlightIndex === idx ? "wdb-highlight" : ""}`}
+                                    onClick={() => !disabledItems[idx] && !isLocking && handleCardClick(item.isCorrect, idx)}
+                                    disabled={disabledItems[idx] || isLocking}
+                                >
+                                    <img
+                                        src={process.env.PUBLIC_URL + item.image}
+                                        alt={item.name}
+                                        className="wdb-card-image"
+                                    />
+                                    {overlays[idx] && (
+                                        <div className="wdb-overlay">
+                                            <img
+                                                src={process.env.PUBLIC_URL + (overlays[idx] === "check" ? "/images/green-check.png" : "/images/red-x.png")}
+                                                alt="Overlay"
+                                            />
+                                        </div>
+                                    )}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="wdb-category-id">{current.id}</div>
                     </div>
-                    <button className="nav-arrow right" onClick={handleNext}>❯</button>
+                    <button className="wdb-nav-arrow right" onClick={handleNext}>❯</button>
                 </>
             ) : (
                 <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading categories...</p>

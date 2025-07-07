@@ -54,8 +54,12 @@ function Home() {
                 <div className="home-card" style={{ borderColor: colors[5] }} onClick={() => navigate("/guess-the-missing")}>
                     Guess the Missing Item
                 </div>
-                <div className="home-card" style={{ borderColor: colors[5] }}>x</div>
-                <div className="home-card" style={{ borderColor: colors[6] }}>x</div>
+                <div className="home-card" style={{ borderColor: colors[6] }} onClick={() => navigate("/sort-into-categories")}>
+                    Sort into Categories
+                </div>
+                <div className="home-card" style={{ borderColor: colors[7] }} onClick={() => navigate("/sort-into-categories")}>
+                    x
+                </div>
 
             </div>
         </div>

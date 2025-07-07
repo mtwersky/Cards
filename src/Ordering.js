@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
 import "./Ordering.css";
 
 const colors = [
@@ -24,7 +23,7 @@ function Ordering() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/ordering.json")
+        fetch(process.env.PUBLIC_URL + "/ordering.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
@@ -200,8 +199,8 @@ function Ordering() {
                                                         <img
                                                             src={
                                                                 overlays[idx] === "check"
-                                                                    ? "/images/green-check.png"
-                                                                    : "/images/red-x.png"
+                                                                    ? "./images/green-check.png"
+                                                                    : "./images/red-x.png"
                                                             }
                                                             alt={overlays[idx]}
                                                         />

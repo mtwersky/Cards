@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CardGrid from "./CardGrid";
-import "./App.css";
 import "./Compare.css";
 
 const colors = [
@@ -25,7 +23,7 @@ function CompareContrast() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/comparisons.json")
+        fetch(process.env.PUBLIC_URL + "/comparisons.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
@@ -35,6 +33,19 @@ function CompareContrast() {
                 }
             });
     }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight") {
+                handleNext();
+            } else if (e.key === "ArrowLeft") {
+                handlePrev();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    });
 
     const shuffleArray = (array) => {
         return array
@@ -68,29 +79,26 @@ function CompareContrast() {
     const currentCategory = categories[currentIndex];
 
     return (
-        <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">Compare & Contrast</h1>
+        <div className="compare-app">
+            <button className="compare-back-button" onClick={() => navigate("/")}>Home</button>
+            <h1 className="compare-title">Compare & Contrast</h1>
             {categories.length > 0 ? (
                 <>
-                    <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`card-container ${fadeState}`} style={{ borderColor }}>
-                        <CardGrid
-                            items={shuffledItems}
-                            overlays={{}}
-                            disabledItems={{}}
-                            lastLockedIndex={null}
-                            onCardClick={() => { }}
-                            highlightIndex={null}
-                            isLocking={true}
-                            onNext={handleNext}
-                            onPrev={handlePrev}
-                            categoryId={currentCategory.id}
-                            variant="compare"
-                        />
-                        <div className="category-id">{currentCategory.id}</div>
+                    <button className="compare-nav-arrow left" onClick={handlePrev}>❮</button>
+                    <div className={`compare-card-container ${fadeState}`} style={{ borderColor }}>
+                        <div className="compare-grid">
+                            {shuffledItems.slice(0, 2).map((item, idx) => (
+                                <div key={idx} className="compare-card">
+                                    <img
+                                        src={process.env.PUBLIC_URL + item.image}
+                                        alt={item.name}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="compare-category-id">{currentCategory.id}</div>
                     </div>
-                    <button className="nav-arrow right" onClick={handleNext}>❯</button>
+                    <button className="compare-nav-arrow right" onClick={handleNext}>❯</button>
                 </>
             ) : (
                 <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading comparisons...</p>
