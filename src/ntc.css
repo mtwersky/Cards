@@ -1,5 +1,5 @@
 .ntc-app {
-    background-color: #000000;
+    background-color: #ffffff8a;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -9,7 +9,7 @@
 
 .ntc-title {
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;

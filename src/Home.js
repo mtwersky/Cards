@@ -18,7 +18,7 @@ function Home() {
 
     return (
         <div className="home-app">
-            <h1 className="home-title">Category Games</h1>
+            <h1 className="home-title">Category Cards</h1>
             <div className="home-grid">
                 <div
                     className="home-card"
@@ -51,9 +51,9 @@ function Home() {
                 <div
                     className="home-card"
                     style={{ borderColor: colors[4] }}
-                    onClick={() => navigate("/ordering")}
+                    onClick={() => navigate("")}
                 >
-                    Order the Items
+                    x
                 </div>
                 <div
                     className="home-card"
