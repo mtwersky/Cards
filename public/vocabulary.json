@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "name": "Apple",
+        "image": "/images/apple.jpg",
+        "questions": [
+            {
+                "question": "What is it?",
+                "answer": "It's an apple!"
+            },
+            {
+                "question": "Give me three describing words.",
+                "answer": "Red, sweet, round."
+            },
+            {
+                "question": "Things that go with it?",
+                "answer": "Peanut butter, pie, caramel."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Banana",
+        "image": "/images/banana.jpg",
+        "questions": [
+            {
+                "question": "What is it?",
+                "answer": "It's a banana!"
+            },
+            {
+                "question": "Give me three describing words.",
+                "answer": "Yellow, soft, curved."
+            },
+            {
+                "question": "Things that go with it?",
+                "answer": "Yogurt, cereal, smoothies."
+            }
+        ]
+    }
+]

@@ -1,5 +1,5 @@
 .ntc-app {
-    background-color: #ffffff8a;
+    background-color: #000000;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -9,7 +9,7 @@
 
 .ntc-title {
     font-size: 2.5rem;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -100,6 +100,7 @@
     position: relative;
 }
 
+
 .ntc-image-card {
     background: none;
     border: none;
@@ -184,4 +185,36 @@
 
 .ntc-icon-button:hover {
     transform: scale(1.1);
+}
+
+.ntc-grid::before,
+.ntc-grid::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.ntc-grid::after,
+.ntc-grid::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.06);
+    z-index: 0;
+}
+
+.ntc-grid::before {
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.ntc-grid::after {
+    left: 50%;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    transform: translateX(-50%);
 }
