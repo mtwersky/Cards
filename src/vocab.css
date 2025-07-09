@@ -16,7 +16,7 @@
 }
 
 .vocab-back-button {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
     background: none;
@@ -62,28 +62,49 @@
 }
 
 .vocab-card-container {
-    background-color: #ffffff;
-    border: 15px solid;
-    border-radius: 24px;
-    padding: 24px;
+    perspective: 1000px;
     width: 90%;
     max-width: 600px;
     aspect-ratio: 3 / 2;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.vocab-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    border-radius: 24px;
+    box-sizing: border-box;
+    border: 15px solid;
+}
+
+.vocab-flipped {
+    transform: rotateY(180deg);
+}
+
+.vocab-card-front,
+.vocab-card-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    transition: opacity 0.7s ease;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    box-sizing: border-box;
 }
 
-.vocab-fade-out,
-.vocab-fade-in {
-    opacity: 0;
-}
-
-.vocab-fade-in-active {
-    opacity: 1;
+.vocab-card-back {
+    transform: rotateY(180deg);
+    text-align: center;
 }
 
 .vocab-card-image {
@@ -96,11 +117,7 @@
     transition: transform 0.3s ease;
 }
 
-.vocab-card-image:hover {
-    transform: scale(1.05);
-}
-
-.vocab-label {
+.vocab-category-id {
     position: absolute;
     bottom: 10px;
     right: 15px;
@@ -113,16 +130,8 @@
     border-radius: 8px;
 }
 
-.vocab-loading-text {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-}
-
 .vocab-question-button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    margin-top: 10px;
     background: none;
     border: none;
     font-size: 1.8rem;
@@ -136,22 +145,11 @@
     opacity: 1;
 }
 
-.vocab-question-popup {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 15px;
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
 .vocab-question-text {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .vocab-answer-button,
@@ -178,4 +176,99 @@
     font-size: 1.1rem;
     color: #222;
     margin-top: 10px;
+}
+
+.vocab-loading-text {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+}
+
+.vocab-card-back {
+    transform: rotateY(180deg);
+    text-align: center;
+    cursor: pointer;
+}
+
+.vocab-question-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.vocab-card-back-image {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.vocab-answer-text {
+    font-size: 1.1rem;
+    color: #222;
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    /* smaller margin to avoid big space */
+}
+
+.vocab-buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* allow wrapping if needed */
+}
+
+.vocab-solid-button {
+    border: none;
+    border-radius: 10px;
+    padding: 6px 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    color: black;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    white-space: nowrap;
+    /* prevent wrapping */
+}
+
+
+.vocab-solid-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+
+.vocab-category-id {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 8px;
+    border-radius: 8px;
+}
+
+.vocab-fade-out,
+.vocab-fade-in {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+
+.vocab-fade-in-active {
+    opacity: 1;
+    transition: opacity 0.7s ease;
 }

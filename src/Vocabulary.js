@@ -12,7 +12,7 @@ function Vocabulary() {
     const [currentVocabIndex, setCurrentVocabIndex] = useState(0);
     const [vocabBorderColor, setVocabBorderColor] = useState(vocabColors[0]);
     const [vocabFadeState, setVocabFadeState] = useState("vocab-fade-in-active");
-    const [showQuestions, setShowQuestions] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ function Vocabulary() {
 
     const handleNextVocab = () => {
         setVocabFadeState("vocab-fade-out");
-        setShowQuestions(false);
+        setIsFlipped(false);
         setShowAnswer(false);
         setCurrentQuestionIndex(0);
         setTimeout(() => {
@@ -53,7 +53,7 @@ function Vocabulary() {
 
     const handlePrevVocab = () => {
         setVocabFadeState("vocab-fade-out");
-        setShowQuestions(false);
+        setIsFlipped(false);
         setShowAnswer(false);
         setCurrentQuestionIndex(0);
         setTimeout(() => {
@@ -64,17 +64,19 @@ function Vocabulary() {
         }, 400);
     };
 
-    const handleShowQuestions = () => {
-        setShowQuestions(true);
+    const handleFlip = () => {
+        setIsFlipped(!isFlipped);
         setShowAnswer(false);
         setCurrentQuestionIndex(0);
     };
 
-    const handleShowAnswer = () => {
+    const handleShowAnswer = (e) => {
+        e.stopPropagation();
         setShowAnswer(true);
     };
 
-    const handleNextQuestion = () => {
+    const handleNextQuestion = (e) => {
+        e.stopPropagation();
         if (currentQuestionIndex < vocabItems[currentVocabIndex].questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setShowAnswer(false);
@@ -99,30 +101,51 @@ function Vocabulary() {
             <button className="vocab-back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="vocab-title">Vocabulary</h1>
             <button className="vocab-nav-arrow vocab-left" onClick={handlePrevVocab}>❮</button>
-            <div className={`vocab-card-container ${vocabFadeState}`} style={{ borderColor: vocabBorderColor }}>
-                <img
-                    src={process.env.PUBLIC_URL + currentVocabItem.image}
-                    alt={currentVocabItem.name}
-                    className="vocab-card-image"
-                />
-                <div className="vocab-label">{currentVocabItem.name}</div>
 
-                <button className="vocab-question-button" onClick={handleShowQuestions}>❓</button>
-
-                {showQuestions && (
-                    <div className="vocab-question-popup">
-                        <p className="vocab-question-text">{currentQuestion.question}</p>
-                        {!showAnswer ? (
-                            <button className="vocab-answer-button" onClick={handleShowAnswer}>Show Answer</button>
-                        ) : (
-                            <p className="vocab-answer-text">{currentQuestion.answer}</p>
-                        )}
-                        {currentQuestionIndex < currentVocabItem.questions.length - 1 && (
-                            <button className="vocab-next-question-button" onClick={handleNextQuestion}>Next Question</button>
-                        )}
+            <div className={`vocab-card-container ${vocabFadeState}`}>
+                <div
+                    className={`vocab-card-inner ${isFlipped ? "vocab-flipped" : ""}`}
+                    style={{ borderColor: vocabBorderColor }}
+                >
+                    <div className="vocab-card-front" onClick={handleFlip} title="Click to flip for prompts">
+                        <img
+                            src={process.env.PUBLIC_URL + currentVocabItem.image}
+                            alt={currentVocabItem.name}
+                            className="vocab-card-image"
+                        />
+                        <div className="vocab-category-id">{currentVocabItem.id}</div>
                     </div>
-                )}
+
+                    <div className="vocab-card-back" onClick={handleFlip} title="Click to flip back">
+                        <p className="vocab-question-text">{currentQuestion.question}</p>
+                        <img
+                            src={process.env.PUBLIC_URL + currentVocabItem.image}
+                            alt={currentVocabItem.name}
+                            className="vocab-card-back-image"
+                        />
+                        <div className="vocab-buttons-row" style={{ borderColor: vocabBorderColor }}>
+                            <button
+                                className="vocab-solid-button"
+                                onClick={handleShowAnswer}
+                                style={{ backgroundColor: vocabBorderColor }}
+                                disabled={showAnswer}
+                            >
+                                {showAnswer ? currentQuestion.answer : "Show Answer"}
+                            </button>
+                            {currentQuestionIndex < currentVocabItem.questions.length - 1 && (
+                                <button
+                                    className="vocab-solid-button"
+                                    onClick={handleNextQuestion}
+                                    style={{ backgroundColor: vocabBorderColor }}
+                                >
+                                    Next Question
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <button className="vocab-nav-arrow vocab-right" onClick={handleNextVocab}>❯</button>
         </div>
     );
