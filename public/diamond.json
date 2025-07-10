@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Pencil",
+        "image": "/images/pencil.jpg"
+    },
+    {
+        "name": "Apple",
+        "image": "/images/apple.jpg"
+    },
+    {
+        "name": "Car",
+        "image": "/images/car.jpg"
+    },
+    {
+        "name": "Ball",
+        "image": "/images/ball.jpg"
+    },
+    {
+        "name": "Book",
+        "image": "/images/book.jpg"
+    },
+    {
+        "name": "Flower",
+        "image": "/images/flower.jpg"
+    },
+    {
+        "name": "Dog",
+        "image": "/images/dog.jpg"
+    },
+    {
+        "name": "Cup",
+        "image": "/images/cup.jpg"
+    },
+    {
+        "name": "Clock",
+        "image": "/images/clock.jpg"
+    },
+    {
+        "name": "Shoe",
+        "image": "/images/shoe.jpg"
+    }
+]

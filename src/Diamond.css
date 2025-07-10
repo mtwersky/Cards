@@ -1,0 +1,71 @@
+.diamond-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.diamond-card {
+    perspective: 1000px;
+    width: 180px;
+    aspect-ratio: 1 / 1.3;
+    cursor: pointer;
+}
+
+.diamond-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border: 6px solid;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.diamond-card.flipped .diamond-card-inner {
+    transform: rotateY(180deg);
+}
+
+.diamond-card-front,
+.diamond-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.diamond-card-front img,
+.diamond-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.diamond-card-back {
+    transform: rotateY(180deg);
+}
+
+.diamond-card.faded {
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.winning-screen {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    margin-top: 30px;
+}

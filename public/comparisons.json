@@ -1,113 +1,196 @@
 [
     {
         "id": 1,
-        "name": "Makeup",
         "examples": [
             {
-                "name": "Mascara",
-                "image": "/images/mascara.jpg"
+                "name": "Apple",
+                "image": "/images/apple.jpg"
             },
             {
-                "name": "Blush",
-                "image": "/images/blush.jpg"
+                "name": "Pepper",
+                "image": "/images/pepper.jpg"
             }
         ]
     },
     {
         "id": 2,
-        "name": "Toys",
         "examples": [
             {
-                "name": "Blocks",
-                "image": "/images/blocks.jpg"
+                "name": "Car",
+                "image": "/images/car.jpg"
             },
             {
-                "name": "Lego",
-                "image": "/images/lego.jpg"
+                "name": "Bus",
+                "image": "/images/bus.jpg"
             }
         ]
     },
     {
         "id": 3,
-        "name": "Forest animals",
         "examples": [
             {
-                "name": "Raccoon",
-                "image": "/images/raccoon.jpg"
+                "name": "Violin",
+                "image": "/images/violin.jpg"
             },
             {
-                "name": "Skunk",
-                "image": "/images/skunk.jpg"
+                "name": "Guitar",
+                "image": "/images/guitar.jpg"
             }
         ]
     },
     {
         "id": 4,
-        "name": "Jewelry",
         "examples": [
             {
-                "name": "Necklace",
-                "image": "/images/necklace.jpg"
+                "name": "Butterfly",
+                "image": "/images/butterfly.jpg"
             },
             {
-                "name": "Earrings",
-                "image": "/images/earrings.jpg"
+                "name": "Moth",
+                "image": "/images/moth.jpg"
             }
         ]
     },
     {
         "id": 5,
-        "name": "Sport balls",
         "examples": [
             {
-                "name": "Soccer",
-                "image": "/images/soccer.jpg"
+                "name": "Lion",
+                "image": "/images/lion.jpg"
             },
             {
-                "name": "Baseball",
-                "image": "/images/baseball.jpg"
+                "name": "Tiger",
+                "image": "/images/tiger.jpg"
             }
         ]
     },
     {
         "id": 6,
-        "name": "Water animals",
         "examples": [
             {
-                "name": "Dolphin",
-                "image": "/images/dolphin.jpg"
+                "name": "Sneakers",
+                "image": "/images/sneakers.jpg"
             },
             {
-                "name": "Turtle",
-                "image": "/images/turtle.jpg"
+                "name": "Sandals",
+                "image": "/images/sandals.jpg"
             }
         ]
     },
     {
         "id": 7,
-        "name": "Drinks",
         "examples": [
             {
-                "name": "Lemonade",
-                "image": "/images/lemonade.jpg"
+                "name": "Pencil",
+                "image": "/images/pencil.jpg"
             },
             {
-                "name": "Orange juice",
-                "image": "/images/orange_juice.jpg"
+                "name": "Pen",
+                "image": "/images/pen.jpg"
             }
         ]
     },
     {
         "id": 8,
-        "name": "Furniture",
         "examples": [
             {
-                "name": "Table",
-                "image": "/images/table.jpg"
+                "name": "Spoon",
+                "image": "/images/spoon.jpg"
             },
             {
-                "name": "Bed",
-                "image": "/images/bed.jpg"
+                "name": "Fork",
+                "image": "/images/fork.jpg"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "examples": [
+            {
+                "name": "Cow",
+                "image": "/images/cow.jpg"
+            },
+            {
+                "name": "Goat",
+                "image": "/images/goat.jpg"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "examples": [
+            {
+                "name": "Laptop",
+                "image": "/images/laptop.jpg"
+            },
+            {
+                "name": "Tablet",
+                "image": "/images/tablet.jpg"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "examples": [
+            {
+                "name": "Baseball",
+                "image": "/images/baseball.jpg"
+            },
+            {
+                "name": "Soccer Ball",
+                "image": "/images/soccer_ball.jpg"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "examples": [
+            {
+                "name": "Shirt",
+                "image": "/images/shirt.jpg"
+            },
+            {
+                "name": "Sweater",
+                "image": "/images/sweater.jpg"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "examples": [
+            {
+                "name": "Orange",
+                "image": "/images/orange.jpg"
+            },
+            {
+                "name": "Lemon",
+                "image": "/images/lemon.jpg"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "examples": [
+            {
+                "name": "Horse",
+                "image": "/images/horse.jpg"
+            },
+            {
+                "name": "Donkey",
+                "image": "/images/donkey.jpg"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "examples": [
+            {
+                "name": "Drum",
+                "image": "/images/drum.jpg"
+            },
+            {
+                "name": "Tambourine",
+                "image": "/images/tambourine.jpg"
             }
         ]
     }

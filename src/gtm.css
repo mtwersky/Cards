@@ -1,5 +1,5 @@
 /* ---------- Main card container grid (2x2) ---------- */
-.card-grid {
+.gtm-card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -11,15 +11,23 @@
     position: relative;
 }
 
-.card-grid::before,
-.card-grid::after {
+.gtm-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.gtm-card-grid::before,
+.gtm-card-grid::after {
     content: "";
     position: absolute;
     background-color: rgba(0, 0, 0, 0.06);
     z-index: 0;
 }
 
-.card-grid::before {
+.gtm-card-grid::before {
     top: 50%;
     left: 10%;
     width: 80%;
@@ -27,7 +35,7 @@
     transform: translateY(-50%);
 }
 
-.card-grid::after {
+.gtm-card-grid::after {
     left: 50%;
     top: 10%;
     height: 80%;
@@ -179,6 +187,24 @@
         transform: scale(0);
         opacity: 0;
     }
+}
+
+.gtm-card-container {
+    background-color: #ffffff;
+    border: 15px solid;
+    border-radius: 24px;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: opacity 0.7s ease;
 }
 
 .fade-in-slot {

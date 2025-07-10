@@ -8,6 +8,7 @@ import CompareContrast from "./CompareContrast";
 import GuessTheMissing from "./GuessTheMissing";
 import SortIntoCategories from "./SortIntoCategories";
 import Vocabulary from "./Vocabulary";
+import Diamond from "./FindTheDiamond";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -23,6 +24,7 @@ function AnimatedRoutes() {
         <Route path="/guess-the-missing" element={<GuessTheMissing />} />
         <Route path="/sort-into-categories" element={<SortIntoCategories />} />
         <Route path="/vocabulary" element={<Vocabulary />} />
+        <Route path="/diamond" element={<Diamond />} />
       </Routes>
       <div className="corner-credit">©mtwersky</div>
     </div>

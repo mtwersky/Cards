@@ -24,29 +24,6 @@ function GuessTheMissing() {
 
     const navigate = useNavigate();
 
-    const setupCategory = (index, data = categories) => {
-        const category = data[index];
-        const examples = [...category.examples];
-        const missingIdx = Math.floor(Math.random() * examples.length);
-        const missingItem = examples[missingIdx];
-        examples[missingIdx] = { name: "?", image: "" };
-
-        const otherItems = data.filter(c => c.name !== category.name).flatMap(c => c.examples);
-        const randomChoices = shuffleArray(otherItems).slice(0, 3);
-        const allChoices = shuffleArray([missingItem, ...randomChoices]);
-
-        setDisplayItems(examples);
-        setChoices(allChoices);
-        setBorderColor(colors[index % colors.length]);
-        setCorrectIdx(allChoices.findIndex(item => item.name === missingItem.name));
-        setSelectedIdx(null);
-        setOverlays({});
-        setDisabledChoices({});
-        setFadeState("fade-in-active");
-        setSlotFadeInIdx(null);
-        setHasTriedWrong(false);
-    };
-
     useEffect(() => {
         fetch("/categories.json")
             .then((res) => res.json())
@@ -68,6 +45,39 @@ function GuessTheMissing() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     });
 
+    const setupCategory = (index, data = categories) => {
+        const category = data[index];
+        const examples = [...category.examples];
+        const missingIdx = Math.floor(Math.random() * examples.length);
+        const missingItem = examples[missingIdx];
+        examples[missingIdx] = { name: "?", image: "" };
+
+        // Get 3 other categories
+        const otherCategories = data.filter((c, i) => i !== index);
+        const selectedOtherCategories = shuffleArray(otherCategories).slice(0, 3);
+
+        // Pick one example from each
+        const otherChoices = selectedOtherCategories.map(c => {
+            const randomIdx = Math.floor(Math.random() * c.examples.length);
+            return c.examples[randomIdx];
+        });
+
+        // Combine correct choice + other choices
+        const allChoices = shuffleArray([missingItem, ...otherChoices]);
+
+        setDisplayItems(examples);
+        setChoices(allChoices);
+        setBorderColor(colors[index % colors.length]);
+        setCorrectIdx(allChoices.findIndex(item => item.name === missingItem.name));
+        setSelectedIdx(null);
+        setOverlays({});
+        setDisabledChoices({});
+        setFadeState("fade-in-active");
+        setSlotFadeInIdx(null);
+        setHasTriedWrong(false);
+    };
+
+
     const shuffleArray = (array) => {
         return array
             .map((item) => ({ item, sort: Math.random() }))
@@ -87,8 +97,19 @@ function GuessTheMissing() {
 
             setTimeout(() => {
                 setOverlays({});
+
+                // Shrink correct choice
                 const newChoices = [...choices];
                 newChoices[idx].shrinking = true;
+
+                // Fade out and disable all others
+                const newDisabled = {};
+                choices.forEach((_, i) => {
+                    if (i !== idx) {
+                        newDisabled[i] = true;
+                    }
+                });
+                setDisabledChoices(newDisabled);
                 setChoices(newChoices);
 
                 setTimeout(() => {
@@ -132,6 +153,14 @@ function GuessTheMissing() {
                             updated[lastIdx].shrinking = true;
                             setChoices([...updated]);
 
+                            const newDisabledLast = {};
+                            choices.forEach((_, i) => {
+                                if (i !== lastIdx) {
+                                    newDisabledLast[i] = true;
+                                }
+                            });
+                            setDisabledChoices(newDisabledLast);
+
                             setTimeout(() => {
                                 const slotIdx = displayItems.findIndex(item => item.name === "?");
                                 setSlotFadeInIdx(slotIdx);
@@ -143,7 +172,7 @@ function GuessTheMissing() {
                                 setChoices([]);
                             }, 700);
                         }, 800);
-                    }, 1000); // wait 1 second before starting highlight
+                    }, 1000);
                 }
             }, 700);
         }
@@ -180,15 +209,15 @@ function GuessTheMissing() {
     return (
         <div className="app">
             <button className="back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="title">Guess the Missing Item</h1>
+            <h1 className="gtm-title">Guess the Missing Item</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
             {categories.length > 0 ? (
                 <>
                     <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`card-container ${fadeState}`} style={{ borderColor }}>
-                        <div className="card-grid">
+                    <div className={`gtm-card-container ${fadeState}`} style={{ borderColor }}>
+                        <div className="gtm-card-grid">
                             {displayItems.map((item, idx) => (
                                 <button key={idx} className="gtm-card-button" disabled>
                                     {item.image ? (
