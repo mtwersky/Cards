@@ -2,39 +2,51 @@
     {
         "id": 1,
         "name": "Apple",
-        "image": "/images/apple.jpg",
-        "questions": [
-            {
-                "question": "What is it?",
-                "answer": "It's an apple!"
-            },
-            {
-                "question": "Give me three describing words.",
-                "answer": "Red, sweet, round."
-            },
-            {
-                "question": "Things that go with it?",
-                "answer": "Peanut butter, pie, caramel."
-            }
-        ]
+        "image": "/images/apple.jpg"
     },
     {
         "id": 2,
-        "name": "Banana",
-        "image": "/images/banana.jpg",
-        "questions": [
-            {
-                "question": "What is it?",
-                "answer": "It's a banana!"
-            },
-            {
-                "question": "Give me three describing words.",
-                "answer": "Yellow, soft, curved."
-            },
-            {
-                "question": "Things that go with it?",
-                "answer": "Yogurt, cereal, smoothies."
-            }
-        ]
+        "name": "Dog",
+        "image": "/images/dog.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Car",
+        "image": "/images/car.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Basketball",
+        "image": "/images/basketball.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Flower",
+        "image": "/images/flower.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Guitar",
+        "image": "/images/guitar.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Book",
+        "image": "/images/book.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Tree",
+        "image": "/images/tree.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Cat",
+        "image": "/images/cat.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Shoe",
+        "image": "/images/shoe.jpg"
     }
 ]

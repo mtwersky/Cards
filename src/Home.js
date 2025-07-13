@@ -53,7 +53,7 @@ function Home() {
                     style={{ borderColor: colors[4] }}
                     onClick={() => navigate("/vocabulary")}
                 >
-                    Vocabulary
+                    Expressive Language
                 </div>
                 <div
                     className="home-card"

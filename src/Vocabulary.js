@@ -7,6 +7,14 @@ const vocabColors = [
     "#ffcc99", "#dda0dd", "#ff6666", "#66cccc"
 ];
 
+const questions = [
+    "What is it?",
+    "Give me three describing words.",
+    "Things that go with it?",
+    "What category is it in?",
+    "Name other things in the category."
+];
+
 function Vocabulary() {
     const [vocabItems, setVocabItems] = useState([]);
     const [currentVocabIndex, setCurrentVocabIndex] = useState(0);
@@ -14,7 +22,6 @@ function Vocabulary() {
     const [vocabFadeState, setVocabFadeState] = useState("vocab-fade-in-active");
     const [isFlipped, setIsFlipped] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [showAnswer, setShowAnswer] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,7 +48,6 @@ function Vocabulary() {
     const handleNextVocab = () => {
         setVocabFadeState("vocab-fade-out");
         setIsFlipped(false);
-        setShowAnswer(false);
         setCurrentQuestionIndex(0);
         setTimeout(() => {
             const nextIndex = (currentVocabIndex + 1) % vocabItems.length;
@@ -54,7 +60,6 @@ function Vocabulary() {
     const handlePrevVocab = () => {
         setVocabFadeState("vocab-fade-out");
         setIsFlipped(false);
-        setShowAnswer(false);
         setCurrentQuestionIndex(0);
         setTimeout(() => {
             const prevIndex = (currentVocabIndex - 1 + vocabItems.length) % vocabItems.length;
@@ -66,20 +71,15 @@ function Vocabulary() {
 
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
-        setShowAnswer(false);
         setCurrentQuestionIndex(0);
     };
 
-    const handleShowAnswer = (e) => {
+    const handleNextQuestionOrCard = (e) => {
         e.stopPropagation();
-        setShowAnswer(true);
-    };
-
-    const handleNextQuestion = (e) => {
-        e.stopPropagation();
-        if (currentQuestionIndex < vocabItems[currentVocabIndex].questions.length - 1) {
+        if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setShowAnswer(false);
+        } else {
+            handleNextVocab();
         }
     };
 
@@ -94,12 +94,12 @@ function Vocabulary() {
     }
 
     const currentVocabItem = vocabItems[currentVocabIndex];
-    const currentQuestion = currentVocabItem.questions[currentQuestionIndex];
+    const currentQuestion = questions[currentQuestionIndex];
 
     return (
         <div className="vocab-app">
             <button className="vocab-back-button" onClick={() => navigate("/")}>Home</button>
-            <h1 className="vocab-title">Vocabulary</h1>
+            <h1 className="vocab-title">Expressive Language</h1>
             <button className="vocab-nav-arrow vocab-left" onClick={handlePrevVocab}>❮</button>
 
             <div className={`vocab-card-container ${vocabFadeState}`}>
@@ -117,7 +117,7 @@ function Vocabulary() {
                     </div>
 
                     <div className="vocab-card-back" onClick={handleFlip} title="Click to flip back">
-                        <p className="vocab-question-text">{currentQuestion.question}</p>
+                        <p className="vocab-question-text">{currentQuestion}</p>
                         <img
                             src={process.env.PUBLIC_URL + currentVocabItem.image}
                             alt={currentVocabItem.name}
@@ -126,21 +126,11 @@ function Vocabulary() {
                         <div className="vocab-buttons-row" style={{ borderColor: vocabBorderColor }}>
                             <button
                                 className="vocab-solid-button"
-                                onClick={handleShowAnswer}
+                                onClick={handleNextQuestionOrCard}
                                 style={{ backgroundColor: vocabBorderColor }}
-                                disabled={showAnswer}
                             >
-                                {showAnswer ? currentQuestion.answer : "Show Answer"}
+                                {currentQuestionIndex < questions.length - 1 ? "Next Question" : "Next Card"}
                             </button>
-                            {currentQuestionIndex < currentVocabItem.questions.length - 1 && (
-                                <button
-                                    className="vocab-solid-button"
-                                    onClick={handleNextQuestion}
-                                    style={{ backgroundColor: vocabBorderColor }}
-                                >
-                                    Next Question
-                                </button>
-                            )}
                         </div>
                     </div>
                 </div>
