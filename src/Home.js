@@ -79,9 +79,9 @@ function Home() {
                 <div
                     className="home-card"
                     style={{ borderColor: colors[0] }}
-                    onClick={() => navigate("")}
+                    onClick={() => navigate("/scene-card")}
                 >
-                    x
+                    Scene Cards
                 </div>
                 <div
                     className="home-card"

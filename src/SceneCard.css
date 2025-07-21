@@ -1,0 +1,172 @@
+.scene-card-app {
+    background-color: #000;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.scene-card {
+    width: 600px;
+    aspect-ratio: 3 / 2;
+    perspective: 1200px;
+    position: relative;
+    border: 15px solid;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.scene-card-front,
+.scene-card-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.scene-card-front img,
+.scene-card-back img {
+    max-height: 250px;
+    max-width: 90%;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+.scene-sentence,
+.scene-question,
+.scene-answer {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.scene-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.scene-buttons button {
+    background-color: white;
+    border: 6px solid;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scene-buttons button:hover {
+    background-color: #fff8cc;
+}
+
+.show-answer-btn,
+.flip-back-btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+    min-width: 140px;
+}
+
+.back-buttons-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.scene-card.flipped .scene-card-front {
+    transform: rotateY(180deg);
+}
+
+.scene-card.flipped .scene-card-back {
+    transform: rotateY(0deg);
+}
+
+.scene-card-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+.scene-card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.category-id {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 6px;
+    border-radius: 8px;
+}
+
+.nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-arrow:hover {
+    transform: translateY(-50%) scale(1.2);
+    color: #ffffff;
+}
+
+.nav-arrow.left {
+    left: 20px;
+}
+
+.nav-arrow.right {
+    right: 20px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0.7;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+    color: #dddddd;
+}

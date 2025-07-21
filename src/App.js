@@ -9,6 +9,7 @@ import GuessTheMissing from "./GuessTheMissing";
 import SortIntoCategories from "./SortIntoCategories";
 import Vocabulary from "./Vocabulary";
 import Diamond from "./FindTheDiamond";
+import SceneCard from "./SceneCard";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
         <Route path="/sort-into-categories" element={<SortIntoCategories />} />
         <Route path="/vocabulary" element={<Vocabulary />} />
         <Route path="/diamond" element={<Diamond />} />
+        <Route path="/scene-card" element={<SceneCard />} />
       </Routes>
       <div className="corner-credit">©mtwersky</div>
     </div>
