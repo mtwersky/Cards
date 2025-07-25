@@ -13,6 +13,7 @@ function SceneCard() {
     const [flipped, setFlipped] = useState(false);
     const [questionType, setQuestionType] = useState(null);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [fadeClass, setFadeClass] = useState("fade-in-active");
 
     const navigate = useNavigate();
 
@@ -21,6 +22,15 @@ function SceneCard() {
             .then((res) => res.json())
             .then((data) => setCardData(data));
     }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowRight") handleNext();
+            if (e.key === "ArrowLeft") handlePrev();
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    });
 
     if (cardData.length === 0) return <div>Loading...</div>;
 
@@ -34,79 +44,84 @@ function SceneCard() {
     };
 
     const handleNext = () => {
-        setFlipped(false);
-        setQuestionType(null);
-        setShowAnswer(false);
-        setCurrentIndex((prev) => (prev + 1) % cardData.length);
+        setFadeClass("fade-out");
+        setTimeout(() => {
+            setFlipped(false);
+            setQuestionType(null);
+            setShowAnswer(false);
+            setCurrentIndex((prev) => (prev + 1) % cardData.length);
+            setFadeClass("fade-in-active");
+        }, 400);
     };
 
     const handlePrev = () => {
-        setFlipped(false);
-        setQuestionType(null);
-        setShowAnswer(false);
-        setCurrentIndex((prev) => (prev - 1 + cardData.length) % cardData.length);
-    };
-
-    const prettyLabel = (type) => {
-        return {
-            who: "Who?",
-            what: "What?",
-            when: "When?",
-            where: "Where?"
-        }[type];
+        setFadeClass("fade-out");
+        setTimeout(() => {
+            setFlipped(false);
+            setQuestionType(null);
+            setShowAnswer(false);
+            setCurrentIndex((prev) => (prev - 1 + cardData.length) % cardData.length);
+            setFadeClass("fade-in-active");
+        }, 400);
     };
 
     return (
         <div className="scene-card-app">
+            <h1 className="scene-card-title">Scene Cards</h1>
             <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <button className="nav-arrow left" onClick={handlePrev}>❮</button>
 
-            <div className={`scene-card ${flipped ? "flipped" : ""}`} style={{ borderColor }}>
-                <div className="scene-card-front">
-                    <img src={currentCard.image} alt="Scene" />
-                    <p className="scene-sentence">{currentCard.sentence}</p>
-                </div>
+            <div className={`scene-card-container ${fadeClass}`}>
+                <div className={`scene-card-inner ${flipped ? "flipped" : ""}`} style={{ borderColor }}>
+                    <div className="scene-card-front">
+                        <img src={currentCard.image} alt="Scene" />
+                        <p className="scene-sentence">{currentCard.sentence}</p>
+                        <div className="category-id">{currentCard.id}</div>
+                    </div>
 
-                <div className="scene-card-back">
-                    <img src={currentCard.image} alt="Scene" />
-                    <p className="scene-question">
-                        {questionType && prettyLabel(questionType)}
-                    </p>
-                    {showAnswer ? (
-                        <p className="scene-answer">{currentCard.answers[questionType]}</p>
-                    ) : null}
-
-                    <div className="back-buttons-row">
-                        {!showAnswer && (
+                    <div className="scene-card-back">
+                        <img src={currentCard.image} alt="Scene" />
+                        <p className="scene-question">
+                            {questionType && (
+                                showAnswer
+                                    ? currentCard.answers[questionType]
+                                    : currentCard.questions[questionType]
+                            )}
+                        </p>
+                        <div className="back-buttons-row">
                             <button
                                 className="show-answer-btn"
                                 style={{ backgroundColor: borderColor }}
-                                onClick={() => setShowAnswer(true)}
+                                onClick={() => setShowAnswer(prev => !prev)}
                             >
-                                Show Answer
+                                {showAnswer ? "Show Question" : "Show Answer"}
                             </button>
-                        )}
-                        <button
-                            className="flip-back-btn"
-                            style={{ backgroundColor: borderColor }}
-                            onClick={() => setFlipped(false)}
-                        >
-                            Flip Back
-                        </button>
+                            <button
+                                className="flip-back-btn"
+                                style={{ backgroundColor: borderColor }}
+                                onClick={() => setFlipped(false)}
+                            >
+                                Flip Back
+                            </button>
+                        </div>
+                        <div className="category-id">{currentCard.id}</div>
                     </div>
                 </div>
-
-                <div className="category-id">{currentCard.id}</div>
             </div>
 
-            <div className="scene-buttons" style={{ borderColor }}>
+            <div className={`scene-buttons ${fadeClass}`} style={{ borderColor }}>
                 {["who", "what", "when", "where"].map((type) => (
                     <button
                         key={type}
                         onClick={() => handleQuestion(type)}
-                        style={{ borderColor }}
+                        className={questionType === type && flipped ? "active-question" : ""}
+                        style={{
+                            borderColor,
+                            backgroundColor: questionType === type && flipped ? borderColor : "white",
+                            color: questionType === type && flipped ? "white" : "black"
+                        }}
                     >
-                        {prettyLabel(type)}
+                        {type.charAt(0).toUpperCase() + type.slice(1) + "?"}
                     </button>
                 ))}
             </div>

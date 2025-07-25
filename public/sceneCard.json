@@ -2,10 +2,16 @@
   {
     "id": 1,
     "sentence": "On a hot summer day, Johnny was building a sandcastle at the beach.",
-    "image": "/images/sandcastle.jpg",
+    "image": "/images/boy_building_sandcastle.jpg",
+    "questions": {
+      "who": "Who was building a sandcastle?",
+      "what": "What does Johnny do?",
+      "when": "When does Johnny was building a sandcastle?",
+      "where": "Where does Johnny was building a sandcastle?"
+    },
     "answers": {
       "who": "Johnny was building a sandcastle.",
-      "what": "He was building a sandcastle.",
+      "what": "Was building a sandcastle.",
       "when": "On a hot summer day.",
       "where": "At the beach."
     }
@@ -14,9 +20,15 @@
     "id": 2,
     "sentence": "Susan waters the flowers on her porch after school.",
     "image": "/images/watering_flowers.jpg",
+    "questions": {
+      "who": "Who waters the flowers?",
+      "what": "What does Susan do?",
+      "when": "When does Susan water the flowers?",
+      "where": "Where does Susan water the flowers?"
+    },
     "answers": {
       "who": "Susan waters the flowers.",
-      "what": "She waters the flowers.",
+      "what": "Waters the flowers.",
       "when": "After school.",
       "where": "On her porch."
     }
@@ -25,9 +37,15 @@
     "id": 3,
     "sentence": "After dinner, Alex helps his mom by taking the trash outside.",
     "image": "/images/taking_out_trash.jpg",
+    "questions": {
+      "who": "Who takes the trash outside?",
+      "what": "What does Alex do?",
+      "when": "When does Alex take the trash outside?",
+      "where": "Where does Alex take the trash outside?"
+    },
     "answers": {
-      "who": "Alex helps his mom.",
-      "what": "He takes the trash outside.",
+      "who": "Alex takes the trash outside.",
+      "what": "Takes the trash outside.",
       "when": "After dinner.",
       "where": "Outside."
     }
@@ -36,9 +54,15 @@
     "id": 4,
     "sentence": "Amy likes to eat cookies at the counter before doing her homework.",
     "image": "/images/eating_cookies.jpg",
+    "questions": {
+      "who": "Who eats cookies?",
+      "what": "What does Amy do?",
+      "when": "When does Amy eat cookies?",
+      "where": "Where does Amy eat cookies?"
+    },
     "answers": {
-      "who": "Amy likes to eat cookies.",
-      "what": "She eats cookies.",
+      "who": "Amy eats cookies.",
+      "what": "Eats cookies.",
       "when": "Before doing her homework.",
       "where": "At the counter."
     }
@@ -47,9 +71,15 @@
     "id": 5,
     "sentence": "Dad washes the floor in the dining room every weekend.",
     "image": "/images/washing_floor.jpg",
+    "questions": {
+      "who": "Who washes the floor?",
+      "what": "What does Dad do?",
+      "when": "When does Dad wash the floor?",
+      "where": "Where does Dad wash the floor?"
+    },
     "answers": {
       "who": "Dad washes the floor.",
-      "what": "He washes the floor.",
+      "what": "Washes the floor.",
       "when": "Every weekend.",
       "where": "In the dining room."
     }
@@ -58,10 +88,16 @@
     "id": 6,
     "sentence": "On Tuesday, Patricia vacuums the floor in her bedroom.",
     "image": "/images/vacuuming.jpg",
+    "questions": {
+      "who": "Who vacuums the floor?",
+      "what": "What does Patricia do?",
+      "when": "When does Patricia vacuum the floor?",
+      "where": "Where does Patricia vacuum the floor?"
+    },
     "answers": {
       "who": "Patricia vacuums the floor.",
-      "what": "She vacuums the floor.",
-      "when": "On Tuesday.",
+      "what": "Vacuums the floor.",
+      "when": "On tuesday.",
       "where": "In her bedroom."
     }
   },
@@ -69,9 +105,15 @@
     "id": 7,
     "sentence": "After she baked cookies, Lily cleaned the counters in the kitchen.",
     "image": "/images/cleaning_counters.jpg",
+    "questions": {
+      "who": "Who cleaned the counters?",
+      "what": "What does Lily do?",
+      "when": "When does Lily clean the counters?",
+      "where": "Where does Lily clean the counters?"
+    },
     "answers": {
       "who": "Lily cleaned the counters.",
-      "what": "She cleaned the counters.",
+      "what": "Cleaned the counters.",
       "when": "After she baked cookies.",
       "where": "In the kitchen."
     }
@@ -80,9 +122,15 @@
     "id": 8,
     "sentence": "Maria sweeps the floor in the kitchen after the kids finished eating dinner.",
     "image": "/images/sweeping_floor.jpg",
+    "questions": {
+      "who": "Who sweeps the floor?",
+      "what": "What does Maria do?",
+      "when": "When does Maria sweep the floor?",
+      "where": "Where does Maria sweep the floor?"
+    },
     "answers": {
       "who": "Maria sweeps the floor.",
-      "what": "She sweeps the floor.",
+      "what": "Sweeps the floor.",
       "when": "After the kids finished eating dinner.",
       "where": "In the kitchen."
     }
@@ -91,21 +139,33 @@
     "id": 9,
     "sentence": "Kate helps her Mom cut up salad at Grandma's house on Thanksgiving.",
     "image": "/images/cutting_salad.jpg",
+    "questions": {
+      "who": "Who cuts up salad?",
+      "what": "What does Kate do?",
+      "when": "When does Kate cut up salad?",
+      "where": "Where does Kate cut up salad?"
+    },
     "answers": {
-      "who": "Kate helps her Mom.",
-      "what": "She cuts up salad.",
-      "when": "On Thanksgiving.",
-      "where": "At Grandma's house."
+      "who": "Kate cuts up salad.",
+      "what": "Cuts up salad.",
+      "when": "On thanksgiving.",
+      "where": "At grandma's house."
     }
   },
   {
     "id": 10,
     "sentence": "On Sunday morning, Tim does his homework with Dad in the den.",
     "image": "/images/doing_homework.jpg",
+    "questions": {
+      "who": "Who does his homework?",
+      "what": "What does Tim do?",
+      "when": "When does Tim do his homework?",
+      "where": "Where does Tim do his homework?"
+    },
     "answers": {
-      "who": "Tim does his homework with Dad.",
-      "what": "He does his homework.",
-      "when": "On Sunday morning.",
+      "who": "Tim does his homework.",
+      "what": "Does his homework.",
+      "when": "On sunday morning.",
       "where": "In the den."
     }
   },
@@ -113,9 +173,15 @@
     "id": 11,
     "sentence": "Sarah likes to color in her room when she gets home from school.",
     "image": "/images/girl_coloring.jpg",
+    "questions": {
+      "who": "Who colors?",
+      "what": "What does Sarah do?",
+      "when": "When does Sarah color?",
+      "where": "Where does Sarah color?"
+    },
     "answers": {
-      "who": "Sarah likes to color.",
-      "what": "She colors.",
+      "who": "Sarah colors.",
+      "what": "Colors.",
       "when": "When she gets home from school.",
       "where": "In her room."
     }
@@ -124,10 +190,16 @@
     "id": 12,
     "sentence": "Matthew cuts the grass in the backyard every Wednesday.",
     "image": "/images/cutting_grass.jpg",
+    "questions": {
+      "who": "Who cuts the grass?",
+      "what": "What does Matthew do?",
+      "when": "When does Matthew cut the grass?",
+      "where": "Where does Matthew cut the grass?"
+    },
     "answers": {
       "who": "Matthew cuts the grass.",
-      "what": "He cuts the grass.",
-      "when": "Every Wednesday.",
+      "what": "Cuts the grass.",
+      "when": "Every wednesday.",
       "where": "In the backyard."
     }
   },
@@ -135,10 +207,16 @@
     "id": 13,
     "sentence": "Evan cuts the paper in the art room after lunch on Monday.",
     "image": "/images/cutting_paper.jpg",
+    "questions": {
+      "who": "Who cuts the paper?",
+      "what": "What does Evan do?",
+      "when": "When does Evan cut the paper?",
+      "where": "Where does Evan cut the paper?"
+    },
     "answers": {
       "who": "Evan cuts the paper.",
-      "what": "He cuts the paper.",
-      "when": "After lunch on Monday.",
+      "what": "Cuts the paper.",
+      "when": "After lunch on monday.",
       "where": "In the art room."
     }
   },
@@ -146,10 +224,16 @@
     "id": 14,
     "sentence": "Kayla eats popcorn at the movie theater on Saturday night.",
     "image": "/images/eating_popcorn.jpg",
+    "questions": {
+      "who": "Who eats popcorn?",
+      "what": "What does Kayla do?",
+      "when": "When does Kayla eat popcorn?",
+      "where": "Where does Kayla eat popcorn?"
+    },
     "answers": {
       "who": "Kayla eats popcorn.",
-      "what": "She eats popcorn.",
-      "when": "On Saturday night.",
+      "what": "Eats popcorn.",
+      "when": "On saturday night.",
       "where": "At the movie theater."
     }
   },
@@ -157,9 +241,15 @@
     "id": 15,
     "sentence": "After he finishes his homework, Mark likes to play on the swing at the park.",
     "image": "/images/boy_swinging.jpg",
+    "questions": {
+      "who": "Who plays on the swing?",
+      "what": "What does Mark do?",
+      "when": "When does Mark play on the swing?",
+      "where": "Where does Mark play on the swing?"
+    },
     "answers": {
-      "who": "Mark likes to play on the swing.",
-      "what": "He plays on the swing.",
+      "who": "Mark plays on the swing.",
+      "what": "Plays on the swing.",
       "when": "After he finishes his homework.",
       "where": "At the park."
     }
