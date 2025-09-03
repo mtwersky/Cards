@@ -10,6 +10,7 @@ import SortIntoCategories from "./SortIntoCategories";
 import Vocabulary from "./Vocabulary";
 import Diamond from "./FindTheDiamond";
 import SceneCard from "./SceneCard";
+import Header from "./header";
 import "./App.css";
 
 function AnimatedRoutes() {
@@ -33,13 +34,11 @@ function AnimatedRoutes() {
   );
 }
 
-
-function App() {
+export default function App() {
   return (
     <Router>
-      <AnimatedRoutes />
+      <Header />         {/* ⬅️ put header above the fade wrapper */}
+      <AnimatedRoutes /> {/* pages render beneath, so the header overlays *their* black backgrounds */}
     </Router>
   );
 }
-
-export default App;

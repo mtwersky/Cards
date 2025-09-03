@@ -94,7 +94,6 @@ function Matching() {
 
     return (
         <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="title">Match the Pairs</h1>
             <div style={{ color: "white", fontSize: "1.3rem", marginBottom: "10px" }}>
                 Score: {score}

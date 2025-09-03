@@ -208,7 +208,6 @@ function GuessTheMissing() {
 
     return (
         <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="gtm-title">Guess the Missing Item</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

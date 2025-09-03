@@ -80,7 +80,6 @@ function CompareContrast() {
 
     return (
         <div className="compare-app">
-            <button className="compare-back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="compare-title">Compare & Contrast</h1>
             {categories.length > 0 ? (
                 <>

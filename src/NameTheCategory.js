@@ -100,7 +100,6 @@ function NameTheCategory() {
 
     return (
         <div className="ntc-app">
-            <button className="ntc-back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="ntc-title">Name the Category</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

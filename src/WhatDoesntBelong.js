@@ -146,7 +146,6 @@ function WhatDoesntBelong() {
 
     return (
         <div className="wdb-app">
-            <button className="wdb-back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="wdb-title">What Doesn't Belong?</h1>
             <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

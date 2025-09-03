@@ -11,7 +11,9 @@
 .title {
   font-size: 2.5rem;
   color: #ffffff;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  margin-top: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
@@ -30,20 +32,6 @@
   }
 }
 
-.back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  z-index: 2000;
-  opacity: 0.7;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
 
 .back-button:hover {
   transform: scale(1.1);
@@ -144,6 +132,13 @@
 
 .card-container.fade-in-active {
   opacity: 1;
+}
+/* Global page background + reset */
+html, body, #root {
+  background: #000;   /* so a transparent header doesn’t reveal white */
+}
+body {
+  margin: 0;          /* kill default browser margin that can look like a strip */
 }
 
 /* Shared card grid and card */

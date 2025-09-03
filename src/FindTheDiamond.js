@@ -57,7 +57,6 @@ function FindTheDiamond() {
 
     return (
         <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="title">Find the Diamond</h1>
             <div className="diamond-grid">
                 {cards.map((card, idx) => (
