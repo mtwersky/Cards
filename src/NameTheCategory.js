@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ntc.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function NameTheCategory() {
     const [categories, setCategories] = useState([]);
@@ -88,8 +90,16 @@ function NameTheCategory() {
 
     const current = categories[currentIndex];
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress("name-the-category");
+        setCurrentIndex(0);
+        setScore(0);
+    };
+
     return (
         <div className="ntc-app">
+            <HelpButton gameId="name-the-category" onStartOver={clearProgress} />
             <h1 className="ntc-title">Name the Category</h1>
             <div style={{ color: "#333333", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

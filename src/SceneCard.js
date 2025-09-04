@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./SceneCard.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function SceneCard() {
     const [cardData, setCardData] = useState([]);
@@ -12,12 +14,40 @@ function SceneCard() {
     const [fadeClass, setFadeClass] = useState("fade-in-active");
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const gameId = "scene-card";
 
     useEffect(() => {
         fetch("/sceneCard.json")
             .then((res) => res.json())
-            .then((data) => setCardData(data));
-    }, []);
+            .then((data) => {
+                setCardData(data);
+                
+                // Check for saved progress
+                const savedProgress = getGameProgress(gameId);
+                if (savedProgress && (location.state?.resume || !location.state)) {
+                    setCurrentIndex(savedProgress.currentIndex || 0);
+                }
+            });
+    }, [location.state]);
+
+    // Save progress whenever currentIndex changes
+    useEffect(() => {
+        if (cardData.length > 0 && currentIndex >= 0) {
+            saveGameProgress(gameId, {
+                currentIndex: currentIndex
+            });
+        }
+    }, [currentIndex, cardData.length, gameId]);
+
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress(gameId);
+        setCurrentIndex(0);
+        setFlipped(false);
+        setQuestionType(null);
+        setShowAnswer(false);
+    };
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -63,6 +93,7 @@ function SceneCard() {
 
     return (
         <div className="scene-card-app">
+            <HelpButton gameId={gameId} onStartOver={clearProgress} />
             <h1 className="scene-card-title">Scene Cards</h1>
             <button className="nav-arrow left" onClick={handlePrev}>❮</button>
 

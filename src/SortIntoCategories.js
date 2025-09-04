@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import "./Sort.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function SortIntoCategories() {
     const [allCategories, setAllCategories] = useState([]);
@@ -169,8 +171,20 @@ function SortIntoCategories() {
         }, 400);
     };
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress("sort-into-categories");
+        setCurrentIndex(0);
+        setBins({});
+        setOverlays({});
+        setLockedItems(new Set());
+        setShowResults(false);
+        setAllCorrect(false);
+    };
+
     return (
         <div className="app">
+            <HelpButton gameId="sort-into-categories" onStartOver={clearProgress} />
             <h1 className="title">Sort Into Categories</h1>
 
             {categories.length > 0 && (

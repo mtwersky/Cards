@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Diamond.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function FindTheDiamond() {
     const [cards, setCards] = useState([]);
@@ -51,8 +53,18 @@ function FindTheDiamond() {
         }
     };
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress("diamond");
+        setFlippedIndexes([]);
+        setFadedIndexes([]);
+        setHasWon(false);
+        setLock(false);
+    };
+
     return (
         <div className="app">
+            <HelpButton gameId="diamond" onStartOver={clearProgress} />
             <h1 className="title">Find the Diamond</h1>
             <div className="diamond-grid">
                 {cards.map((card, idx) => (

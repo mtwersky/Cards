@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./GameInstructions.css";
 import { colors } from "./colors";
+import { hasGameProgress } from "./gameProgress";
 
 function GameInstructions() {
     const [instructions, setInstructions] = useState(null);
     const [loading, setLoading] = useState(true);
     const [buttonColor, setButtonColor] = useState(colors[0]);
+    const [hasProgress, setHasProgress] = useState(false);
     const navigate = useNavigate();
     const { gameId } = useParams();
 
@@ -32,6 +34,9 @@ function GameInstructions() {
                     
                     const selectedColor = colorMap[gameId] || colors[0];
                     setButtonColor(selectedColor);
+                    
+                    // Check if there's saved progress for this game
+                    setHasProgress(hasGameProgress(gameId));
                 }
                 setLoading(false);
             })
@@ -57,7 +62,12 @@ function GameInstructions() {
         
         const gameRoute = gameRoutes[gameId];
         if (gameRoute) {
-            navigate(gameRoute);
+            // If there's progress, navigate with a flag to indicate resume
+            if (hasProgress) {
+                navigate(gameRoute, { state: { resume: true } });
+            } else {
+                navigate(gameRoute);
+            }
         }
     };
 
@@ -79,18 +89,20 @@ function GameInstructions() {
 
     return (
         <div className="game-instructions-app">
-            <h1 className="game-instructions-title">{instructions.title}</h1>
-            <div className="game-instructions-container">
-                <p className="game-instructions-text">
-                    {instructions.instructions}
-                </p>
-                <button 
-                    className="game-instructions-start-button" 
-                    onClick={handleStart}
-                    style={{ backgroundColor: buttonColor, border: 'none' }}
-                >
-                    Start
-                </button>
+            <div className="game-instructions-modal">
+                <div className="game-instructions-content">
+                    <h1 className="game-instructions-title">{instructions.title}</h1>
+                    <p className="game-instructions-text">
+                        {instructions.instructions}
+                    </p>
+                    <button 
+                        className="game-instructions-start-button" 
+                        onClick={handleStart}
+                        style={{ backgroundColor: buttonColor, border: 'none' }}
+                    >
+                        {hasProgress ? 'Resume' : 'Start'}
+                    </button>
+                </div>
             </div>
         </div>
     );

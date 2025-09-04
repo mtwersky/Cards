@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./gtm.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function GuessTheMissing() {
     const [categories, setCategories] = useState([]);
@@ -202,8 +204,16 @@ function GuessTheMissing() {
         }, 400);
     };
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress("guess-the-missing");
+        setCurrentIndex(0);
+        setScore(0);
+    };
+
     return (
         <div className="app">
+            <HelpButton gameId="guess-the-missing" onStartOver={clearProgress} />
             <h1 className="gtm-title">Guess the Missing Item</h1>
             <div style={{ color: "#333333", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Compare.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function CompareContrast() {
     const [categories, setCategories] = useState([]);
@@ -68,8 +70,15 @@ function CompareContrast() {
 
     const currentCategory = categories[currentIndex];
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress("compare-contrast");
+        setCurrentIndex(0);
+    };
+
     return (
         <div className="compare-app">
+            <HelpButton gameId="compare-contrast" onStartOver={clearProgress} />
             <h1 className="compare-title">Compare & Contrast</h1>
             {categories.length > 0 ? (
                 <>

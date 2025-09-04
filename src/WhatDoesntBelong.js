@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./WhatDoesntBelong.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function WhatDoesntBelong() {
     const [categories, setCategories] = useState([]);
@@ -17,18 +19,54 @@ function WhatDoesntBelong() {
     const [fadeState, setFadeState] = useState("wdb-fade-in-active");
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const gameId = "what-doesnt-belong";
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/what_doesnt_belong.json")
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
-                if (data.length > 0) {
+                
+                // Check for saved progress
+                const savedProgress = getGameProgress(gameId);
+                if (savedProgress && (location.state?.resume || !location.state)) {
+                    setCurrentIndex(savedProgress.currentIndex || 0);
+                    setScore(savedProgress.score || 0);
+                    if (savedProgress.shuffledItems) {
+                        setShuffledItems(savedProgress.shuffledItems);
+                    } else if (data.length > 0) {
+                        setShuffledItems(shuffleArray(data[savedProgress.currentIndex || 0].examples));
+                    }
+                    setBorderColor(colors[(savedProgress.currentIndex || 0) % colors.length] || colors[0]);
+                } else if (data.length > 0) {
                     setShuffledItems(shuffleArray(data[0].examples));
                     setBorderColor(colors[0]);
                 }
             });
-    }, []);
+    }, [location.state]);
+
+    // Save progress whenever score or currentIndex changes
+    useEffect(() => {
+        if (categories.length > 0 && currentIndex >= 0) {
+            saveGameProgress(gameId, {
+                currentIndex: currentIndex,
+                score: score,
+                shuffledItems: shuffledItems
+            });
+        }
+    }, [score, currentIndex, shuffledItems, categories.length, gameId]);
+
+    // Clear progress when game is completed (optional - you can remove this if you want to keep progress)
+    const clearProgress = () => {
+        clearGameProgress(gameId);
+        setCurrentIndex(0);
+        setScore(0);
+        if (categories.length > 0) {
+            setShuffledItems(shuffleArray(categories[0].examples));
+            setBorderColor(colors[0]);
+        }
+    };
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -136,6 +174,7 @@ function WhatDoesntBelong() {
 
     return (
         <div className="wdb-app">
+            <HelpButton gameId={gameId} onStartOver={clearProgress} />
             <h1 className="wdb-title">What Doesn't Belong?</h1>
             <div style={{ color: "#333333", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}

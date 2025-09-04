@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Matching.css";
 import { colors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 function Matching() {
     const [grid1, setGrid1] = useState([]);
@@ -15,6 +17,8 @@ function Matching() {
     const [isBusy, setIsBusy] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const gameId = "matching";
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/matches.json")
@@ -88,8 +92,20 @@ function Matching() {
         }
     };
 
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress(gameId);
+        // Reset game state
+        setGrid1([]);
+        setGrid2([]);
+        setRevealedIndexes([]);
+        setMatchedPairs([]);
+        setScore(0);
+    };
+
     return (
         <div className="app">
+            <HelpButton gameId={gameId} onStartOver={clearProgress} />
             <h1 className="title">Match the Pairs</h1>
             <div style={{ color: "#333333", fontSize: "1.3rem", marginBottom: "10px" }}>
                 Score: {score}

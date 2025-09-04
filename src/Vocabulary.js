@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./vocab.css";
 import { colors as vocabColors } from "./colors";
+import HelpButton from "./HelpButton";
+import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
 
 const questions = [
     "What is it?",
@@ -19,18 +21,46 @@ function Vocabulary() {
     const [isFlipped, setIsFlipped] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const navigate = useNavigate();
+    const location = useLocation();
+    const gameId = "vocabulary";
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/vocabulary.json")
             .then((res) => res.json())
             .then((data) => {
                 setVocabItems(data);
-                setVocabBorderColor(vocabColors[0]);
+                
+                // Check for saved progress
+                const savedProgress = getGameProgress(gameId);
+                if (savedProgress && (location.state?.resume || !location.state)) {
+                    setCurrentVocabIndex(savedProgress.currentIndex || 0);
+                    setVocabBorderColor(vocabColors[(savedProgress.currentIndex || 0) % vocabColors.length]);
+                } else {
+                    setVocabBorderColor(vocabColors[0]);
+                }
             })
             .catch((err) => {
                 console.error("Failed to load vocabulary.json", err);
             });
-    }, []);
+    }, [location.state]);
+
+    // Save progress whenever currentIndex changes
+    useEffect(() => {
+        if (vocabItems.length > 0 && currentVocabIndex >= 0) {
+            saveGameProgress(gameId, {
+                currentIndex: currentVocabIndex
+            });
+        }
+    }, [currentVocabIndex, vocabItems.length, gameId]);
+
+    // Clear progress function
+    const clearProgress = () => {
+        clearGameProgress(gameId);
+        setCurrentVocabIndex(0);
+        setVocabBorderColor(vocabColors[0]);
+        setIsFlipped(false);
+        setCurrentQuestionIndex(0);
+    };
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -93,6 +123,7 @@ function Vocabulary() {
 
     return (
         <div className="vocab-app">
+            <HelpButton gameId={gameId} onStartOver={clearProgress} />
             <h1 className="vocab-title">Expressive Language</h1>
             <button className="vocab-nav-arrow vocab-left" onClick={handlePrevVocab}>❮</button>
 
