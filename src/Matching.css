@@ -1,13 +1,12 @@
 .simple-card {
     padding: 0;
     aspect-ratio: 1 / 1;
-    overflow: hidden;
+    overflow: visible;
     background: none;
     border: none;
     /* Remove outer border */
     border-radius: 20px;
     transition: opacity 0.5s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .simple-card-inner-with-border {
@@ -20,7 +19,9 @@
     /* Move border here so it flips */
     border-radius: 20px;
     box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .simple-card-front,
 .simple-card-back {

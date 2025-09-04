@@ -25,10 +25,15 @@ function Matching() {
             .then((res) => res.json())
             .then((data) => {
                 const selectedPairs = shuffleArray(data).slice(0, 9);
-                const firstHalf = selectedPairs.map(pair => ({ ...pair.item1, pairId: pair.pairId }));
-                const secondHalf = selectedPairs.map(pair => ({ ...pair.item2, pairId: pair.pairId }));
-                setGrid1(shuffleArray(firstHalf));
-                setGrid2(shuffleArray(secondHalf));
+                const firstHalf = selectedPairs.map((pair, index) => ({ ...pair.item1, pairId: index }));
+                const secondHalf = selectedPairs.map((pair, index) => ({ ...pair.item2, pairId: index }));
+                
+                // Shuffle each grid but preserve pairId
+                const shuffledFirstHalf = shuffleArray(firstHalf);
+                const shuffledSecondHalf = shuffleArray(secondHalf);
+                
+                setGrid1(shuffledFirstHalf);
+                setGrid2(shuffledSecondHalf);
             });
     }, []);
 
@@ -75,11 +80,12 @@ function Matching() {
                     setMatchedIndexes(prev => [...prev, firstKey, secondKey]);
                     setScore(prev => prev + 1);
                     setTimeout(() => {
+                        const pairColor = colors[firstCard.pairId % colors.length];
                         setMatchedPairs(prev => [
                             ...prev,
                             [
-                                { ...firstCard, borderColor: colors[firstIdx % colors.length] },
-                                { ...secondCard, borderColor: colors[secondIdx % colors.length] }
+                                { ...firstCard, borderColor: pairColor },
+                                { ...secondCard, borderColor: pairColor }
                             ]
                         ]);
                     }, 1000);
@@ -109,10 +115,15 @@ function Matching() {
             .then((res) => res.json())
             .then((data) => {
                 const selectedPairs = shuffleArray(data).slice(0, 9);
-                const firstHalf = selectedPairs.map(pair => ({ ...pair.item1, pairId: pair.pairId }));
-                const secondHalf = selectedPairs.map(pair => ({ ...pair.item2, pairId: pair.pairId }));
-                setGrid1(shuffleArray(firstHalf));
-                setGrid2(shuffleArray(secondHalf));
+                const firstHalf = selectedPairs.map((pair, index) => ({ ...pair.item1, pairId: index }));
+                const secondHalf = selectedPairs.map((pair, index) => ({ ...pair.item2, pairId: index }));
+                
+                // Shuffle each grid but preserve pairId
+                const shuffledFirstHalf = shuffleArray(firstHalf);
+                const shuffledSecondHalf = shuffleArray(secondHalf);
+                
+                setGrid1(shuffledFirstHalf);
+                setGrid2(shuffledSecondHalf);
             });
     };
 
@@ -146,8 +157,14 @@ function Matching() {
                                         className={`simple-card ${isRevealed ? "flipped" : ""} ${isMatched ? "matched-disappear" : ""} ${faded ? "faded" : ""}`}
                                     >
                                         <div
-                                            className="simple-card-inner-with-border"
-                                            style={{ borderColor: colors[idx % colors.length] }}
+                                            className={`simple-card-inner-with-border ${isMatched ? 'matched-pair' : ''}`}
+                                            style={{ 
+                                                borderColor: isMatched 
+                                                    ? colors[card.pairId % colors.length]
+                                                    : gridName === 'g1' 
+                                                        ? colors[idx % colors.length] 
+                                                        : colors[(idx + 4) % colors.length]
+                                            }}
                                         >
                                             <div className="simple-card-front">{idx + 1}</div>
                                             <div className="simple-card-back">
@@ -169,13 +186,13 @@ function Matching() {
                             src={pair[0].image}
                             alt={pair[0].name}
                             className="matched-thumb"
-                            style={{ borderColor: pair[0].borderColor }}
+                            style={{ borderColor: colors[pair[0].pairId % colors.length] }}
                         />
                         <img
                             src={pair[1].image}
                             alt={pair[1].name}
                             className="matched-thumb"
-                            style={{ borderColor: pair[1].borderColor }}
+                            style={{ borderColor: colors[pair[0].pairId % colors.length] }}
                         />
                     </div>
                 ))}

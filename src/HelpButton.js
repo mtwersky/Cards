@@ -101,7 +101,7 @@ function HelpButton({ gameId, onStartOver }) {
                                 onClick={handleResumeGame}
                                 style={{ backgroundColor: buttonColor, border: 'none' }}
                             >
-                                {hasProgress ? 'Resume Game' : 'Start Game'}
+                                Resume
                             </button>
                         </div>
                     </div>
