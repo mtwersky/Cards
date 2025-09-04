@@ -1,7 +1,7 @@
 .scene-card-app {
     background-color: #ffffff;
     min-height: 100vh;
-    padding: 30px 20px 20px;
+    padding: 10px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,8 +13,8 @@
     font-size: 2rem;
     color: #333333;
     font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: -20px;
+    margin-bottom: 5px;
+    margin-top: -50px;
     font-family: 'Poppins', sans-serif;
 }
 

@@ -1,0 +1,63 @@
+.game-instructions-app {
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.game-instructions-title {
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 40px;
+  margin-top: 0px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.game-instructions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin-top: 0px;
+}
+
+.game-instructions-text {
+  font-size: 1.2rem;
+  color: #333333;
+  margin-bottom: 50px;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.game-instructions-start-button {
+  color: #333333;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-instructions-start-button:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.game-instructions-loading,
+.game-instructions-error {
+  font-size: 1.2rem;
+  color: #333333;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 50px;
+}

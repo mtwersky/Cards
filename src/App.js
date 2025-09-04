@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Home";
 import WhatDoesntBelong from "./WhatDoesntBelong";
+import GameInstructions from "./GameInstructions";
 import NameTheCategory from "./NameTheCategory";
 import Matching from "./Matching";
 import CompareContrast from "./CompareContrast";
@@ -19,7 +20,8 @@ function AnimatedRoutes() {
     <div className="fade-page" key={location.pathname}>
       <Routes location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="/what-doesnt-belong" element={<WhatDoesntBelong />} />
+        <Route path="/instructions/:gameId" element={<GameInstructions />} />
+        <Route path="/whatdoesntbelong" element={<WhatDoesntBelong />} />
         <Route path="/name-the-category" element={<NameTheCategory />} />
         <Route path="/matching" element={<Matching />} />
         <Route path="/compare-contrast" element={<CompareContrast />} />

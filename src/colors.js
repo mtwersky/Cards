@@ -1,11 +1,11 @@
 // Shared color palette for all games
 export const colors = [
-    "#a5c9ff", // pastel blue
-    "#ffb3ba", // pastel red
-    "#c7e6c7", // soft pastel green
-    "#f5f5a0", // soft pastel yellow
-    "#d4b3ff", // pastel purple
-    "#ffdfba", // pastel orange
-    "#bae1ff", // pastel cyan
-    "#ffb3d1"  // pastel pink
+    "#e6b3ff", // very pastel lavender
+    "#ffb3e6", // very pastel pink
+    "#d9b3ff", // very pastel purple
+    "#b3d9ff", // very pastel bluish purple
+    "#f0b3ff", // very pastel light purple
+    "#e6b3ff", // very pastel lavender (reused)
+    "#ffb3e6", // very pastel pink (reused)
+    "#b3d9ff"  // very pastel bluish purple (reused)
 ];

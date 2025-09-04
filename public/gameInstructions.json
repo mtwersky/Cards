@@ -1,0 +1,38 @@
+{
+  "what-doesnt-belong": {
+    "title": "What doesn't belong?",
+    "instructions": "Look at the four items shown. Three of them belong together in a group, but one is different. Click on the item that doesn't belong with the others."
+  },
+  "name-the-category": {
+    "title": "Name the Category",
+    "instructions": "Look at the four items shown. Think about what category or group they all belong to. Type the name of that category in the text box and press Enter."
+  },
+  "matching": {
+    "title": "Match the Pairs",
+    "instructions": "You'll see two grids of items. Match each item from the left grid with its corresponding item from the right grid. Click on pairs to make matches."
+  },
+  "compare-contrast": {
+    "title": "Compare / Contrast",
+    "instructions": "Look at the two items shown. Think about how they are similar and different. Click on the item that best matches the comparison question asked."
+  },
+  "guess-the-missing": {
+    "title": "Guess the Missing Item",
+    "instructions": "Look at the three items shown. Think about what pattern or category they form. Click on the fourth item that completes the group."
+  },
+  "sort-into-categories": {
+    "title": "Sort into Categories",
+    "instructions": "Drag each item from the center and drop it into the correct category bin. Each item belongs to only one specific category."
+  },
+  "vocabulary": {
+    "title": "Expressive Language",
+    "instructions": "Look at the picture shown. Answer the vocabulary questions about what the item is, how to describe it, and what goes with it."
+  },
+  "diamond": {
+    "title": "Find the Diamond",
+    "instructions": "Look through all the face-down cards to find the hidden diamond. Click on cards to flip them over and reveal what's underneath. Find the diamond to win!"
+  },
+  "scene-card": {
+    "title": "Scene Cards",
+    "instructions": "Look at the scene picture shown. Click on the card to flip it over and see the questions. Answer the questions about what's happening in the scene."
+  }
+}

@@ -1,20 +1,20 @@
 /* ---------- Compare & Contrast container ---------- */
 .compare-app {
-    background-color: #ffffff;
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .compare-title {
-    font-size: 2.5rem;
-    color: #333333;
-    margin-bottom: 20px;
-    margin-top: -20px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 5px;
+  margin-top: -50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 
