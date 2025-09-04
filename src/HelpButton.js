@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HelpButton.css";
-import { clearGameProgress } from "./gameProgress";
+import { clearGameProgress, hasGameProgress } from "./gameProgress";
 import { colors } from "./colors";
 
 function HelpButton({ gameId, onStartOver }) {
@@ -9,9 +9,12 @@ function HelpButton({ gameId, onStartOver }) {
     const [showInstructions, setShowInstructions] = useState(false);
     const [instructions, setInstructions] = useState(null);
     const [buttonColor, setButtonColor] = useState(colors[0]);
+    const [hasProgress, setHasProgress] = useState(false);
     const navigate = useNavigate();
 
     const handleHelpClick = () => {
+        // Check for progress each time the help menu is opened
+        setHasProgress(hasGameProgress(gameId));
         setShowHelp(true);
     };
 
@@ -20,6 +23,8 @@ function HelpButton({ gameId, onStartOver }) {
     };
 
     const handleViewInstructions = () => {
+        // Check for progress when viewing instructions
+        setHasProgress(hasGameProgress(gameId));
         setShowInstructions(true);
         setShowHelp(false);
     };
@@ -29,23 +34,9 @@ function HelpButton({ gameId, onStartOver }) {
         setShowHelp(true);
     };
 
-    const handleStartGame = () => {
-        const gameRoutes = {
-            "what-doesnt-belong": "/whatdoesntbelong",
-            "name-the-category": "/name-the-category",
-            "matching": "/matching",
-            "compare-contrast": "/compare-contrast",
-            "guess-the-missing": "/guess-the-missing",
-            "sort-into-categories": "/sort-into-categories",
-            "vocabulary": "/vocabulary",
-            "diamond": "/diamond",
-            "scene-card": "/scene-card"
-        };
-        
-        const gameRoute = gameRoutes[gameId];
-        if (gameRoute) {
-            navigate(gameRoute, { state: { resume: true } });
-        }
+    const handleResumeGame = () => {
+        // Just close the instructions modal and return to the game
+        setShowInstructions(false);
     };
 
     // Load instructions when component mounts
@@ -71,6 +62,9 @@ function HelpButton({ gameId, onStartOver }) {
                     
                     const selectedColor = colorMap[gameId] || colors[0];
                     setButtonColor(selectedColor);
+                    
+                    // Check if there's saved progress for this game
+                    setHasProgress(hasGameProgress(gameId));
                 }
             })
             .catch((error) => {
@@ -104,10 +98,10 @@ function HelpButton({ gameId, onStartOver }) {
                             </button>
                             <button 
                                 className="help-button" 
-                                onClick={handleStartGame}
+                                onClick={handleResumeGame}
                                 style={{ backgroundColor: buttonColor, border: 'none' }}
                             >
-                                Resume Game
+                                {hasProgress ? 'Resume Game' : 'Start Game'}
                             </button>
                         </div>
                     </div>

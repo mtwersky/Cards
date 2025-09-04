@@ -62,6 +62,12 @@ function WhatDoesntBelong() {
         clearGameProgress(gameId);
         setCurrentIndex(0);
         setScore(0);
+        setOverlays({});
+        setDisabledItems({});
+        setHighlightIndex(null);
+        setIsLocking(false);
+        setHasTriedWrong(false);
+        setFadeState("wdb-fade-in-active");
         if (categories.length > 0) {
             setShuffledItems(shuffleArray(categories[0].examples));
             setBorderColor(colors[0]);

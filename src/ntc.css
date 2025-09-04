@@ -109,6 +109,19 @@
     background-color: transparent;
 }
 
+.ntc-card-number {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
 .ntc-category-id {
     position: absolute;
     bottom: 10px;

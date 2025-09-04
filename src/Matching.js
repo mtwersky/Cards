@@ -96,11 +96,24 @@ function Matching() {
     const clearProgress = () => {
         clearGameProgress(gameId);
         // Reset game state
-        setGrid1([]);
-        setGrid2([]);
         setRevealedIndexes([]);
+        setMatchedIndexes([]);
         setMatchedPairs([]);
         setScore(0);
+        setLockedGrid(null);
+        setSelectedKey(null);
+        setIsBusy(false);
+        
+        // Reload fresh data and shuffle
+        fetch(process.env.PUBLIC_URL + "/matches.json")
+            .then((res) => res.json())
+            .then((data) => {
+                const selectedPairs = shuffleArray(data).slice(0, 9);
+                const firstHalf = selectedPairs.map(pair => ({ ...pair.item1, pairId: pair.pairId }));
+                const secondHalf = selectedPairs.map(pair => ({ ...pair.item2, pairId: pair.pairId }));
+                setGrid1(shuffleArray(firstHalf));
+                setGrid2(shuffleArray(secondHalf));
+            });
     };
 
     return (

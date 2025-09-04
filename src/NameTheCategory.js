@@ -95,6 +95,13 @@ function NameTheCategory() {
         clearGameProgress("name-the-category");
         setCurrentIndex(0);
         setScore(0);
+        setShowAnswer(false);
+        setConfirmAnswer(false);
+        setFadeState("ntc-fade-in-active");
+        if (categories.length > 0) {
+            setShuffledItems(shuffleArray(categories[0].examples));
+            setBorderColor(colors[0]);
+        }
     };
 
     return (
@@ -123,6 +130,7 @@ function NameTheCategory() {
                                 </button>
                             ))}
                         </div>
+                        <div className="ntc-card-number">{currentIndex + 1}</div>
                         {showAnswer && (
                             <div className="ntc-category-id">{current.name}</div>
                         )}

@@ -7,6 +7,7 @@
     /* Remove outer border */
     border-radius: 20px;
     transition: opacity 0.5s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .simple-card-inner-with-border {
