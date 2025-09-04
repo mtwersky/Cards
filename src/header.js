@@ -1,10 +1,12 @@
+// src/header.js
 import React from "react";
 import "./header.css";
 import { useAuth } from "./AuthContext";
-import { logout } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <header className="site-header">
@@ -12,10 +14,20 @@ export default function Header() {
         <nav className="header-nav">
           <a className="header-link" href="/">Home</a>
         </nav>
-        {user ? (
-          <span className="header-link" onClick={logout}>Log Out</span>
-        ) : (
-          <a className="header-link" href="/login">Log In</a>
+
+        {user && (
+          <img
+            src={user.photoURL}
+            alt="Profile"
+            onClick={() => navigate("/account")}
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              cursor: "pointer",
+              objectFit: "cover",
+            }}
+          />
         )}
       </div>
     </header>

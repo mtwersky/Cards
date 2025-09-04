@@ -9,7 +9,10 @@ import CompareContrast from "./CompareContrast";
 import Vocabulary from "./Vocabulary";
 import SortIntoCategories from "./SortIntoCategories";
 import SceneCard from "./SceneCard";
-
+import Matching from "./Matching";
+import NameTheCategory from "./NameTheCategory";
+import FindTheDiamond from "./FindTheDiamond";
+import AccountPage from "./AccountPage";
 import LoginPage from "./LoginPage";
 import Header from "./header";
 
@@ -31,7 +34,7 @@ function App() {
         <Routes>
           {/* Public route */}
           <Route path="/login" element={<LoginPage />} />
-
+          <Route path="/account" element={<AccountPage />} />
           {/* Private routes */}
           <Route
             path="/"
@@ -54,6 +57,22 @@ function App() {
             element={
               <PrivateRoute>
                 <WhatDoesntBelong />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/matching"
+            element={
+              <PrivateRoute>
+                <Matching />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/name-the-category"
+            element={
+              <PrivateRoute>
+                <NameTheCategory />
               </PrivateRoute>
             }
           />
@@ -90,6 +109,14 @@ function App() {
             }
           />
 
+          <Route
+            path="/find-the-diamond"
+            element={
+              <PrivateRoute>
+                <FindTheDiamond />
+              </PrivateRoute>
+            }
+          />
           {/* Catch-all: redirect to / if logged in, else /login */}
           <Route
             path="*"
