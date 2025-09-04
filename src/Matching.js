@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Matching.css";
-
-const colors = [
-    "#f7d84b", "#ff9999", "#99ccff", "#99ff99",
-    "#ffcc99", "#dda0dd", "#ff6666", "#66cccc"
-];
+import { colors } from "./colors";
 
 function Matching() {
     const [grid1, setGrid1] = useState([]);
@@ -95,7 +91,7 @@ function Matching() {
     return (
         <div className="app">
             <h1 className="title">Match the Pairs</h1>
-            <div style={{ color: "white", fontSize: "1.3rem", marginBottom: "10px" }}>
+            <div style={{ color: "#333333", fontSize: "1.3rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
             <div className="grid-wrapper-container">

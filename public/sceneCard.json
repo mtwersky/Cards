@@ -6,12 +6,12 @@
     "questions": {
       "who": "Who was building a sandcastle?",
       "what": "What does Johnny do?",
-      "when": "When does Johnny was building a sandcastle?",
-      "where": "Where does Johnny was building a sandcastle?"
+      "when": "When was Johnny building a sandcastle?",
+      "where": "Where was Johnny building a sandcastle?"
     },
     "answers": {
       "who": "Johnny was building a sandcastle.",
-      "what": "Was building a sandcastle.",
+      "what": "Builds a sandcastle.",
       "when": "On a hot summer day.",
       "where": "At the beach."
     }
@@ -97,7 +97,7 @@
     "answers": {
       "who": "Patricia vacuums the floor.",
       "what": "Vacuums the floor.",
-      "when": "On tuesday.",
+      "when": "On Tuesday.",
       "where": "In her bedroom."
     }
   },
@@ -113,7 +113,7 @@
     },
     "answers": {
       "who": "Lily cleaned the counters.",
-      "what": "Cleaned the counters.",
+      "what": "Cleans the counters.",
       "when": "After she baked cookies.",
       "where": "In the kitchen."
     }
@@ -148,8 +148,8 @@
     "answers": {
       "who": "Kate cuts up salad.",
       "what": "Cuts up salad.",
-      "when": "On thanksgiving.",
-      "where": "At grandma's house."
+      "when": "On Thanksgiving.",
+      "where": "At Grandma's house."
     }
   },
   {
@@ -165,7 +165,7 @@
     "answers": {
       "who": "Tim does his homework.",
       "what": "Does his homework.",
-      "when": "On sunday morning.",
+      "when": "On Sunday morning.",
       "where": "In the den."
     }
   },
@@ -199,7 +199,7 @@
     "answers": {
       "who": "Matthew cuts the grass.",
       "what": "Cuts the grass.",
-      "when": "Every wednesday.",
+      "when": "Every Wednesday.",
       "where": "In the backyard."
     }
   },
@@ -216,7 +216,7 @@
     "answers": {
       "who": "Evan cuts the paper.",
       "what": "Cuts the paper.",
-      "when": "After lunch on monday.",
+      "when": "After lunch on Monday.",
       "where": "In the art room."
     }
   },
@@ -233,7 +233,7 @@
     "answers": {
       "who": "Kayla eats popcorn.",
       "what": "Eats popcorn.",
-      "when": "On saturday night.",
+      "when": "On Saturday night.", 
       "where": "At the movie theater."
     }
   },

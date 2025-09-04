@@ -1,11 +1,11 @@
-/* ===== Sticky Black Header ===== */
+/* ===== Sticky Header ===== */
 .site-header {
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 100;
-    height: 10px;
-    background-color: #00000000; /* black background */
+    height: 60px;
+    background-color: transparent;
   }
   
   .header-inner {
@@ -17,7 +17,7 @@
   }
   
   .header-link {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(51, 51, 51, 0.8);
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
@@ -28,6 +28,6 @@
   
   .header-link:hover {
     transform: scale(1.05);
-    color: #fff;
+    color: #333;
   }
   

@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SceneCard.css";
-
-const colors = [
-    "#f7d84b", "#ff9999", "#99ccff", "#99ff99",
-    "#ffcc99", "#dda0dd", "#ff6666", "#66cccc"
-];
+import { colors } from "./colors";
 
 function SceneCard() {
     const [cardData, setCardData] = useState([]);
@@ -68,7 +64,6 @@ function SceneCard() {
     return (
         <div className="scene-card-app">
             <h1 className="scene-card-title">Scene Cards</h1>
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <button className="nav-arrow left" onClick={handlePrev}>❮</button>
 
             <div className={`scene-card-container ${fadeClass}`}>

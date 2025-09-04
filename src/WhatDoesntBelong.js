@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./WhatDoesntBelong.css";
-
-const colors = [
-    "#f7d84b",
-    "#ff9999",
-    "#99ccff",
-    "#99ff99",
-    "#ffcc99",
-    "#dda0dd",
-    "#ff6666",
-    "#66cccc"
-];
+import { colors } from "./colors";
 
 function WhatDoesntBelong() {
     const [categories, setCategories] = useState([]);
@@ -147,7 +137,7 @@ function WhatDoesntBelong() {
     return (
         <div className="wdb-app">
             <h1 className="wdb-title">What Doesn't Belong?</h1>
-            <div style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
+            <div style={{ color: "#333333", fontFamily: "Poppins", fontSize: "1.2rem", marginBottom: "10px" }}>
                 Score: {score}
             </div>
             {current ? (

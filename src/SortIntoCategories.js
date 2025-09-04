@@ -2,17 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import "./Sort.css";
-
-const colors = [
-    "#f7d84b",
-    "#ff9999",
-    "#99ccff",
-    "#99ff99",
-    "#ffcc99",
-    "#dda0dd",
-    "#ff6666",
-    "#66cccc"
-];
+import { colors } from "./colors";
 
 function SortIntoCategories() {
     const [allCategories, setAllCategories] = useState([]);
@@ -181,7 +171,6 @@ function SortIntoCategories() {
 
     return (
         <div className="app">
-            <button className="back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="title">Sort Into Categories</h1>
 
             {categories.length > 0 && (

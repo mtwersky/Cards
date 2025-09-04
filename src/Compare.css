@@ -1,6 +1,6 @@
 /* ---------- Compare & Contrast container ---------- */
 .compare-app {
-    background-color: #000000;
+    background-color: #ffffff;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -10,31 +10,13 @@
 
 .compare-title {
     font-size: 2.5rem;
-  color: #ffffff;
-  margin: 0 0 0px 0; /* tighten spacing */
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-}
-
-.compare-back-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    z-index: 2000;
-    opacity: 0.7;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.compare-back-button:hover {
-    transform: scale(1.1);
     color: #333333;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
+
 
 .compare-nav-arrow {
     position: fixed;

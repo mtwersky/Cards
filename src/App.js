@@ -37,8 +37,19 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <Header />         {/* ⬅️ put header above the fade wrapper */}
+      <ConditionalHeader />
       <AnimatedRoutes /> {/* pages render beneath, so the header overlays *their* black backgrounds */}
     </Router>
   );
+}
+
+function ConditionalHeader() {
+  const location = useLocation();
+  
+  // Don't show header on home page
+  if (location.pathname === "/") {
+    return null;
+  }
+  
+  return <Header />;
 }

@@ -1,6 +1,6 @@
 /* Home container */
 .home-app {
-    background-color: #000000;
+    background-color: #ffffff;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -10,7 +10,7 @@
 
 .home-title {
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #333333;
     margin-bottom: 50px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -46,7 +46,11 @@
     text-align: center;
 }
 
+.home-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .home-card:hover {
     transform: scale(1.07);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

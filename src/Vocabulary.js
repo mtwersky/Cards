@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./vocab.css";
-
-const vocabColors = [
-    "#f7d84b", "#ff9999", "#99ccff", "#99ff99",
-    "#ffcc99", "#dda0dd", "#ff6666", "#66cccc"
-];
+import { colors as vocabColors } from "./colors";
 
 const questions = [
     "What is it?",
@@ -86,7 +82,6 @@ function Vocabulary() {
     if (vocabItems.length === 0) {
         return (
             <div className="vocab-app">
-                <button className="vocab-back-button" onClick={() => navigate("/")}>Home</button>
                 <h1 className="vocab-title">Vocabulary</h1>
                 <p className="vocab-loading-text">Loading...</p>
             </div>
@@ -98,7 +93,6 @@ function Vocabulary() {
 
     return (
         <div className="vocab-app">
-            <button className="vocab-back-button" onClick={() => navigate("/")}>Home</button>
             <h1 className="vocab-title">Expressive Language</h1>
             <button className="vocab-nav-arrow vocab-left" onClick={handlePrevVocab}>❮</button>
 

@@ -1,17 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-
-const colors = [
-    "#f7d84b", // yellow
-    "#ff9999", // pink
-    "#99ccff", // blue
-    "#99ff99", // light green
-    "#ffcc99", // peach
-    "#dda0dd", // purple
-    "#ff6666", // red
-    "#66cccc"  // teal
-];
+import { colors } from "./colors";
 
 function Home() {
     const navigate = useNavigate();
@@ -90,41 +80,7 @@ function Home() {
                 >
                     x
                 </div>
-                <div
-                    className="home-card"
-                    style={{ borderColor: colors[2] }}
-                    onClick={() => navigate("")}
-                >
-                    x
-                </div>
-                <div
-                    className="home-card"
-                    style={{ borderColor: colors[3] }}
-                    onClick={() => navigate("")}
-                >
-                    x
-                </div>
-                <div
-                    className="home-card"
-                    style={{ borderColor: colors[4] }}
-                    onClick={() => navigate("")}
-                >
-                    x
-                </div>
-                <div
-                    className="home-card"
-                    style={{ borderColor: colors[5] }}
-                    onClick={() => navigate("")}
-                >
-                    x
-                </div>
-                <div
-                    className="home-card"
-                    style={{ borderColor: colors[6] }}
-                    onClick={() => navigate("")}
-                >
-                    x
-                </div>
+              
             </div>
         </div>
     );

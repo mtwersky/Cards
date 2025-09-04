@@ -1,5 +1,5 @@
 .scene-card-app {
-    background-color: #000;
+    background-color: #ffffff;
     min-height: 100vh;
     padding: 30px 20px 20px;
     display: flex;
@@ -11,9 +11,10 @@
 
 .scene-card-title {
     font-size: 2rem;
-    color: white;
+    color: #333333;
     font-weight: 600;
     margin-bottom: 20px;
+    margin-top: -20px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -181,24 +182,4 @@
 
 .nav-arrow.right {
     right: 20px;
-}
-
-.back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    z-index: 2000;
-    opacity: 0.7;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.back-button:hover {
-    transform: scale(1.1);
-    color: #dddddd;
 }
