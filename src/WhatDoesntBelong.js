@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./WhatDoesntBelong.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
-import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { saveGameProgress, getGameProgress, clearGameProgress, markGameCompleted } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 function WhatDoesntBelong() {
     const [categories, setCategories] = useState([]);
@@ -21,6 +22,79 @@ function WhatDoesntBelong() {
     const navigate = useNavigate();
     const location = useLocation();
     const gameId = "what-doesnt-belong";
+    const categoriesRef = useRef([]);
+    const currentIndexRef = useRef(0);
+    const scoreRef = useRef(0);
+
+    // Update refs when state changes
+    useEffect(() => {
+        categoriesRef.current = categories;
+        currentIndexRef.current = currentIndex;
+        scoreRef.current = score;
+    }, [categories, currentIndex, score]);
+
+    // Shuffle function
+    const shuffleArray = useCallback((array) => {
+        return array
+            .map((item) => ({ item, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ item }) => item);
+    }, []);
+
+    // Navigation functions with useCallback
+    const handleNext = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
+        const currentScore = scoreRef.current;
+        
+        if (currentIdx < categoriesData.length - 1) {
+            setFadeState("wdb-fade-out");
+            setTimeout(() => {
+                const nextIndex = currentIdx + 1;
+                setCurrentIndex(nextIndex);
+                setShuffledItems(shuffleArray(categoriesData[nextIndex].examples));
+                setBorderColor(colors[nextIndex % colors.length]);
+                setFadeState("wdb-fade-in-active");
+            }, 400);
+        } else if (currentIdx === categoriesData.length - 1) {
+            // This is the last category - navigate to game end when right arrow is pressed
+            markGameCompleted(gameId, currentScore, categoriesData.length);
+            navigate('/game-end', {
+                state: {
+                    gameName: "What Doesn't Belong?",
+                    score: currentScore,
+                    totalQuestions: categoriesData.length,
+                    gameId: 'what-doesnt-belong'
+                }
+            });
+        }
+    }, [gameId, navigate, shuffleArray]);
+
+    const handlePrev = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
+        
+        if (currentIdx > 0) {
+            setFadeState("wdb-fade-out");
+            setTimeout(() => {
+                const prevIndex = currentIdx - 1;
+                setCurrentIndex(prevIndex);
+                setShuffledItems(shuffleArray(categoriesData[prevIndex].examples));
+                setBorderColor(colors[prevIndex % colors.length]);
+                setFadeState("wdb-fade-in-active");
+            }, 400);
+        }
+    }, [shuffleArray]);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNext,
+        handlePrev,
+        { 
+            threshold: 50,
+            disabled: currentIndex === 0 // Disable drag to prev on first card
+        }
+    );
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/what_doesnt_belong.json")
@@ -28,34 +102,54 @@ function WhatDoesntBelong() {
             .then((data) => {
                 setCategories(data);
                 
-                // Check for saved progress
-                const savedProgress = getGameProgress(gameId);
-                if (savedProgress && (location.state?.resume || !location.state)) {
-                    setCurrentIndex(savedProgress.currentIndex || 0);
-                    setScore(savedProgress.score || 0);
-                    if (savedProgress.shuffledItems) {
-                        setShuffledItems(savedProgress.shuffledItems);
-                    } else if (data.length > 0) {
-                        setShuffledItems(shuffleArray(data[savedProgress.currentIndex || 0].examples));
-                    }
-                    setBorderColor(colors[(savedProgress.currentIndex || 0) % colors.length] || colors[0]);
-                } else if (data.length > 0) {
+                // Check for restart or saved progress
+                if (location.state?.restart) {
+                    // Restart from beginning
+                    setCurrentIndex(0);
+                    setScore(0);
+                    setHasTriedWrong(false);
                     setShuffledItems(shuffleArray(data[0].examples));
                     setBorderColor(colors[0]);
+                    clearGameProgress(gameId);
+                } else {
+                    const savedProgress = getGameProgress(gameId);
+                    if (savedProgress && (location.state?.resume || !location.state)) {
+                        // Only restore progress if the user actually played (has score or tried wrong)
+                        if (savedProgress.score > 0 || savedProgress.hasTriedWrong) {
+                            setCurrentIndex(savedProgress.currentIndex || 0);
+                            setScore(savedProgress.score || 0);
+                            setHasTriedWrong(savedProgress.hasTriedWrong || false);
+                            if (savedProgress.shuffledItems) {
+                                setShuffledItems(savedProgress.shuffledItems);
+                            } else if (data.length > 0) {
+                                setShuffledItems(shuffleArray(data[savedProgress.currentIndex || 0].examples));
+                            }
+                            setBorderColor(colors[(savedProgress.currentIndex || 0) % colors.length] || colors[0]);
+                        } else {
+                            // Clear invalid progress (game was loaded but not played)
+                            clearGameProgress(gameId);
+                            setShuffledItems(shuffleArray(data[0].examples));
+                            setBorderColor(colors[0]);
+                        }
+                    } else if (data.length > 0) {
+                        setShuffledItems(shuffleArray(data[0].examples));
+                        setBorderColor(colors[0]);
+                    }
                 }
             });
     }, [location.state]);
 
-    // Save progress whenever score or currentIndex changes
+    // Save progress whenever score or currentIndex changes, but only if user has actually played
     useEffect(() => {
-        if (categories.length > 0 && currentIndex >= 0) {
+        if (categories.length > 0 && currentIndex >= 0 && (score > 0 || hasTriedWrong)) {
             saveGameProgress(gameId, {
                 currentIndex: currentIndex,
                 score: score,
-                shuffledItems: shuffledItems
+                shuffledItems: shuffledItems,
+                hasTriedWrong: hasTriedWrong
             });
         }
-    }, [score, currentIndex, shuffledItems, categories.length, gameId]);
+    }, [score, currentIndex, shuffledItems, categories.length, gameId, hasTriedWrong]);
 
     // Clear progress when game is completed (optional - you can remove this if you want to keep progress)
     const clearProgress = () => {
@@ -86,12 +180,6 @@ function WhatDoesntBelong() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     });
 
-    const shuffleArray = (array) => {
-        return array
-            .map((item) => ({ item, sort: Math.random() }))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({ item }) => item);
-    };
 
     const changeCategory = (index) => {
         setCurrentIndex(index);
@@ -104,23 +192,6 @@ function WhatDoesntBelong() {
         setHasTriedWrong(false);
     };
 
-    const handleNext = () => {
-        const nextIndex = (currentIndex + 1) % categories.length;
-        setFadeState("wdb-fade-out");
-        setTimeout(() => {
-            changeCategory(nextIndex);
-            setFadeState("wdb-fade-in-active");
-        }, 400);
-    };
-
-    const handlePrev = () => {
-        const prevIndex = (currentIndex - 1 + categories.length) % categories.length;
-        setFadeState("wdb-fade-out");
-        setTimeout(() => {
-            changeCategory(prevIndex);
-            setFadeState("wdb-fade-in-active");
-        }, 400);
-    };
 
     const handleCardClick = (isCorrect, idx) => {
         if (isLocking) return;
@@ -176,6 +247,7 @@ function WhatDoesntBelong() {
         }
     };
 
+
     const current = categories[currentIndex];
 
     return (
@@ -187,8 +259,20 @@ function WhatDoesntBelong() {
             </div>
             {current ? (
                 <>
-                    <button className="wdb-nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`wdb-card-container ${fadeState}`} style={{ borderColor }}>
+                    <button 
+                        className={`wdb-nav-arrow left ${currentIndex === 0 ? 'disabled' : ''}`} 
+                        onClick={handlePrev}
+                        disabled={currentIndex === 0}
+                    >
+                        ❮
+                    </button>
+                    <div 
+                        ref={dragRef}
+                        className={`wdb-card-container ${fadeState}`} 
+                        style={{ borderColor }}
+                        {...mouseHandlers}
+                        {...touchHandlers}
+                    >
                         <div className="wdb-grid">
                             {shuffledItems.map((item, idx) => (
                                 <button
@@ -215,7 +299,12 @@ function WhatDoesntBelong() {
                         </div>
                         <div className="wdb-category-id">{current.id}</div>
                     </div>
-                    <button className="wdb-nav-arrow right" onClick={handleNext}>❯</button>
+                    <button 
+                        className="wdb-nav-arrow right" 
+                        onClick={handleNext}
+                    >
+                        ❯
+                    </button>
                 </>
             ) : (
                 <p style={{ color: "white", fontFamily: "Poppins", fontSize: "1.2rem" }}>Loading categories...</p>

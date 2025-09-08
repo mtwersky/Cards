@@ -150,3 +150,62 @@
 .image-card:hover .flippable-inner-border {
     transform: rotateY(180deg);
 }
+
+/* Mobile responsiveness for Matching game */
+@media (max-width: 768px) {
+    .grid-wrapper-container {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .grid-wrapper {
+        width: 90%;
+        max-width: 400px;
+        gap: 15px;
+    }
+    
+    .simple-card-inner-with-border {
+        border-width: 5px;
+    }
+    
+    .simple-card-front,
+    .simple-card-back {
+        font-size: 1.5rem;
+    }
+    
+    .matched-thumb {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-wrapper-container {
+        gap: 15px;
+    }
+    
+    .grid-wrapper {
+        width: 95%;
+        gap: 10px;
+    }
+    
+    .simple-card-inner-with-border {
+        border-width: 4px;
+    }
+    
+    .simple-card-front,
+    .simple-card-back {
+        font-size: 1.2rem;
+    }
+    
+    .matched-thumb {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .matched-area {
+        margin-top: 20px;
+        gap: 8px;
+    }
+}

@@ -60,6 +60,12 @@
     align-items: center;
     position: relative;
     transition: opacity 0.7s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.compare-card-container:active {
+    cursor: grabbing;
 }
 
 .compare-card-container.fade-out,

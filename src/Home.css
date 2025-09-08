@@ -16,7 +16,7 @@
     font-weight: 600;
 }
 
-/* Home grid with 5 columns */
+/* Home grid with 5 columns that can wrap */
 .home-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -24,6 +24,7 @@
     gap: 25px;
     width: 100%;
     max-width: 1250px;
+    justify-items: center;
 }
 
 /* Home card style, smaller */
@@ -53,4 +54,84 @@
 .home-card:hover {
     transform: scale(1.07);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive scaling - cards get smaller and wrap as screen gets smaller */
+@media (max-width: 1000px) {
+    .home-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 900px;
+    }
+    
+    .home-card {
+        max-width: 160px;
+        font-size: 1.3rem;
+        padding: 18px;
+    }
+}
+
+@media (max-width: 800px) {
+    .home-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        max-width: 750px;
+    }
+    
+    .home-card {
+        max-width: 140px;
+        font-size: 1.2rem;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-app {
+        padding: 15px;
+    }
+    
+    .home-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 600px;
+    }
+    
+    .home-card {
+        max-width: 120px;
+        font-size: 1.1rem;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 400px;
+    }
+    
+    .home-card {
+        max-width: 100px;
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 300px) {
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 300px;
+    }
+    
+    .home-card {
+        max-width: 90px;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }

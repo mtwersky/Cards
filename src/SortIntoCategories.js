@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import "./Sort.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
-import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { saveGameProgress, getGameProgress, clearGameProgress, markGameCompleted } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 function SortIntoCategories() {
     const [allCategories, setAllCategories] = useState([]);
@@ -19,6 +20,15 @@ function SortIntoCategories() {
     const [fadeState, setFadeState] = useState("fade-in-active");
     const [allCorrect, setAllCorrect] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const allCategoriesRef = useRef([]);
+    const currentIndexRef = useRef(0);
+
+    // Update refs when state changes
+    useEffect(() => {
+        allCategoriesRef.current = allCategories;
+        currentIndexRef.current = currentIndex;
+    }, [allCategories, currentIndex]);
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/categories.json")
@@ -26,8 +36,19 @@ function SortIntoCategories() {
             .then(data => {
                 setAllCategories(data);
                 setupCategories(data, 0);
+                
+                // Reset game state if restarting
+                if (location.state?.restart) {
+                    setCurrentIndex(0);
+                    setShowResults(false);
+                    setOverlays({});
+                    setLockedItems(new Set());
+                    setFadeState("fade-in-active");
+                    setAllCorrect(false);
+                    clearGameProgress("sort-into-categories");
+                }
             });
-    }, []);
+    }, [location.state]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -140,6 +161,18 @@ function SortIntoCategories() {
                 // Check if everything is correct
                 if (allCorrectNow && items.length === 0 && wrongItems.length === 0) {
                     setAllCorrect(true);
+                    // Game completed - navigate to game end
+                    setTimeout(() => {
+                        markGameCompleted("sort-into-categories", 1, 1);
+                        navigate('/game-end', {
+                            state: {
+                                gameName: "Sort into Categories",
+                                score: 1,
+                                totalQuestions: 1,
+                                gameId: 'sort-into-categories'
+                            }
+                        });
+                    }, 2000);
                 }
 
                 setLockedItems(newLockedItems);
@@ -149,27 +182,38 @@ function SortIntoCategories() {
         }, 1200);
     };
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = allCategoriesRef.current;
         setFadeState("fade-out");
         setTimeout(() => {
-            const nextIndex = currentIndex + 4;
-            if (nextIndex < allCategories.length) {
+            const nextIndex = currentIdx + 4;
+            if (nextIndex < categoriesData.length) {
                 setCurrentIndex(nextIndex);
-                setupCategories(allCategories, nextIndex);
+                setupCategories(categoriesData, nextIndex);
             }
         }, 400);
-    };
+    }, []);
 
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = allCategoriesRef.current;
         setFadeState("fade-out");
         setTimeout(() => {
-            const prevIndex = currentIndex - 4;
+            const prevIndex = currentIdx - 4;
             if (prevIndex >= 0) {
                 setCurrentIndex(prevIndex);
-                setupCategories(allCategories, prevIndex);
+                setupCategories(categoriesData, prevIndex);
             }
         }, 400);
-    };
+    }, []);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNext,
+        handlePrev,
+        { threshold: 50 }
+    );
 
     // Clear progress function
     const clearProgress = () => {
@@ -194,7 +238,13 @@ function SortIntoCategories() {
                 </>
             )}
 
-            <div className={`fade-page ${fadeState}`} style={{ width: "100%" }}>
+            <div 
+                ref={dragRef}
+                className={`fade-page ${fadeState}`} 
+                style={{ width: "100%" }}
+                {...mouseHandlers}
+                {...touchHandlers}
+            >
                 {/* 💖 ADD THIS WRAPPER to center everything */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
                     <div className="sort-bins-container">

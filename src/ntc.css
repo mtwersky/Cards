@@ -30,9 +30,15 @@
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.ntc-nav-arrow:hover {
+.ntc-nav-arrow:hover:not(.disabled) {
     transform: translateY(-50%) scale(1.2);
     color: #555555;
+}
+
+.ntc-nav-arrow.disabled {
+    color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .ntc-nav-arrow.left {
@@ -59,6 +65,12 @@
     align-items: center;
     position: relative;
     transition: opacity 0.7s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.ntc-card-container:active {
+    cursor: grabbing;
 }
 
 .ntc-card-container.ntc-fade-out,
@@ -112,7 +124,7 @@
 .ntc-card-number {
     position: absolute;
     bottom: 10px;
-    left: 15px;
+    right: 15px;
     font-size: 0.8rem;
     font-weight: 600;
     color: #666;
@@ -125,7 +137,7 @@
 .ntc-category-id {
     position: absolute;
     bottom: 10px;
-    right: 15px;
+    left: 15px;
     font-size: 1rem;
     font-weight: 600;
     color: #555;

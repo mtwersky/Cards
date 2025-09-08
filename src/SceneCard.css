@@ -24,6 +24,12 @@
     perspective: 1200px;
     transition: opacity 0.6s ease;
     margin-bottom: 20px;
+    cursor: grab;
+    user-select: none;
+}
+
+.scene-card-container:active {
+    cursor: grabbing;
 }
 
 .scene-card-container.fade-out {

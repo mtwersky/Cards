@@ -30,4 +30,35 @@
     transform: scale(1.05);
     color: #333;
   }
+
+/* Mobile responsiveness for header */
+@media (max-width: 768px) {
+  .site-header {
+    height: 50px;
+  }
+  
+  .header-inner {
+    height: 50px;
+    padding: 0 15px;
+  }
+  
+  .header-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    height: 45px;
+  }
+  
+  .header-inner {
+    height: 45px;
+    padding: 0 10px;
+  }
+  
+  .header-link {
+    font-size: 0.9rem;
+  }
+}
   

@@ -69,3 +69,46 @@
     font-size: 2rem;
     margin-top: 30px;
 }
+
+/* Mobile responsiveness for Diamond game */
+@media (max-width: 768px) {
+    .diamond-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 15px;
+    }
+    
+    .diamond-card {
+        width: 150px;
+    }
+    
+    .diamond-card-inner {
+        border-width: 4px;
+    }
+    
+    .winning-screen {
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .diamond-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 10px;
+    }
+    
+    .diamond-card {
+        width: 120px;
+    }
+    
+    .diamond-card-inner {
+        border-width: 3px;
+    }
+    
+    .winning-screen {
+        font-size: 1.2rem;
+        margin-top: 15px;
+    }
+}

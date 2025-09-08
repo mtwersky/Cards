@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./Matching.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
-import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { saveGameProgress, getGameProgress, clearGameProgress, markGameCompleted } from "./gameProgress";
 
 function Matching() {
     const [grid1, setGrid1] = useState([]);
@@ -12,6 +12,7 @@ function Matching() {
     const [matchedIndexes, setMatchedIndexes] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
     const [score, setScore] = useState(0);
+    const [tries, setTries] = useState(0);
     const [lockedGrid, setLockedGrid] = useState(null);
     const [selectedKey, setSelectedKey] = useState(null);
     const [isBusy, setIsBusy] = useState(false);
@@ -34,8 +35,21 @@ function Matching() {
                 
                 setGrid1(shuffledFirstHalf);
                 setGrid2(shuffledSecondHalf);
+                
+                // Reset game state if restarting
+                if (location.state?.restart) {
+                    setRevealedIndexes([]);
+                    setMatchedIndexes([]);
+                    setMatchedPairs([]);
+                    setScore(0);
+                    setTries(0);
+                    setLockedGrid(null);
+                    setSelectedKey(null);
+                    setIsBusy(false);
+                    clearGameProgress(gameId);
+                }
             });
-    }, []);
+    }, [location.state]);
 
     const shuffleArray = (array) => {
         return array
@@ -68,6 +82,7 @@ function Matching() {
 
         if (newRevealed.length === 2) {
             setIsBusy(true);
+            setTries(prev => prev + 1); // Increment tries when two cards are revealed
             const [firstKey, secondKey] = newRevealed;
             const [firstGrid, firstIdx] = firstKey.split("-");
             const [secondGrid, secondIdx] = secondKey.split("-");
@@ -77,8 +92,28 @@ function Matching() {
 
             setTimeout(() => {
                 if (firstCard.pairId === secondCard.pairId) {
-                    setMatchedIndexes(prev => [...prev, firstKey, secondKey]);
-                    setScore(prev => prev + 1);
+                    setMatchedIndexes(prev => {
+                        const newMatched = [...prev, firstKey, secondKey];
+                        setScore(prev => {
+                            const newScore = prev + 1;
+                            // Check if game is completed (all 9 pairs matched)
+                            if (newMatched.length === 18) { // 9 pairs * 2 cards each
+                                setTimeout(() => {
+                                    markGameCompleted(gameId, tries + 1, 9); // Use tries + 1 for final count
+                                    navigate('/game-end', {
+                                        state: {
+                                            gameName: 'Match the Pairs',
+                                            score: tries + 1, // Pass tries as the score
+                                            totalQuestions: 9,
+                                            gameId: 'matching'
+                                        }
+                                    });
+                                }, 1500);
+                            }
+                            return newScore;
+                        });
+                        return newMatched;
+                    });
                     setTimeout(() => {
                         const pairColor = colors[firstCard.pairId % colors.length];
                         setMatchedPairs(prev => [
@@ -106,6 +141,7 @@ function Matching() {
         setMatchedIndexes([]);
         setMatchedPairs([]);
         setScore(0);
+        setTries(0);
         setLockedGrid(null);
         setSelectedKey(null);
         setIsBusy(false);
@@ -132,7 +168,7 @@ function Matching() {
             <HelpButton gameId={gameId} onStartOver={clearProgress} />
             <h1 className="title">Match the Pairs</h1>
             <div style={{ color: "#333333", fontSize: "1.3rem", marginBottom: "10px" }}>
-                Score: {score}
+                Tries: {tries}
             </div>
             <div className="grid-wrapper-container">
                 {[grid1, grid2].map((grid, gIdx) => {

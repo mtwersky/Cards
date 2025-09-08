@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ntc.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
-import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { saveGameProgress, getGameProgress, clearGameProgress, markGameCompleted } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 function NameTheCategory() {
     const [categories, setCategories] = useState([]);
@@ -16,6 +17,84 @@ function NameTheCategory() {
     const [score, setScore] = useState(0);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const categoriesRef = useRef([]);
+    const currentIndexRef = useRef(0);
+    const scoreRef = useRef(0);
+
+    // Update refs when state changes
+    useEffect(() => {
+        categoriesRef.current = categories;
+        currentIndexRef.current = currentIndex;
+        scoreRef.current = score;
+    }, [categories, currentIndex, score]);
+
+    // Shuffle function
+    const shuffleArray = useCallback((array) => {
+        return array
+            .map((item) => ({ item, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ item }) => item);
+    }, []);
+
+    // Navigation functions with useCallback
+    const handleNext = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
+        const currentScore = scoreRef.current;
+        
+        if (currentIdx < categoriesData.length - 1) {
+            setFadeState("ntc-fade-out");
+            setTimeout(() => {
+                const nextIndex = currentIdx + 1;
+                setCurrentIndex(nextIndex);
+                setShuffledItems(shuffleArray(categoriesData[nextIndex].examples));
+                setBorderColor(colors[nextIndex % colors.length]);
+                setShowAnswer(false);
+                setConfirmAnswer(false);
+                setFadeState("ntc-fade-in-active");
+            }, 400);
+        } else if (currentIdx === categoriesData.length - 1) {
+            // This is the last category - navigate to game end when right arrow is pressed
+            markGameCompleted("name-the-category", currentScore, categoriesData.length);
+            navigate('/game-end', {
+                state: {
+                    gameName: "Name the Category",
+                    score: currentScore,
+                    totalQuestions: categoriesData.length,
+                    gameId: 'name-the-category'
+                }
+            });
+        }
+    }, [navigate, shuffleArray]);
+
+    const handlePrev = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
+        
+        if (currentIdx > 0) {
+            setFadeState("ntc-fade-out");
+            setTimeout(() => {
+                const prevIndex = currentIdx - 1;
+                setCurrentIndex(prevIndex);
+                setShuffledItems(shuffleArray(categoriesData[prevIndex].examples));
+                setBorderColor(colors[prevIndex % colors.length]);
+                setShowAnswer(false);
+                setConfirmAnswer(false);
+                setFadeState("ntc-fade-in-active");
+            }, 400);
+        }
+    }, [shuffleArray]);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNext,
+        handlePrev,
+        { 
+            threshold: 50,
+            disabled: currentIndex === 0 // Disable drag to prev on first card
+        }
+    );
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/categories.json")
@@ -26,8 +105,18 @@ function NameTheCategory() {
                     setShuffledItems(shuffleArray(data[0].examples));
                     setBorderColor(colors[0]);
                 }
+                
+                // Reset game state if restarting
+                if (location.state?.restart) {
+                    setCurrentIndex(0);
+                    setScore(0);
+                    setShowAnswer(false);
+                    setConfirmAnswer(false);
+                    setFadeState("ntc-fade-in-active");
+                    clearGameProgress("name-the-category");
+                }
             });
-    }, []);
+    }, [location.state]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -41,12 +130,6 @@ function NameTheCategory() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     });
 
-    const shuffleArray = (array) => {
-        return array
-            .map((item) => ({ item, sort: Math.random() }))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({ item }) => item);
-    };
 
     const changeCategory = (index) => {
         setCurrentIndex(index);
@@ -56,23 +139,6 @@ function NameTheCategory() {
         setConfirmAnswer(false);
     };
 
-    const handleNext = () => {
-        const nextIndex = (currentIndex + 1) % categories.length;
-        setFadeState("ntc-fade-out");
-        setTimeout(() => {
-            changeCategory(nextIndex);
-            setFadeState("ntc-fade-in-active");
-        }, 400);
-    };
-
-    const handlePrev = () => {
-        const prevIndex = (currentIndex - 1 + categories.length) % categories.length;
-        setFadeState("ntc-fade-out");
-        setTimeout(() => {
-            changeCategory(prevIndex);
-            setFadeState("ntc-fade-in-active");
-        }, 400);
-    };
 
     const handleShowAnswer = () => {
         setShowAnswer(true);
@@ -87,6 +153,7 @@ function NameTheCategory() {
     const handleUndo = () => {
         setConfirmAnswer(false);
     };
+
 
     const current = categories[currentIndex];
 
@@ -113,8 +180,20 @@ function NameTheCategory() {
             </div>
             {current ? (
                 <>
-                    <button className="ntc-nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`ntc-card-container ${fadeState}`} style={{ borderColor }}>
+                    <button 
+                        className={`ntc-nav-arrow left ${currentIndex === 0 ? 'disabled' : ''}`} 
+                        onClick={handlePrev}
+                        disabled={currentIndex === 0}
+                    >
+                        ❮
+                    </button>
+                    <div 
+                        ref={dragRef}
+                        className={`ntc-card-container ${fadeState}`} 
+                        style={{ borderColor }}
+                        {...mouseHandlers}
+                        {...touchHandlers}
+                    >
                         <div className="ntc-grid">
                             {shuffledItems.map((item, idx) => (
                                 <button
@@ -135,7 +214,12 @@ function NameTheCategory() {
                             <div className="ntc-category-id">{current.name}</div>
                         )}
                     </div>
-                    <button className="ntc-nav-arrow right" onClick={handleNext}>❯</button>
+                    <button 
+                        className="ntc-nav-arrow right" 
+                        onClick={handleNext}
+                    >
+                        ❯
+                    </button>
 
                     {!showAnswer && !confirmAnswer && (
                         <button

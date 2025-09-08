@@ -150,6 +150,7 @@ function HelpButton({ gameId, onStartOver }) {
             className="help-button-icon" 
             onClick={handleHelpClick}
             title="Get Help"
+            style={{ backgroundColor: buttonColor }}
         >
             ?
         </button>

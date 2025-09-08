@@ -48,6 +48,36 @@ export const hasGameProgress = (gameId) => {
     return progress !== null;
 };
 
+// Game completion tracking
+export const markGameCompleted = (gameId, score, totalQuestions) => {
+    try {
+        const completedGames = getCompletedGames();
+        completedGames[gameId] = {
+            score: score,
+            totalQuestions: totalQuestions,
+            completedAt: Date.now()
+        };
+        localStorage.setItem('completedGames', JSON.stringify(completedGames));
+    } catch (error) {
+        console.error('Error marking game as completed:', error);
+    }
+};
+
+export const getCompletedGames = () => {
+    try {
+        const completed = localStorage.getItem('completedGames');
+        return completed ? JSON.parse(completed) : {};
+    } catch (error) {
+        console.error('Error getting completed games:', error);
+        return {};
+    }
+};
+
+export const isGameCompleted = (gameId) => {
+    const completedGames = getCompletedGames();
+    return completedGames.hasOwnProperty(gameId);
+};
+
 // Game ID mapping for consistency
 export const GAME_IDS = {
     WHAT_DOESNT_BELONG: 'what-doesnt-belong',

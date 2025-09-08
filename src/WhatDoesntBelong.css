@@ -67,9 +67,15 @@
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.wdb-nav-arrow:hover {
+.wdb-nav-arrow:hover:not(.disabled) {
     transform: translateY(-50%) scale(1.2);
     color: #555555;
+}
+
+.wdb-nav-arrow.disabled {
+    color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .wdb-nav-arrow.left {
@@ -96,6 +102,12 @@
     align-items: center;
     position: relative;
     transition: opacity 0.7s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.wdb-card-container:active {
+    cursor: grabbing;
 }
 
 .wdb-card-container.wdb-fade-out,
@@ -246,4 +258,91 @@
 .wdb-highlight {
     animation: wdb-bigHighlight 2s ease forwards;
     z-index: 2;
+}
+
+/* Mobile responsiveness for What Doesn't Belong */
+@media (max-width: 768px) {
+    .wdb-app {
+        padding: 5px 10px 10px;
+    }
+    
+    .wdb-title {
+        font-size: 2rem;
+        margin-top: -30px;
+    }
+    
+    .wdb-nav-arrow {
+        font-size: 2.5rem;
+    }
+    
+    .wdb-nav-arrow.left {
+        left: 10px;
+    }
+    
+    .wdb-nav-arrow.right {
+        right: 10px;
+    }
+    
+    .wdb-card-container {
+        width: 95%;
+        padding: 15px;
+        border-width: 10px;
+    }
+    
+    .wdb-grid {
+        gap: 15px;
+    }
+    
+    .wdb-image-card {
+        min-height: 120px;
+    }
+    
+    .wdb-card-image {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    
+    .wdb-overlay img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wdb-app {
+        padding: 5px;
+    }
+    
+    .wdb-title {
+        font-size: 1.8rem;
+        margin-top: -20px;
+    }
+    
+    .wdb-nav-arrow {
+        font-size: 2rem;
+    }
+    
+    .wdb-card-container {
+        width: 98%;
+        padding: 10px;
+        border-width: 8px;
+    }
+    
+    .wdb-grid {
+        gap: 10px;
+    }
+    
+    .wdb-image-card {
+        min-height: 100px;
+    }
+    
+    .wdb-card-image {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .wdb-overlay img {
+        width: 80px;
+        height: 80px;
+    }
 }

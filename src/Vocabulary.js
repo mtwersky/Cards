@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./vocab.css";
 import { colors as vocabColors } from "./colors";
 import HelpButton from "./HelpButton";
 import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 const questions = [
     "What is it?",
@@ -23,6 +24,48 @@ function Vocabulary() {
     const navigate = useNavigate();
     const location = useLocation();
     const gameId = "vocabulary";
+    const vocabItemsRef = useRef([]);
+
+    // Update ref when vocabItems changes
+    useEffect(() => {
+        vocabItemsRef.current = vocabItems;
+    }, [vocabItems]);
+
+    // Navigation functions with useCallback to ensure they have access to current state
+    const handleNextVocab = useCallback(() => {
+        setVocabFadeState("vocab-fade-out");
+        setIsFlipped(false);
+        setCurrentQuestionIndex(0);
+        setTimeout(() => {
+            setCurrentVocabIndex(prev => {
+                const nextIndex = (prev + 1) % vocabItemsRef.current.length;
+                setVocabBorderColor(vocabColors[nextIndex % vocabColors.length]);
+                setVocabFadeState("vocab-fade-in-active");
+                return nextIndex;
+            });
+        }, 400);
+    }, []);
+
+    const handlePrevVocab = useCallback(() => {
+        setVocabFadeState("vocab-fade-out");
+        setIsFlipped(false);
+        setCurrentQuestionIndex(0);
+        setTimeout(() => {
+            setCurrentVocabIndex(prev => {
+                const prevIndex = (prev - 1 + vocabItemsRef.current.length) % vocabItemsRef.current.length;
+                setVocabBorderColor(vocabColors[prevIndex % vocabColors.length]);
+                setVocabFadeState("vocab-fade-in-active");
+                return prevIndex;
+            });
+        }, 400);
+    }, []);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNextVocab,
+        handlePrevVocab,
+        { threshold: 50 }
+    );
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/vocabulary.json")
@@ -33,8 +76,15 @@ function Vocabulary() {
                 // Check for saved progress
                 const savedProgress = getGameProgress(gameId);
                 if (savedProgress && (location.state?.resume || !location.state)) {
-                    setCurrentVocabIndex(savedProgress.currentIndex || 0);
-                    setVocabBorderColor(vocabColors[(savedProgress.currentIndex || 0) % vocabColors.length]);
+                    // Only restore progress if the user actually played (has interacted)
+                    if (savedProgress.hasInteracted) {
+                        setCurrentVocabIndex(savedProgress.currentIndex || 0);
+                        setVocabBorderColor(vocabColors[(savedProgress.currentIndex || 0) % vocabColors.length]);
+                    } else {
+                        // Clear invalid progress (game was loaded but not played)
+                        clearGameProgress(gameId);
+                        setVocabBorderColor(vocabColors[0]);
+                    }
                 } else {
                     setVocabBorderColor(vocabColors[0]);
                 }
@@ -44,14 +94,15 @@ function Vocabulary() {
             });
     }, [location.state]);
 
-    // Save progress whenever currentIndex changes
+    // Save progress whenever currentIndex changes, but only if user has actually played
     useEffect(() => {
-        if (vocabItems.length > 0 && currentVocabIndex >= 0) {
+        if (vocabItems.length > 0 && currentVocabIndex >= 0 && (isFlipped || currentQuestionIndex > 0)) {
             saveGameProgress(gameId, {
-                currentIndex: currentVocabIndex
+                currentIndex: currentVocabIndex,
+                hasInteracted: true
             });
         }
-    }, [currentVocabIndex, vocabItems.length, gameId]);
+    }, [currentVocabIndex, vocabItems.length, gameId, isFlipped, currentQuestionIndex]);
 
     // Clear progress function
     const clearProgress = () => {
@@ -71,29 +122,6 @@ function Vocabulary() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     });
 
-    const handleNextVocab = () => {
-        setVocabFadeState("vocab-fade-out");
-        setIsFlipped(false);
-        setCurrentQuestionIndex(0);
-        setTimeout(() => {
-            const nextIndex = (currentVocabIndex + 1) % vocabItems.length;
-            setCurrentVocabIndex(nextIndex);
-            setVocabBorderColor(vocabColors[nextIndex % vocabColors.length]);
-            setVocabFadeState("vocab-fade-in-active");
-        }, 400);
-    };
-
-    const handlePrevVocab = () => {
-        setVocabFadeState("vocab-fade-out");
-        setIsFlipped(false);
-        setCurrentQuestionIndex(0);
-        setTimeout(() => {
-            const prevIndex = (currentVocabIndex - 1 + vocabItems.length) % vocabItems.length;
-            setCurrentVocabIndex(prevIndex);
-            setVocabBorderColor(vocabColors[prevIndex % vocabColors.length]);
-            setVocabFadeState("vocab-fade-in-active");
-        }, 400);
-    };
 
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
@@ -127,7 +155,12 @@ function Vocabulary() {
             <h1 className="vocab-title">Expressive Language</h1>
             <button className="vocab-nav-arrow vocab-left" onClick={handlePrevVocab}>❮</button>
 
-            <div className={`vocab-card-container ${vocabFadeState}`}>
+            <div 
+                ref={dragRef}
+                className={`vocab-card-container ${vocabFadeState}`}
+                {...mouseHandlers}
+                {...touchHandlers}
+            >
                 <div
                     className={`vocab-card-inner ${isFlipped ? "vocab-flipped" : ""}`}
                     style={{ borderColor: vocabBorderColor }}

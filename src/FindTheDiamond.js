@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./Diamond.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
-import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { saveGameProgress, getGameProgress, clearGameProgress, markGameCompleted } from "./gameProgress";
 
 function FindTheDiamond() {
     const [cards, setCards] = useState([]);
@@ -14,6 +14,7 @@ function FindTheDiamond() {
     const [lock, setLock] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + "/diamond.json")
@@ -23,8 +24,17 @@ function FindTheDiamond() {
                 const diamond = Math.floor(Math.random() * shuffled.length);
                 setCards(shuffled);
                 setDiamondIndex(diamond);
+                
+                // Reset game state if restarting
+                if (location.state?.restart) {
+                    setFlippedIndexes([]);
+                    setFadedIndexes([]);
+                    setHasWon(false);
+                    setLock(false);
+                    clearGameProgress("diamond");
+                }
             });
-    }, []);
+    }, [location.state]);
 
     const shuffleArray = (array) => {
         return array
@@ -42,6 +52,18 @@ function FindTheDiamond() {
         if (idx === diamondIndex) {
             setHasWon(true);
             setLock(false);
+            // Game completed - navigate to game end
+            setTimeout(() => {
+                markGameCompleted("diamond", 1, 1);
+                navigate('/game-end', {
+                    state: {
+                        gameName: "Find the Diamond",
+                        score: 1,
+                        totalQuestions: 1,
+                        gameId: 'diamond'
+                    }
+                });
+            }, 2000);
         } else {
             setTimeout(() => {
                 setFlippedIndexes((prev) => prev.filter((i) => i !== idx));

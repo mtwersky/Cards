@@ -207,6 +207,12 @@
     align-items: center;
     position: relative;
     transition: opacity 0.7s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.gtm-card-container:active {
+    cursor: grabbing;
 }
 
 .fade-in-slot {

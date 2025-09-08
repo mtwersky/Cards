@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./gtm.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
 import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 function GuessTheMissing() {
     const [categories, setCategories] = useState([]);
@@ -21,6 +22,14 @@ function GuessTheMissing() {
     const [hasTriedWrong, setHasTriedWrong] = useState(false);
 
     const navigate = useNavigate();
+    const categoriesRef = useRef([]);
+    const currentIndexRef = useRef(0);
+
+    // Update refs when state changes
+    useEffect(() => {
+        categoriesRef.current = categories;
+        currentIndexRef.current = currentIndex;
+    }, [categories, currentIndex]);
 
     useEffect(() => {
         fetch("/categories.json")
@@ -176,7 +185,9 @@ function GuessTheMissing() {
         }
     };
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
         setFadeState("fade-out");
         setChoices([]);
         setOverlays({});
@@ -184,13 +195,15 @@ function GuessTheMissing() {
         setDisabledChoices({});
         setSlotFadeInIdx(null);
         setTimeout(() => {
-            const nextIdx = (currentIndex + 1) % categories.length;
+            const nextIdx = (currentIdx + 1) % categoriesData.length;
             setCurrentIndex(nextIdx);
             setupCategory(nextIdx);
         }, 400);
-    };
+    }, []);
 
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
+        const currentIdx = currentIndexRef.current;
+        const categoriesData = categoriesRef.current;
         setFadeState("fade-out");
         setChoices([]);
         setOverlays({});
@@ -198,11 +211,18 @@ function GuessTheMissing() {
         setDisabledChoices({});
         setSlotFadeInIdx(null);
         setTimeout(() => {
-            const prevIdx = (currentIndex - 1 + categories.length) % categories.length;
+            const prevIdx = (currentIdx - 1 + categoriesData.length) % categoriesData.length;
             setCurrentIndex(prevIdx);
             setupCategory(prevIdx);
         }, 400);
-    };
+    }, []);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNext,
+        handlePrev,
+        { threshold: 50 }
+    );
 
     // Clear progress function
     const clearProgress = () => {
@@ -221,7 +241,13 @@ function GuessTheMissing() {
             {categories.length > 0 ? (
                 <>
                     <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <div className={`gtm-card-container ${fadeState}`} style={{ borderColor }}>
+                    <div 
+                        ref={dragRef}
+                        className={`gtm-card-container ${fadeState}`} 
+                        style={{ borderColor }}
+                        {...mouseHandlers}
+                        {...touchHandlers}
+                    >
                         <div className="gtm-card-grid">
                             {displayItems.map((item, idx) => (
                                 <button key={idx} className="gtm-card-button" disabled>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./SceneCard.css";
 import { colors } from "./colors";
 import HelpButton from "./HelpButton";
 import { saveGameProgress, getGameProgress, clearGameProgress } from "./gameProgress";
+import { useDragNavigation } from "./useDragNavigation";
 
 function SceneCard() {
     const [cardData, setCardData] = useState([]);
@@ -16,6 +17,42 @@ function SceneCard() {
     const navigate = useNavigate();
     const location = useLocation();
     const gameId = "scene-card";
+    const cardDataRef = useRef([]);
+
+    // Update ref when cardData changes
+    useEffect(() => {
+        cardDataRef.current = cardData;
+    }, [cardData]);
+
+    // Navigation functions with useCallback
+    const handleNext = useCallback(() => {
+        setFadeClass("fade-out");
+        setTimeout(() => {
+            setFlipped(false);
+            setQuestionType(null);
+            setShowAnswer(false);
+            setCurrentIndex((prev) => (prev + 1) % cardDataRef.current.length);
+            setFadeClass("fade-in-active");
+        }, 400);
+    }, []);
+
+    const handlePrev = useCallback(() => {
+        setFadeClass("fade-out");
+        setTimeout(() => {
+            setFlipped(false);
+            setQuestionType(null);
+            setShowAnswer(false);
+            setCurrentIndex((prev) => (prev - 1 + cardDataRef.current.length) % cardDataRef.current.length);
+            setFadeClass("fade-in-active");
+        }, 400);
+    }, []);
+
+    // Drag navigation - must be called at top level
+    const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
+        handleNext,
+        handlePrev,
+        { threshold: 50 }
+    );
 
     useEffect(() => {
         fetch("/sceneCard.json")
@@ -26,19 +63,26 @@ function SceneCard() {
                 // Check for saved progress
                 const savedProgress = getGameProgress(gameId);
                 if (savedProgress && (location.state?.resume || !location.state)) {
-                    setCurrentIndex(savedProgress.currentIndex || 0);
+                    // Only restore progress if the user actually played (has interacted)
+                    if (savedProgress.hasInteracted) {
+                        setCurrentIndex(savedProgress.currentIndex || 0);
+                    } else {
+                        // Clear invalid progress (game was loaded but not played)
+                        clearGameProgress(gameId);
+                    }
                 }
             });
     }, [location.state]);
 
-    // Save progress whenever currentIndex changes
+    // Save progress whenever currentIndex changes, but only if user has actually played
     useEffect(() => {
-        if (cardData.length > 0 && currentIndex >= 0) {
+        if (cardData.length > 0 && currentIndex >= 0 && (flipped || questionType)) {
             saveGameProgress(gameId, {
-                currentIndex: currentIndex
+                currentIndex: currentIndex,
+                hasInteracted: true
             });
         }
-    }, [currentIndex, cardData.length, gameId]);
+    }, [currentIndex, cardData.length, gameId, flipped, questionType]);
 
     // Clear progress function
     const clearProgress = () => {
@@ -69,27 +113,6 @@ function SceneCard() {
         setShowAnswer(false);
     };
 
-    const handleNext = () => {
-        setFadeClass("fade-out");
-        setTimeout(() => {
-            setFlipped(false);
-            setQuestionType(null);
-            setShowAnswer(false);
-            setCurrentIndex((prev) => (prev + 1) % cardData.length);
-            setFadeClass("fade-in-active");
-        }, 400);
-    };
-
-    const handlePrev = () => {
-        setFadeClass("fade-out");
-        setTimeout(() => {
-            setFlipped(false);
-            setQuestionType(null);
-            setShowAnswer(false);
-            setCurrentIndex((prev) => (prev - 1 + cardData.length) % cardData.length);
-            setFadeClass("fade-in-active");
-        }, 400);
-    };
 
     return (
         <div className="scene-card-app">
@@ -97,7 +120,12 @@ function SceneCard() {
             <h1 className="scene-card-title">Scene Cards</h1>
             <button className="nav-arrow left" onClick={handlePrev}>❮</button>
 
-            <div className={`scene-card-container ${fadeClass}`}>
+            <div 
+                ref={dragRef}
+                className={`scene-card-container ${fadeClass}`}
+                {...mouseHandlers}
+                {...touchHandlers}
+            >
                 <div className={`scene-card-inner ${flipped ? "flipped" : ""}`} style={{ borderColor }}>
                     <div className="scene-card-front">
                         <img src={currentCard.image} alt="Scene" />

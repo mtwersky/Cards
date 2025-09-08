@@ -11,6 +11,7 @@ import SortIntoCategories from "./SortIntoCategories";
 import Vocabulary from "./Vocabulary";
 import Diamond from "./FindTheDiamond";
 import SceneCard from "./SceneCard";
+import GameEnd from "./GameEnd";
 import Header from "./header";
 import "./App.css";
 
@@ -30,6 +31,7 @@ function AnimatedRoutes() {
         <Route path="/vocabulary" element={<Vocabulary />} />
         <Route path="/diamond" element={<Diamond />} />
         <Route path="/scene-card" element={<SceneCard />} />
+        <Route path="/game-end" element={<GameEnd />} />
       </Routes>
       <div className="corner-credit">©mtwersky</div>
     </div>
