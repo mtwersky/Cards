@@ -86,22 +86,34 @@
     box-sizing: border-box;
 }
 
+/* ---------- Main container for side-by-side layout ---------- */
+.gtm-main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
 /* ---------- Choices wrapper ---------- */
 .gtm-choice-wrapper {
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 200px;
 }
 
-.gtm-choice-row {
+.gtm-choice-column {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 10px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }
 
 .gtm-choice-button {
@@ -209,6 +221,9 @@
     transition: opacity 0.7s ease;
     cursor: grab;
     user-select: none;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    margin-left: 50px; /* Shift card to the right to center it */
 }
 
 .gtm-card-container:active {
@@ -252,4 +267,33 @@
 .gtm-choice-button.highlight {
     animation: bigHighlight 1.2s ease forwards;
     z-index: 2;
+}
+
+/* ---------- Responsive design ---------- */
+@media (max-width: 768px) {
+    .gtm-main-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .gtm-card-container {
+        margin-left: 0; /* Remove left margin on mobile */
+    }
+    
+    .gtm-choice-wrapper {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .gtm-choice-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .gtm-choice-button {
+        width: 80px;
+        height: 80px;
+    }
 }

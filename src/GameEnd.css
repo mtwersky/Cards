@@ -65,9 +65,9 @@
 .score-section {
     margin: 30px 0;
     padding: 25px;
-    background-color: #f8f9fa;
+    background-color: transparent;
     border-radius: 16px;
-    border: 3px solid #e9ecef;
+    border: 5px solid #e9ecef;
 }
 
 .score-message {

@@ -45,11 +45,11 @@ function GameEnd() {
         
         const percentage = totalQuestions ? Math.round((score / totalQuestions) * 100) : 0;
         
-        if (percentage >= 90) return "Outstanding! 🌟";
-        if (percentage >= 80) return "Excellent work! 🎉";
-        if (percentage >= 70) return "Well done! 👏";
-        if (percentage >= 60) return "Good job! 👍";
-        return "Keep practicing! 💪";
+        if (percentage >= 90) return "Outstanding!";
+        if (percentage >= 80) return "Excellent work!";
+        if (percentage >= 70) return "Well done!";
+        if (percentage >= 60) return "Good job!";
+        return "Keep practicing!";
     };
     
     const getGameColor = () => {
@@ -70,50 +70,79 @@ function GameEnd() {
     };
 
     return (
-        <div className="game-end-app">
-            <div className="game-end-container" style={{ borderColor: getGameColor() }}>
-                <div className="celebration-icon">🎊</div>
-                <h1 className="game-end-title">Congratulations!</h1>
-                <h2 className="game-name">{gameName || "Game"} Complete</h2>
-                
-                <div className="score-section">
-                    <div className="score-message">{getScoreMessage()}</div>
-                    {score !== undefined && (
-                        <div className="score-display">
-                            <div className="score-number">{score}</div>
-                            {totalQuestions && gameId !== 'matching' && (
-                                <div className="score-total">out of {totalQuestions}</div>
-                            )}
-                            {gameId === 'matching' && (
-                                <div className="score-total">tries</div>
+        <div className="game-instructions-app">
+            <div className="confetti-container">
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+                <div className="confetti"></div>
+            </div>
+            <div className="game-instructions-modal">
+                <div className="game-instructions-content">
+                    <h1 className="game-instructions-title">{gameName || "Game"}</h1>
+                    <h2 className="game-complete-subtitle">Complete!</h2>
+                    
+                    {/* Only show score box for certain games */}
+                    {!['scene-card', 'compare-contrast', 'vocabulary', 'sort-into-categories'].includes(gameId) && (
+                        <div className="score-section" style={{ borderColor: getGameColor() }}>
+                            <div className="score-label">{['matching', 'diamond'].includes(gameId) ? 'Tries:' : 'Score:'}</div>
+                            {score !== undefined && (
+                                <div className="score-display">
+                                    <div className="score-number">{score}</div>
+                                    {!['matching', 'diamond'].includes(gameId) && (
+                                        <div className="score-total">out of {totalQuestions}</div>
+                                    )}
+                                </div>
                             )}
                         </div>
                     )}
-                </div>
-                
-                <div className="button-container">
-                    <button 
-                        className="game-end-button start-over" 
-                        onClick={handleStartOver}
-                        style={{ 
-                            borderColor: getGameColor(),
-                            backgroundColor: getGameColor(),
-                            color: "white"
-                        }}
-                    >
-                        Play Again
-                    </button>
-                    <button 
-                        className="game-end-button go-home" 
-                        onClick={handleGoHome}
-                        style={{ 
-                            borderColor: "#f5f5f5",
-                            backgroundColor: "#f5f5f5",
-                            color: "#666666"
-                        }}
-                    >
-                        Home
-                    </button>
+                    
+                    <div className="button-container">
+                        <button 
+                            className="game-instructions-start-button" 
+                            onClick={handleStartOver}
+                            style={{ backgroundColor: getGameColor(), border: 'none' }}
+                        >
+                            Start Again
+                        </button>
+                        <button 
+                            className="game-instructions-start-button" 
+                            onClick={handleGoHome}
+                            style={{ 
+                                backgroundColor: "#f5f5f5", 
+                                border: 'none',
+                                color: "#666666"
+                            }}
+                        >
+                            Home
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

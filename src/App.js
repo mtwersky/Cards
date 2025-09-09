@@ -50,8 +50,8 @@ export default function App() {
 function ConditionalHeader() {
   const location = useLocation();
   
-  // Don't show header on home page
-  if (location.pathname === "/") {
+  // Don't show header on home page or game end page
+  if (location.pathname === "/" || location.pathname === "/game-end") {
     return null;
   }
   

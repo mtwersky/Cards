@@ -243,59 +243,60 @@ function GuessTheMissing() {
                     <button className="nav-arrow left" onClick={handlePrev}>❮</button>
                     <div 
                         ref={dragRef}
-                        className={`gtm-card-container ${fadeState}`} 
-                        style={{ borderColor }}
+                        className={`gtm-main-container ${fadeState}`} 
                         {...mouseHandlers}
                         {...touchHandlers}
                     >
-                        <div className="gtm-card-grid">
-                            {displayItems.map((item, idx) => (
-                                <button key={idx} className="gtm-card-button" disabled>
-                                    {item.image ? (
-                                        <img
-                                            src={item.image}
-                                            alt={item.name}
-                                            className={idx === slotFadeInIdx ? "fade-in-slot" : ""}
-                                        />
-                                    ) : (
-                                        <div className="gtm-missing-slot">?</div>
-                                    )}
-                                </button>
-                            ))}
-                        </div>
-                        <div className="category-id">{categories[currentIndex].id}</div>
-                    </div>
-
-                    {choices.length > 0 && (
-                        <div className="gtm-choice-wrapper" style={{ borderColor }}>
-                            <div className="gtm-choice-row">
-                                {choices.map((choice, idx) => (
-                                    <button
-                                        key={idx}
-                                        className={`gtm-choice-button 
-                                            ${disabledChoices[idx] ? "gtm-disabled" : ""} 
-                                            ${choice.shrinking ? "shrink-fade" : ""} 
-                                            ${choice.highlight ? "highlight" : ""}`}
-                                        onClick={() => handleChoiceClick(idx)}
-                                        disabled={disabledChoices[idx] || (selectedIdx !== null && idx !== correctIdx)}
-                                        style={{ borderColor }}
-                                    >
-                                        <img src={choice.image} alt={choice.name} />
-                                        {overlays[idx] && (
-                                            <div className="overlay">
-                                                <img
-                                                    src={overlays[idx] === "check"
-                                                        ? "./images/green-check.png"
-                                                        : "./images/red-x.png"}
-                                                    alt={overlays[idx]}
-                                                />
-                                            </div>
+                        <div className="gtm-card-container" style={{ borderColor }}>
+                            <div className="gtm-card-grid">
+                                {displayItems.map((item, idx) => (
+                                    <button key={idx} className="gtm-card-button" disabled>
+                                        {item.image ? (
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className={idx === slotFadeInIdx ? "fade-in-slot" : ""}
+                                            />
+                                        ) : (
+                                            <div className="gtm-missing-slot">?</div>
                                         )}
                                     </button>
                                 ))}
                             </div>
+                            <div className="category-id">{categories[currentIndex].id}</div>
                         </div>
-                    )}
+
+                        {choices.length > 0 && (
+                            <div className="gtm-choice-wrapper" style={{ borderColor }}>
+                                <div className="gtm-choice-column">
+                                    {choices.map((choice, idx) => (
+                                        <button
+                                            key={idx}
+                                            className={`gtm-choice-button 
+                                                ${disabledChoices[idx] ? "gtm-disabled" : ""} 
+                                                ${choice.shrinking ? "shrink-fade" : ""} 
+                                                ${choice.highlight ? "highlight" : ""}`}
+                                            onClick={() => handleChoiceClick(idx)}
+                                            disabled={disabledChoices[idx] || (selectedIdx !== null && idx !== correctIdx)}
+                                            style={{ borderColor }}
+                                        >
+                                            <img src={choice.image} alt={choice.name} />
+                                            {overlays[idx] && (
+                                                <div className="overlay">
+                                                    <img
+                                                        src={overlays[idx] === "check"
+                                                            ? "./images/green-check.png"
+                                                            : "./images/red-x.png"}
+                                                        alt={overlays[idx]}
+                                                    />
+                                                </div>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
                     <button className="nav-arrow right" onClick={handleNext}>❯</button>
                 </>
             ) : (

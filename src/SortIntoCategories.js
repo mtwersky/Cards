@@ -161,18 +161,32 @@ function SortIntoCategories() {
                 // Check if everything is correct
                 if (allCorrectNow && items.length === 0 && wrongItems.length === 0) {
                     setAllCorrect(true);
-                    // Game completed - navigate to game end
-                    setTimeout(() => {
-                        markGameCompleted("sort-into-categories", 1, 1);
-                        navigate('/game-end', {
-                            state: {
-                                gameName: "Sort into Categories",
-                                score: 1,
-                                totalQuestions: 1,
-                                gameId: 'sort-into-categories'
-                            }
-                        });
-                    }, 2000);
+                    
+                    // Check if there are more categories to go through
+                    const currentIdx = currentIndexRef.current;
+                    const categoriesData = allCategoriesRef.current;
+                    const nextIndex = currentIdx + 4;
+                    
+                    if (nextIndex < categoriesData.length) {
+                        // Move to next set of categories
+                        setTimeout(() => {
+                            setCurrentIndex(nextIndex);
+                            setupCategories(categoriesData, nextIndex);
+                        }, 2000);
+                    } else {
+                        // Game completed - navigate to game end
+                        setTimeout(() => {
+                            markGameCompleted("sort-into-categories", 1, 1);
+                            navigate('/game-end', {
+                                state: {
+                                    gameName: "Sort into Categories",
+                                    score: 1,
+                                    totalQuestions: 1,
+                                    gameId: 'sort-into-categories'
+                                }
+                            });
+                        }, 2000);
+                    }
                 }
 
                 setLockedItems(newLockedItems);
@@ -208,7 +222,7 @@ function SortIntoCategories() {
         }, 400);
     }, []);
 
-    // Drag navigation - must be called at top level
+    // Drag navigation - only for navigation areas, not the main content
     const { dragRef, mouseHandlers, touchHandlers } = useDragNavigation(
         handleNext,
         handlePrev,
@@ -232,18 +246,20 @@ function SortIntoCategories() {
             <h1 className="title">Sort Into Categories</h1>
 
             {categories.length > 0 && (
-                <>
-                    <button className="nav-arrow left" onClick={handlePrev}>❮</button>
-                    <button className="nav-arrow right" onClick={handleNext}>❯</button>
-                </>
+                <div 
+                    ref={dragRef}
+                    style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}
+                    {...mouseHandlers}
+                    {...touchHandlers}
+                >
+                    <button className="nav-arrow left" onClick={handlePrev} style={{ pointerEvents: 'auto' }}>❮</button>
+                    <button className="nav-arrow right" onClick={handleNext} style={{ pointerEvents: 'auto' }}>❯</button>
+                </div>
             )}
 
             <div 
-                ref={dragRef}
                 className={`fade-page ${fadeState}`} 
                 style={{ width: "100%" }}
-                {...mouseHandlers}
-                {...touchHandlers}
             >
                 {/* 💖 ADD THIS WRAPPER to center everything */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
@@ -326,7 +342,7 @@ function SortIntoCategories() {
                     {!allCorrect && (
                         <button
                             className="answer-button"
-                            style={{ backgroundColor: "#ffffff", marginTop: "20px" }}
+                            style={{ backgroundColor: "#ffffff", marginTop: "20px", border: "0px"}}
                             onClick={handleCheckAnswers}
                         >
                             Check Answers

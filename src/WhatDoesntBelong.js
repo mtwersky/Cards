@@ -54,6 +54,11 @@ function WhatDoesntBelong() {
                 setCurrentIndex(nextIndex);
                 setShuffledItems(shuffleArray(categoriesData[nextIndex].examples));
                 setBorderColor(colors[nextIndex % colors.length]);
+                setOverlays({});
+                setDisabledItems({});
+                setHighlightIndex(null);
+                setIsLocking(false);
+                setHasTriedWrong(false);
                 setFadeState("wdb-fade-in-active");
             }, 400);
         } else if (currentIdx === categoriesData.length - 1) {
@@ -81,6 +86,11 @@ function WhatDoesntBelong() {
                 setCurrentIndex(prevIndex);
                 setShuffledItems(shuffleArray(categoriesData[prevIndex].examples));
                 setBorderColor(colors[prevIndex % colors.length]);
+                setOverlays({});
+                setDisabledItems({});
+                setHighlightIndex(null);
+                setIsLocking(false);
+                setHasTriedWrong(false);
                 setFadeState("wdb-fade-in-active");
             }, 400);
         }
